@@ -3,12 +3,10 @@ import { Stack } from "expo-router";
 // React
 
 // React Native
-import { Image, Pressable, Text, View } from "react-native";
-import MusicPlayer from "../src/modules/core/components/MusicPlayer";
+import { Pressable, Text, View } from "react-native";
 import { useTheme } from "../src/modules/core/hooks/useTheme";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import Screen from "../src/modules/core/components/Screen";
 
 // Hooks
 
@@ -29,7 +27,6 @@ const RootNavigation = () => {
   const { selectTheme } = useTheme();
   return (
     <View style={{ flex: 1, backgroundColor: "red" }}>
-      {/* <MusicPlayer /> */}
       <View
         style={{
           position: "absolute",

@@ -29,7 +29,7 @@ export default function TabsLayout() {
           position: "absolute",
           borderTopLeftRadius: 35,
         },
-        tabBarActiveTintColor: "white",
+        tabBarActiveTintColor: "red",
         tabBarInactiveTintColor: "gray",
         tabBarLabel: () => null,
         tabBarBackground: () => (
@@ -42,7 +42,7 @@ export default function TabsLayout() {
             }}
           >
             <LinearGradient
-              colors={["#00f", "#0ff"]}
+              colors={["#0ff", "#f0f"]}
               style={{ flex: 1, overflow: "hidden" }}
             />
           </View>

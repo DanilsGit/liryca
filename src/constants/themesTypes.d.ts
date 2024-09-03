@@ -1,4 +1,4 @@
-import { themesBackground } from "./themes";
+import { themesBackground, themesText } from "./themes";
 
 export interface ThemeBackground {
   top: string;
@@ -6,3 +6,4 @@ export interface ThemeBackground {
 }
 
 export type ThemeBgKey = keyof typeof themesBackground;
+export type ThemeTextKey = keyof typeof themesText;

@@ -3,7 +3,7 @@ import { colors } from "../constants/tokens";
 
 export const themesText = StyleSheet.create({
   light: {
-    color: colors.black,
+    color: colors.purple,
   },
   dark: {
     color: colors.white,

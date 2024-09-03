@@ -35,10 +35,10 @@ export default function Screen({ children }: { children: React.ReactNode }) {
         locations={[0, 1]}
         style={{ flex: 1 }}
       >
-        <ScrollView style={{ flex: 1, paddingTop: insets.top }}>
+        <View style={{ flex: 1, paddingTop: insets.top }}>
           {children}
           <View style={{ paddingBottom: 100 }}></View>
-        </ScrollView>
+        </View>
       </LinearGradient>
     </View>
   );

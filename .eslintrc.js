@@ -6,6 +6,5 @@ module.exports = {
     "prettier/prettier": ["error", { endOfLine: "auto" }],
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
-    "linebreak-style": ["error", "windows"],
   },
 };
