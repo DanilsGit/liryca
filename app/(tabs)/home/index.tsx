@@ -7,8 +7,8 @@
 // Definitions
 
 // Components
-import Screen from "../../../src/modules/core/components/Screen";
-import Main from "../../../src/modules/main/components/Main";
+import Screen from "@/modules/core/components/Screen";
+import Main from "@/modules/main/components/Main";
 // Props
 
 // Api

@@ -1,7 +1,7 @@
 // Expo
 
 import { ScrollView, Text, View } from "react-native";
-import Screen from "../../../src/modules/core/components/Screen";
+import Screen from "@/modules/core/components/Screen";
 
 // React
 

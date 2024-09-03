@@ -4,7 +4,7 @@ import { Stack } from "expo-router";
 
 // React Native
 import { Pressable, Text, View } from "react-native";
-import { useTheme } from "../src/modules/core/hooks/useTheme";
+import { useTheme } from "@/modules/core/hooks/useTheme";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 

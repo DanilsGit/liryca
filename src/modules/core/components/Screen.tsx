@@ -3,11 +3,11 @@
 // React
 
 // React Native
-import { ScrollView, View } from "react-native";
+import { View } from "react-native";
 import { useTheme } from "../hooks/useTheme";
-import { themesBackground } from "../../../constants/themes";
+import { themesBackground } from "@/constants/themes";
 import { LinearGradient } from "expo-linear-gradient";
-import { ThemeBackground, ThemeBgKey } from "../../../constants/themesTypes";
+import { ThemeBackground, ThemeBgKey } from "@/constants/themesTypes";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 // Hooks
 
@@ -21,7 +21,9 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function Screen({ children }: { children: React.ReactNode }) {
   const insets = useSafeAreaInsets();
+
   const { theme } = useTheme();
+
   const themeBackgroud = themesBackground[
     theme as ThemeBgKey
   ] as ThemeBackground;
@@ -30,8 +32,8 @@ export default function Screen({ children }: { children: React.ReactNode }) {
     <View style={{ flex: 1 }}>
       <LinearGradient
         colors={[themeBackgroud.top, themeBackgroud.bottom]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 0, y: 0.15 }}
+        start={{ x: 0, y: -1 }}
+        end={{ x: 0, y: 1 }}
         locations={[0, 1]}
         style={{ flex: 1 }}
       >

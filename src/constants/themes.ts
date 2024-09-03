@@ -1,7 +1,6 @@
-import { StyleSheet } from "react-native";
 import { colors } from "../constants/tokens";
 
-export const themesText = StyleSheet.create({
+export const themesText = {
   light: {
     color: colors.purple,
   },
@@ -11,7 +10,7 @@ export const themesText = StyleSheet.create({
   quiet: {
     color: colors.orange,
   },
-});
+};
 
 export const themesBackground = {
   light: {
@@ -21,6 +20,20 @@ export const themesBackground = {
   dark: {
     top: colors.black,
     bottom: colors.gray,
+  },
+  quiet: {
+    backgroundColor: colors.orange,
+  },
+};
+
+export const themesTab = {
+  light: {
+    top: colors.light_pinmk,
+    bottom: colors.purple,
+  },
+  dark: {
+    top: colors.gray,
+    bottom: colors.black,
   },
   quiet: {
     backgroundColor: colors.orange,

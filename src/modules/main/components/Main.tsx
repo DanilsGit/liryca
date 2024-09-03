@@ -3,27 +3,28 @@
 // React
 
 // React Native
-import { Dimensions, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 // Hooks
+import { useTheme } from "../../core/hooks/useTheme";
 
 // Definitions
 import { themesText } from "../../../constants/themes";
-// Components
-import { useTheme } from "../../core/hooks/useTheme";
 import { fontSizes } from "../../../constants/tokens";
+import { ThemeTextKey } from "@/constants/themesTypes";
+// Components
 import PlaylistCarousel from "./PlaylistCarousel";
 import ArtistCarousel from "./ArtistCarousel";
 
 export default function Main() {
   const { theme } = useTheme();
-  const themeText = themesText[theme as keyof typeof themesText];
+  const themeText = themesText[theme as ThemeTextKey];
 
   const dataPlaylist = [
     {
       id: 1,
       title: "Mamona",
       image:
-        "https://imgs.search.brave.com/lg_sh6jgaiopSF33kgJjrnvKpVFdg95i53W8Ato8VWU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kMWNz/YXJrejhvYmU5dS5j/bG91ZGZyb250Lm5l/dC9wb3N0ZXJwcmV2/aWV3cy9hcnRpc3Rp/Yy1hbGJ1bS1jb3Zl/ci1kZXNpZ24tdGVt/cGxhdGUtZDEyZWYw/Mjk2YWY4MGI1ODM2/M2RjMGRlZWYwNzdl/Y2MuanBnP3RzPTE2/OTYzMzE2OTU",
+        "https://cdns-images.dzcdn.net/images/cover/967ac8605268db88a1e597394115365d/1900x1900-000000-80-0-0.jpg",
     },
     {
       id: 2,

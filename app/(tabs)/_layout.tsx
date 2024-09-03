@@ -7,9 +7,14 @@ import {
   BookshlfIcon,
   HomeIcon,
   SearchIcon,
-} from "../../src/modules/core/components/Icons";
+  StarIcon,
+} from "@/modules/core/components/Icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, View } from "react-native";
+import { useTheme } from "@/modules/core/hooks/useTheme";
+import { themesTab } from "@/constants/themes";
+import { ThemeTab, ThemeTabKey } from "@/constants/themesTypes";
+import { colors } from "@/constants/tokens";
 // Hooks
 
 // Definitions
@@ -21,6 +26,10 @@ import { StyleSheet, View } from "react-native";
 // Props
 
 export default function TabsLayout() {
+  const { theme } = useTheme();
+
+  const themeTab = themesTab[theme as ThemeTabKey] as ThemeTab;
+
   return (
     <Tabs
       screenOptions={{
@@ -29,8 +38,8 @@ export default function TabsLayout() {
           position: "absolute",
           borderTopLeftRadius: 35,
         },
-        tabBarActiveTintColor: "red",
-        tabBarInactiveTintColor: "gray",
+        tabBarActiveTintColor: colors.pink,
+        tabBarInactiveTintColor: colors.purple,
         tabBarLabel: () => null,
         tabBarBackground: () => (
           <View
@@ -42,7 +51,7 @@ export default function TabsLayout() {
             }}
           >
             <LinearGradient
-              colors={["#0ff", "#f0f"]}
+              colors={[themeTab.top, themeTab.bottom]}
               style={{ flex: 1, overflow: "hidden" }}
             />
           </View>
@@ -59,6 +68,12 @@ export default function TabsLayout() {
         name="search"
         options={{
           tabBarIcon: ({ color }) => <SearchIcon color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="social"
+        options={{
+          tabBarIcon: ({ color }) => <StarIcon color={color} />,
         }}
       />
     </Tabs>

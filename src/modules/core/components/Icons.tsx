@@ -23,3 +23,7 @@ export const BookshlfIcon = (props: any) => {
     />
   );
 };
+
+export const StarIcon = (props: any) => {
+  return <AntDesign name="staro" size={24} color="white" {...props} />;
+};
