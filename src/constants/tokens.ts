@@ -3,9 +3,11 @@ export const colors = {
   white: "#fff",
   gray: "#888",
   orange: "#FFA500",
-  purple: "#665176",
-  pink: "#7D3BB0",
-  light_pinmk: "#EBE5F3",
+  pink: "#665176",
+  purple: "#7D3BB0",
+  dark_purple: "#423753",
+  light_pink: "#EBE5F3",
+  light_blue: "#a2f0FF",
 };
 
 export const fontSizes = {

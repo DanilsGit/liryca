@@ -5,19 +5,25 @@
 // React Native
 import { StyleSheet, Text, View } from "react-native";
 // Hooks
-import { useTheme } from "../../core/hooks/useTheme";
+import { useTheme } from "@m/core/hooks/useTheme";
+import { useTranslation } from "react-i18next";
 
 // Definitions
-import { themesText } from "../../../constants/themes";
-import { fontSizes } from "../../../constants/tokens";
-import { ThemeTextKey } from "@/constants/themesTypes";
+import { themesText } from "@/constants/themes";
+import { fontSizes } from "@/constants/tokens";
+
 // Components
-import PlaylistCarousel from "./PlaylistCarousel";
-import ArtistCarousel from "./ArtistCarousel";
+import PlaylistCarousel from "@m/main/components/PlaylistCarousel";
+import ArtistCarousel from "@m/main/components/ArtistCarousel";
+import TopSongs from "@m/main/components/TopSongs";
+import HiText from "@m/main/components/HiText";
+import { Link } from "expo-router";
 
 export default function Main() {
   const { theme } = useTheme();
-  const themeText = themesText[theme as ThemeTextKey];
+  const { t } = useTranslation();
+
+  const themeText = themesText[theme];
 
   const dataPlaylist = [
     {
@@ -88,17 +94,40 @@ export default function Main() {
 
   return (
     <View style={{ gap: 10 }}>
-      <Text style={[themeText, styles.title_text, { fontSize: fontSizes.xl2 }]}>
-        Buenas tardes
-      </Text>
-      <Text style={[themeText, styles.title_text, { fontSize: fontSizes.xl }]}>
-        Tus Playlist
+      <HiText
+        style={[
+          { color: themeText.primary, fontSize: fontSizes.xl2 },
+          styles.title_text,
+        ]}
+      />
+      <Link href={"/listenerProfile"}>Search</Link>
+      <Text
+        style={[
+          styles.title_text,
+          { color: themeText.primary, fontSize: fontSizes.xl },
+        ]}
+      >
+        {t("main.playlist")}
       </Text>
       <PlaylistCarousel data={dataPlaylist} />
-      <Text style={[themeText, styles.title_text, { fontSize: fontSizes.xl }]}>
-        ¡No les pierdas la pista!{" "}
+      <Text
+        style={[
+          styles.title_text,
+          { color: themeText.primary, fontSize: fontSizes.xl },
+        ]}
+      >
+        {t("main.artist")}
       </Text>
       <ArtistCarousel data={dataArtist} />
+      <Text
+        style={[
+          styles.title_text,
+          { color: themeText.primary, fontSize: fontSizes.xl },
+        ]}
+      >
+        {t("main.top_songs")}
+      </Text>
+      <TopSongs />
     </View>
   );
 }

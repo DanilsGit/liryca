@@ -1,5 +1,5 @@
+import { Themes } from "@/constants/themesTypes";
 import { create } from "zustand";
-import { Themes } from "../lib/types";
 
 type Store = {
   theme: Themes;

@@ -4,7 +4,7 @@
 
 // React Native
 import { Dimensions, Text, View, Image, StyleSheet } from "react-native";
-import { Data } from "../lib/types";
+import { DataPlaylistCarousel } from "../lib/types";
 import { LinearGradient } from "expo-linear-gradient";
 import { fontSizes } from "../../../constants/tokens";
 
@@ -16,7 +16,7 @@ import { fontSizes } from "../../../constants/tokens";
 
 // Props
 interface Props {
-  item: Data;
+  item: DataPlaylistCarousel;
   index: number;
 }
 

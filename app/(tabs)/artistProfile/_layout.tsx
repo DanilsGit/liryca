@@ -2,7 +2,6 @@
 import { Stack } from "expo-router";
 
 // React
-import { Text, View } from "react-native";
 
 // React Native
 
@@ -16,7 +15,7 @@ import { Text, View } from "react-native";
 
 // Api
 
-export default function HomeLayout() {
+export default function ArtistProfileLayout() {
   return (
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />

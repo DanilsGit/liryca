@@ -5,6 +5,8 @@
 // React Native
 import { Dimensions, View, Image, StyleSheet } from "react-native";
 import { DataArtistCarousel } from "../lib/types";
+import { LinearGradient } from "expo-linear-gradient";
+import { colors } from "@/constants/tokens";
 
 // Hooks
 
@@ -22,7 +24,11 @@ export const ArtistIcon = ({ item, index }: Props) => {
   const width_d = Dimensions.get("window").width;
   const width = width_d / 4.5;
   return (
-    <View key={item.id} style={[styles.container]}>
+    <LinearGradient
+      key={item.id}
+      style={[styles.container, { width: width + 5, height: width + 5 }]}
+      colors={[colors.light_blue, colors.purple]}
+    >
       <Image
         source={{ uri: item.image }}
         borderRadius={100}
@@ -30,14 +36,13 @@ export const ArtistIcon = ({ item, index }: Props) => {
         height={width}
         resizeMode="cover"
       />
-    </View>
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "red",
-    padding: 5,
     justifyContent: "center",
     alignItems: "center",
     marginHorizontal: 10,

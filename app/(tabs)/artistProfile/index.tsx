@@ -1,7 +1,7 @@
 // Expo
 
 import { Text, View } from "react-native";
-import Screen from "@/modules/core/components/Screen";
+import Screen from "@m/core/components/Screen";
 
 // React
 
@@ -17,11 +17,11 @@ import Screen from "@/modules/core/components/Screen";
 
 // Api
 
-export default function ProfileScreen() {
+export default function ArtistProfileScreen() {
   return (
     <Screen>
       <View>
-        <Text>Profile</Text>
+        <Text>Profile artist</Text>
       </View>
     </Screen>
   );

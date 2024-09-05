@@ -1,4 +1,6 @@
-import { themesBackground, themesTab, themesText } from "./themes";
+import {} from "./themes";
+
+export type Themes = "light" | "dark" | "quiet";
 
 export interface ThemeBackground {
   top: string;
@@ -7,6 +9,7 @@ export interface ThemeBackground {
 
 export interface ThemeTab extends ThemeBackground {}
 
-export type ThemeBgKey = keyof typeof themesBackground;
-export type ThemeTextKey = keyof typeof themesText;
-export type ThemeTabKey = keyof typeof themesTab;
+export interface ThemeText {
+  primary: string;
+  secondary?: string;
+}

@@ -3,12 +3,11 @@
 // React
 
 // React Native
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
 import { useTheme } from "../hooks/useTheme";
 import { themesBackground } from "@/constants/themes";
 import { LinearGradient } from "expo-linear-gradient";
-import { ThemeBackground, ThemeBgKey } from "@/constants/themesTypes";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+
 // Hooks
 
 // Definitions
@@ -20,29 +19,23 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 // Props
 
 export default function Screen({ children }: { children: React.ReactNode }) {
-  const insets = useSafeAreaInsets();
-
   const { theme } = useTheme();
 
-  const themeBackgroud = themesBackground[
-    theme as ThemeBgKey
-  ] as ThemeBackground;
+  const themeBackgroud = themesBackground[theme];
 
   return (
-    <View style={{ flex: 1 }}>
-      <LinearGradient
-        colors={[themeBackgroud.top, themeBackgroud.bottom]}
-        start={{ x: 0, y: -1 }}
-        end={{ x: 0, y: 1 }}
-        locations={[0, 1]}
-        style={{ flex: 1 }}
-      >
-        <View style={{ flex: 1, paddingTop: insets.top }}>
-          {children}
-          <View style={{ paddingBottom: 100 }}></View>
-        </View>
-      </LinearGradient>
-    </View>
+    <LinearGradient
+      colors={[themeBackgroud.top, themeBackgroud.bottom]}
+      start={{ x: 0, y: -1.5 }}
+      end={{ x: 0, y: 1 }}
+      locations={[0, 1]}
+      style={{ flex: 1 }}
+    >
+      <ScrollView>
+        <View style={{ flex: 1 }}>{children}</View>
+        <View style={{ padding: 25 }} />
+      </ScrollView>
+    </LinearGradient>
   );
 }
 

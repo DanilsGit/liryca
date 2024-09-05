@@ -4,9 +4,15 @@ import { Stack } from "expo-router";
 
 // React Native
 import { Pressable, Text, View } from "react-native";
-import { useTheme } from "@/modules/core/hooks/useTheme";
+import { useTheme } from "@m/core/hooks/useTheme";
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import {
+  SafeAreaProvider,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
+import { themesStatusBar } from "@/constants/themes";
+import { I18nextProvider } from "react-i18next";
+import i18next from "@/services/i18next";
 
 // Hooks
 
@@ -17,16 +23,27 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 export default function App() {
   return (
     <SafeAreaProvider>
-      <StatusBar style="light" />
-      <RootNavigation />
+      <StatusBar style="auto" />
+      <I18nextProvider i18n={i18next}>
+        <RootNavigation />
+      </I18nextProvider>
     </SafeAreaProvider>
   );
 }
 
 const RootNavigation = () => {
-  const { selectTheme } = useTheme();
+  const { selectTheme, theme } = useTheme();
+  const insets = useSafeAreaInsets();
+  const themeStatusBar = themesStatusBar[theme];
+
   return (
-    <View style={{ flex: 1, backgroundColor: "red" }}>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: themeStatusBar,
+        paddingTop: insets.top,
+      }}
+    >
       <View
         style={{
           position: "absolute",

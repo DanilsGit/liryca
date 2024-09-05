@@ -15,7 +15,7 @@ import { Stack } from "expo-router";
 
 // Api
 
-export default function ProfileLayout() {
+export default function HomeLayout() {
   return (
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />

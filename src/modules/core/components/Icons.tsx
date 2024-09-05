@@ -1,5 +1,6 @@
 import AntDesign from "@expo/vector-icons/AntDesign";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import Octicons from "@expo/vector-icons/Octicons";
 
 export const HomeIcon = (props: any) => {
   return <AntDesign name="home" size={24} color="white" {...props} />;
@@ -26,4 +27,8 @@ export const BookshlfIcon = (props: any) => {
 
 export const StarIcon = (props: any) => {
   return <AntDesign name="staro" size={24} color="white" {...props} />;
+};
+
+export const PersonIcon = (props: any) => {
+  return <Octicons name="person" size={24} color="white" {...props} />;
 };

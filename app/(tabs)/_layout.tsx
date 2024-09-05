@@ -4,16 +4,15 @@ import { Tabs } from "expo-router";
 
 // React Native
 import {
-  BookshlfIcon,
   HomeIcon,
+  PersonIcon,
   SearchIcon,
   StarIcon,
-} from "@/modules/core/components/Icons";
+} from "@m/core/components/Icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, View } from "react-native";
-import { useTheme } from "@/modules/core/hooks/useTheme";
+import { useTheme } from "@m/core/hooks/useTheme";
 import { themesTab } from "@/constants/themes";
-import { ThemeTab, ThemeTabKey } from "@/constants/themesTypes";
 import { colors } from "@/constants/tokens";
 // Hooks
 
@@ -28,18 +27,19 @@ import { colors } from "@/constants/tokens";
 export default function TabsLayout() {
   const { theme } = useTheme();
 
-  const themeTab = themesTab[theme as ThemeTabKey] as ThemeTab;
+  const themeTab = themesTab[theme];
 
   return (
     <Tabs
+      initialRouteName="home"
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
           position: "absolute",
           borderTopLeftRadius: 35,
         },
-        tabBarActiveTintColor: colors.pink,
-        tabBarInactiveTintColor: colors.purple,
+        tabBarActiveTintColor: colors.purple,
+        tabBarInactiveTintColor: colors.pink,
         tabBarLabel: () => null,
         tabBarBackground: () => (
           <View
@@ -59,7 +59,7 @@ export default function TabsLayout() {
       }}
     >
       <Tabs.Screen
-        name="home"
+        name="(home)"
         options={{
           tabBarIcon: ({ color }) => <HomeIcon color={color} />,
         }}
@@ -74,6 +74,19 @@ export default function TabsLayout() {
         name="social"
         options={{
           tabBarIcon: ({ color }) => <StarIcon color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="listenerProfile"
+        options={{
+          tabBarIcon: ({ color }) => <PersonIcon color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="artistProfile"
+        options={{
+          tabBarIcon: ({ color }) => <PersonIcon color={color} />,
+          tabBarButton: () => null,
         }}
       />
     </Tabs>
