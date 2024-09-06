@@ -3,8 +3,10 @@
 import { themesText } from "@/constants/themes";
 import { fontSizes } from "@/constants/tokens";
 import { useTheme } from "@m/core/hooks/useTheme";
+import { colors } from "@/constants/tokens";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import PinkDot from "./PinkDot";
+import { LinearGradient } from "expo-linear-gradient";
 
 // React
 
@@ -56,24 +58,37 @@ export default function TopSongs() {
   ];
 
   return (
-    <View style={{ padding: 10, gap: 15 }}>
+    <View style={{ paddingHorizontal: 20, gap: 15, borderRadius: 15 }}>
       {data.map((item) => (
         <Pressable key={item.id} onPress={() => alert("music")}>
           {({ pressed }) => (
-            <View
+            <LinearGradient
               style={{
                 flexDirection: "row",
                 flex: 1,
-                backgroundColor: pressed ? "#00000022" : "transparent",
-                borderRadius: 10,
+                backgroundColor: pressed ? "#cfc1e8" : colors.light_purple,
+                borderRadius: 15,
+                justifyContent: "flex-end",
+                padding: 8,
+                shadowColor: "#201536",
+                shadowRadius: 10,
+                shadowOpacity: 0.1,
+                shadowOffset: { width: 0, height: 5 },
+                elevation: 3,
               }}
+              colors={[colors.light_purple, colors.light_pink]}
             >
               <Image
                 source={{ uri: item.image }}
-                style={{ width: 70, height: 70, borderRadius: 10 }}
+                style={{ width: 60, height: 60, borderRadius: 10 }}
               />
               <View
-                style={{ justifyContent: "center", flex: 1, marginLeft: 15 }}
+                style={{
+                  justifyContent: "center",
+                  flex: 1,
+                  marginLeft: 15,
+                  padding: 5,
+                }}
               >
                 <Text
                   style={{
@@ -85,7 +100,7 @@ export default function TopSongs() {
                   {item.title}
                 </Text>
                 <Text
-                  style={{ color: themeText.primary, fontSize: fontSizes.sm }}
+                  style={{ color: themeText.secondary, fontSize: fontSizes.sm }}
                 >
                   {item.album}
                 </Text>
@@ -95,15 +110,15 @@ export default function TopSongs() {
                 style={{
                   alignItems: "center",
                   justifyContent: "center",
-                  padding: 10,
+                  padding: 15,
                 }}
               >
-                <View style={{ gap: 5 }}>
+                <View style={{ gap: 6 }}>
                   <PinkDot />
                   <PinkDot />
                 </View>
               </Pressable>
-            </View>
+            </LinearGradient>
           )}
         </Pressable>
       ))}

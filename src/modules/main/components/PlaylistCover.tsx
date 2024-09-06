@@ -22,14 +22,14 @@ interface Props {
 
 export const PlaylistCover = ({ item, index }: Props) => {
   const width_d = Dimensions.get("window").width;
-  const width = width_d / 2.5;
+  const width = width_d / 2.8;
   return (
     <View key={item.id} style={[styles.container, { width: width }]}>
       <Image
         source={{ uri: item.image }}
         width={width}
-        height={200}
-        borderRadius={10}
+        height={180}
+        borderRadius={20}
         resizeMode="cover"
         style={{ position: "relative" }}
       />
@@ -52,9 +52,9 @@ const styles = StyleSheet.create({
     fontSize: fontSizes.md,
   },
   container: {
-    borderRadius: 10,
-    height: 200,
-    backgroundColor: "red",
+    borderRadius: 20,
+    height: 180,
+    backgroundColor: "purple",
     alignItems: "center",
     justifyContent: "center",
     marginHorizontal: 10,
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    height: 200,
-    borderRadius: 10,
+    height: 100,
+    borderRadius: 20,
   },
 });

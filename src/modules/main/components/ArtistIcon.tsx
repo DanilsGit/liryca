@@ -22,12 +22,12 @@ interface Props {
 
 export const ArtistIcon = ({ item, index }: Props) => {
   const width_d = Dimensions.get("window").width;
-  const width = width_d / 4.5;
+  const width = width_d / 5.5;
   return (
     <LinearGradient
       key={item.id}
-      style={[styles.container, { width: width + 5, height: width + 5 }]}
-      colors={[colors.light_blue, colors.purple]}
+      style={[styles.container, { width: width + 8, height: width + 8 }]}
+      colors={[colors.light_blue, colors.light_blue]}
     >
       <Image
         source={{ uri: item.image }}

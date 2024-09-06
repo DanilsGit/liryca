@@ -28,7 +28,7 @@ export default function Main() {
   const dataPlaylist = [
     {
       id: 1,
-      title: "Mamona",
+      title: "For girls",
       image:
         "https://cdns-images.dzcdn.net/images/cover/967ac8605268db88a1e597394115365d/1900x1900-000000-80-0-0.jpg",
     },
