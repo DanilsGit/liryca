@@ -62,11 +62,11 @@ export default function TopSongs() {
       {data.map((item) => (
         <Pressable key={item.id} onPress={() => alert("music")}>
           {({ pressed }) => (
-            <LinearGradient
+            <View
               style={{
                 flexDirection: "row",
                 flex: 1,
-                backgroundColor: pressed ? "#cfc1e8" : colors.light_purple,
+                backgroundColor: themeText.primary,
                 borderRadius: 15,
                 justifyContent: "flex-end",
                 padding: 8,
@@ -74,9 +74,8 @@ export default function TopSongs() {
                 shadowRadius: 10,
                 shadowOpacity: 0.1,
                 shadowOffset: { width: 0, height: 5 },
-                elevation: 3,
+                elevation: 1,
               }}
-              colors={[colors.light_purple, colors.light_pink]}
             >
               <Image
                 source={{ uri: item.image }}
@@ -118,7 +117,7 @@ export default function TopSongs() {
                   <PinkDot />
                 </View>
               </Pressable>
-            </LinearGradient>
+            </View>
           )}
         </Pressable>
       ))}

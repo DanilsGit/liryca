@@ -6,9 +6,9 @@ export const colors = {
   pink: "#564a80", // text
   purple: "#fff", // background color
   dark_purple: "#4f3f6e", // text
-  light_pink: "#b589c4", // background color
+  light_pink: "#d4cce8", // background color
   light_blue: "#c69bd4", // gradient for artist icon
-  light_purple: "#cabce3",
+  light_purple: "#ece9f5",
 };
 
 export const fontSizes = {

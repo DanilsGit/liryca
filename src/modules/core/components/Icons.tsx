@@ -3,15 +3,15 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Octicons from "@expo/vector-icons/Octicons";
 
 export const HomeIcon = (props: any) => {
-  return <AntDesign name="home" size={24} color="white" {...props} />;
+  return <AntDesign name="home" size={24} color="#46367a" {...props} />;
 };
 
 export const CircleInfoIcon = (props: any) => {
-  return <AntDesign name="infocirlceo" size={24} color="white" {...props} />;
+  return <AntDesign name="infocirlceo" size={24} color="#46367a" {...props} />;
 };
 
 export const SearchIcon = (props: any) => {
-  return <AntDesign name="search1" size={24} color="white" {...props} />;
+  return <AntDesign name="search1" size={24} color="#46367a" {...props} />;
 };
 
 export const BookshlfIcon = (props: any) => {
@@ -19,16 +19,16 @@ export const BookshlfIcon = (props: any) => {
     <MaterialCommunityIcons
       name="bookshelf"
       size={24}
-      color="white"
+      color="#46367a"
       {...props}
     />
   );
 };
 
 export const StarIcon = (props: any) => {
-  return <AntDesign name="staro" size={24} color="white" {...props} />;
+  return <AntDesign name="staro" size={24} color="#46367a" {...props} />;
 };
 
 export const PersonIcon = (props: any) => {
-  return <Octicons name="person" size={24} color="white" {...props} />;
+  return <Octicons name="person" size={24} color="#46367a" {...props} />;
 };

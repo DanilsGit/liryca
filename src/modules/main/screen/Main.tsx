@@ -96,7 +96,7 @@ export default function Main() {
     <View style={{ gap: 10 }}>
       <HiText
         style={[
-          { color: themeText.primary, fontSize: fontSizes.xl2 },
+          { color: themeText.secondary, fontSize: fontSizes.xl2 },
           styles.title_text,
         ]}
       />
@@ -104,7 +104,7 @@ export default function Main() {
       <Text
         style={[
           styles.title_text,
-          { color: themeText.primary, fontSize: fontSizes.xl },
+          { color: themeText.secondary, fontSize: fontSizes.xl },
         ]}
       >
         {t("main.playlist")}
@@ -113,7 +113,7 @@ export default function Main() {
       <Text
         style={[
           styles.title_text,
-          { color: themeText.primary, fontSize: fontSizes.xl },
+          { color: themeText.secondary, fontSize: fontSizes.xl },
         ]}
       >
         {t("main.artist")}
@@ -122,7 +122,7 @@ export default function Main() {
       <Text
         style={[
           styles.title_text,
-          { color: themeText.primary, fontSize: fontSizes.xl },
+          { color: themeText.secondary, fontSize: fontSizes.xl },
         ]}
       >
         {t("main.top_songs")}
