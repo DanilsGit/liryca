@@ -2,19 +2,19 @@ import { colors } from "../constants/tokens";
 import { ThemeBackground, ThemeTab, ThemeText, Themes } from "./themesTypes";
 
 export const themesStatusBar = {
-  light: colors.dark_purple,
-  dark: "#aaa",
-  quiet: "#00d",
+  light: colors.white,
+  dark: colors.dark_purple,
+  quiet: colors.pink,
 };
 
 export const themesText: Record<Themes, ThemeText> = {
   light: {
-    primary: colors.pink,
+    primary: colors.light_pink,
     secondary: colors.dark_purple,
   },
   dark: {
-    primary: colors.white,
-    secondary: colors.white,
+    primary: colors.pink,
+    secondary: colors.light_pink,
   },
   quiet: {
     primary: colors.orange,
@@ -23,26 +23,26 @@ export const themesText: Record<Themes, ThemeText> = {
 
 export const themesBackground: Record<Themes, ThemeBackground> = {
   light: {
-    top: colors.purple,
-    bottom: colors.light_pink,
+    top: colors.white,
+    bottom: colors.white,
   },
   dark: {
-    top: colors.black,
-    bottom: colors.gray,
+    top: colors.dark_purple,
+    bottom: colors.black,
   },
   quiet: {
     top: colors.black,
-    bottom: colors.gray,
+    bottom: colors.dark_purple,
   },
 };
 
 export const themesTab: Record<Themes, ThemeTab> = {
   light: {
-    top: colors.light_pink,
+    top: colors.white,
     bottom: colors.purple,
   },
   dark: {
-    top: colors.gray,
+    top: colors.black,
     bottom: colors.black,
   },
   quiet: {

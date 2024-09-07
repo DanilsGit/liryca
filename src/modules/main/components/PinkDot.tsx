@@ -21,9 +21,9 @@ export default function PinkDot() {
   return (
     <View
       style={{
-        width: 7,
-        height: 7,
-        backgroundColor: colors.pink,
+        width: 5,
+        height: 5,
+        backgroundColor: colors.dark_purple,
         borderRadius: 100,
       }}
     />

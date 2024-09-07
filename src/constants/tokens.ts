@@ -3,11 +3,12 @@ export const colors = {
   white: "#fff",
   gray: "#888",
   orange: "#FFA500",
-  pink: "#665176",
-  purple: "#7D3BB0",
-  dark_purple: "#423753",
-  light_pink: "#EBE5F3",
-  light_blue: "#a2f0FF",
+  pink: "#564a80", // text
+  purple: "#fff", // background color
+  dark_purple: "#4f3f6e", // text
+  light_pink: "#d4cce8", // background color
+  light_blue: "#c69bd4", // gradient for artist icon
+  light_purple: "#ece9f5",
 };
 
 export const fontSizes = {

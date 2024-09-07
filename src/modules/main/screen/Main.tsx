@@ -28,7 +28,7 @@ export default function Main() {
   const dataPlaylist = [
     {
       id: 1,
-      title: "Mamona",
+      title: "For girls",
       image:
         "https://cdns-images.dzcdn.net/images/cover/967ac8605268db88a1e597394115365d/1900x1900-000000-80-0-0.jpg",
     },
@@ -96,7 +96,7 @@ export default function Main() {
     <View style={{ gap: 10 }}>
       <HiText
         style={[
-          { color: themeText.primary, fontSize: fontSizes.xl2 },
+          { color: themeText.secondary, fontSize: fontSizes.xl2 },
           styles.title_text,
         ]}
       />
@@ -104,7 +104,7 @@ export default function Main() {
       <Text
         style={[
           styles.title_text,
-          { color: themeText.primary, fontSize: fontSizes.xl },
+          { color: themeText.secondary, fontSize: fontSizes.xl },
         ]}
       >
         {t("main.playlist")}
@@ -113,7 +113,7 @@ export default function Main() {
       <Text
         style={[
           styles.title_text,
-          { color: themeText.primary, fontSize: fontSizes.xl },
+          { color: themeText.secondary, fontSize: fontSizes.xl },
         ]}
       >
         {t("main.artist")}
@@ -122,7 +122,7 @@ export default function Main() {
       <Text
         style={[
           styles.title_text,
-          { color: themeText.primary, fontSize: fontSizes.xl },
+          { color: themeText.secondary, fontSize: fontSizes.xl },
         ]}
       >
         {t("main.top_songs")}
