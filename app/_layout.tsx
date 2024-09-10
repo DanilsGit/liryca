@@ -1,5 +1,6 @@
 // Expo
 import { Stack } from "expo-router";
+import * as Font from "expo-font";
 // React
 
 // React Native
@@ -13,6 +14,7 @@ import {
 import { themesStatusBar } from "@/constants/themes";
 import { I18nextProvider } from "react-i18next";
 import i18next from "@/services/i18next";
+import { useEffect, useState } from "react";
 
 // Hooks
 
@@ -21,6 +23,19 @@ import i18next from "@/services/i18next";
 // Components
 
 export default function App() {
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+  useEffect(() => {
+    if (!fontsLoaded) {
+      Font.loadAsync({
+        "M-PLUS-2-Bold": require("@/assets/fonts/MPLUS2-Bold.ttf"),
+        "M-PLUS-2-ExtraBold": require("@/assets/fonts/MPLUS2-ExtraBold.ttf"),
+        "M-PLUS-2-Regular": require("@/assets/fonts/MPLUS2-Regular.ttf"),
+      }).then(() => setFontsLoaded(true));
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) return <View />;
+
   return (
     <SafeAreaProvider>
       <StatusBar style="auto" />
