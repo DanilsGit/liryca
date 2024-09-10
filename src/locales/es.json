@@ -10,6 +10,7 @@
   "profile": {
     "followers": "Seguidores",
     "likes": "Me gusta",
-    "playlists": "Playlist"
+    "playlists": "Playlist",
+    "top_songs": "Tus más escuchadas"
   }
 }

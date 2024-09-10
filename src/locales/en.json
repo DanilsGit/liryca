@@ -10,6 +10,7 @@
   "profile": {
     "followers": "Followers",
     "likes": "Likes",
-    "playlists": "Playlists"
+    "playlists": "Playlists",
+    "top_songs": "Your most listened to"
   }
 }

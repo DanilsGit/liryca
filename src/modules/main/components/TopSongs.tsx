@@ -1,61 +1,35 @@
 // Expo
 
-import { themesText } from "@/constants/themes";
-import { fontSizes } from "@/constants/tokens";
-import { useTheme } from "@m/core/hooks/useTheme";
-import { colors } from "@/constants/tokens";
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
-import PinkDot from "./PinkDot";
-import { LinearGradient } from "expo-linear-gradient";
-
 // React
 
 // React Native
+import { Image, Pressable, Text, View } from "react-native";
 
 // Hooks
+import { useTheme } from "@m/core/hooks/useTheme";
 
 // Definitions
+import { themesText } from "@/constants/themes";
+import { fontSizes } from "@/constants/tokens";
 
 // Components
+import PinkDot from "./PinkDot";
 
 // Props
+interface Props {
+  data: {
+    id: number;
+    title: string;
+    album: string;
+    image: string;
+  }[];
+}
 
 // Api
 
-export default function TopSongs() {
+export default function TopSongs({ data }: Props) {
   const { theme } = useTheme();
   const themeText = themesText[theme];
-
-  const data = [
-    {
-      id: 1,
-      title: "Cancion 1",
-      album: "Artista 1",
-      image:
-        "https://www.billboard.com/wp-content/uploads/media/tyler-the-creator-igor-album-art-2019-billboard-embed.jpg?w=600",
-    },
-    {
-      id: 2,
-      title: "Cancion 2",
-      album: "Artista 2",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhF3_2_mVdY5B9Tgh96dj3iJ_r66xhP0di7g&s",
-    },
-    {
-      id: 3,
-      title: "Cancion 3",
-      album: "Artista 3",
-      image:
-        "https://www.usatoday.com/gcdn/authoring/authoring-images/2024/04/18/USAT/73369581007-001-taylor-swift-2006.jpeg?width=700&height=700&fit=crop&format=pjpg&auto=webp",
-    },
-    {
-      id: 4,
-      title: "Cancion 4",
-      album: "Artista 4",
-      image:
-        "https://design-assets.adobeprojectm.com/content/download/express/public/urn:aaid:sc:VA6C2:7c3b1fb9-cb85-556e-bc39-b03fc1648116/component?assetType=TEMPLATE&etag=504d5d0336ae43219f94cf4659869a24&revision=c96797a5-5486-4e7c-9413-01b6ab631f29&component_id=2935aeda-9179-4584-902d-4f16d2cbff55",
-    },
-  ];
 
   return (
     <View style={{ paddingHorizontal: 20, gap: 15, borderRadius: 15 }}>
@@ -92,14 +66,18 @@ export default function TopSongs() {
                 <Text
                   style={{
                     color: themeText.secondary,
-                    fontWeight: "bold",
+                    fontFamily: "M-PLUS-2-Bold",
                     fontSize: fontSizes.md,
                   }}
                 >
                   {item.title}
                 </Text>
                 <Text
-                  style={{ color: themeText.secondary, fontSize: fontSizes.sm }}
+                  style={{
+                    color: themeText.secondary,
+                    fontSize: fontSizes.sm,
+                    fontFamily: "M-PLUS-2-Regular",
+                  }}
                 >
                   {item.album}
                 </Text>
@@ -125,6 +103,6 @@ export default function TopSongs() {
   );
 }
 
-const styles = StyleSheet.create({
-  primaryButton: {},
-});
+// const styles = StyleSheet.create({
+
+// });

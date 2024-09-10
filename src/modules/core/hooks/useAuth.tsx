@@ -2,7 +2,6 @@ import { create } from "zustand";
 
 type Store = {
   user: any;
-  token: string;
   login: (user: any) => void;
   logout: () => void;
   register: (user: any) => void;
@@ -19,12 +18,12 @@ export const useAuth = create<Store>()((set) => ({
     following: 200,
     playlist: 10,
     liked: 3,
+    role: "listener",
+    token: "",
   },
-  token: "",
   login: (user: any) => {
     // Call the login API
     set({ user });
-    set({ token: "123456" });
   },
   logout: () => {
     set({ user: null });

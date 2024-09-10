@@ -10,10 +10,11 @@ import {
   StarIcon,
 } from "@m/core/components/Icons";
 import { LinearGradient } from "expo-linear-gradient";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { useTheme } from "@m/core/hooks/useTheme";
 import { themesTab } from "@/constants/themes";
 import { colors } from "@/constants/tokens";
+import { useAuth } from "@/modules/core/hooks/useAuth";
 // Hooks
 
 // Definitions
@@ -26,6 +27,7 @@ import { colors } from "@/constants/tokens";
 
 export default function TabsLayout() {
   const { theme } = useTheme();
+  const { user } = useAuth();
 
   const themeTab = themesTab[theme];
 
@@ -62,31 +64,45 @@ export default function TabsLayout() {
         name="(home)"
         options={{
           tabBarIcon: ({ color }) => <HomeIcon color={color} />,
+          tabBarButton: (props) => <TouchableOpacity {...props} />,
         }}
       />
       <Tabs.Screen
         name="search"
         options={{
           tabBarIcon: ({ color }) => <SearchIcon color={color} />,
+          tabBarButton: (props) => <TouchableOpacity {...props} />,
         }}
       />
       <Tabs.Screen
         name="social"
         options={{
           tabBarIcon: ({ color }) => <StarIcon color={color} />,
+          tabBarButton: (props) => <TouchableOpacity {...props} />,
         }}
       />
+
       <Tabs.Screen
         name="listenerProfile"
         options={{
           tabBarIcon: ({ color }) => <PersonIcon color={color} />,
+          tabBarButton: (props) => {
+            return user?.role === "listener" ? (
+              <TouchableOpacity {...props} />
+            ) : null;
+          },
         }}
       />
+
       <Tabs.Screen
         name="artistProfile"
         options={{
           tabBarIcon: ({ color }) => <PersonIcon color={color} />,
-          tabBarButton: () => null,
+          tabBarButton: (props) => {
+            return user?.role === "artist" ? (
+              <TouchableOpacity {...props} />
+            ) : null;
+          },
         }}
       />
     </Tabs>
