@@ -18,12 +18,12 @@ import PlaylistCarousel from "@m/core/components/PlaylistCarousel";
 import ArtistCarousel from "@m/main/components/ArtistCarousel";
 import TopSongs from "@m/main/components/TopSongs";
 import HiText from "@m/main/components/HiText";
+import { ThemeText } from "@/constants/themesTypes";
 
 export default function Main() {
   const { theme } = useTheme();
   const { t } = useTranslation();
-
-  const themeText = themesText[theme];
+  const styles = createStyles(themesText[theme]);
 
   const dataPlaylist = [
     {
@@ -124,47 +124,30 @@ export default function Main() {
 
   return (
     <View style={{ gap: 10 }}>
-      <HiText
-        style={[
-          { color: themeText.secondary, fontSize: fontSizes.xl2 },
-          styles.title_text,
-        ]}
-      />
+      <HiText style={styles.title_text_xl2} />
       <Link href={"/listenerProfile"}>Search</Link>
-      <Text
-        style={[
-          styles.title_text,
-          { color: themeText.secondary, fontSize: fontSizes.xl },
-        ]}
-      >
-        {t("main.playlist")}
-      </Text>
+      <Text style={styles.title_text}>{t("main.playlist")}</Text>
       <PlaylistCarousel data={dataPlaylist} />
-      <Text
-        style={[
-          styles.title_text,
-          { color: themeText.secondary, fontSize: fontSizes.xl },
-        ]}
-      >
-        {t("main.artist")}
-      </Text>
+      <Text style={styles.title_text}>{t("main.artist")}</Text>
       <ArtistCarousel data={dataArtist} />
-      <Text
-        style={[
-          styles.title_text,
-          { color: themeText.secondary, fontSize: fontSizes.xl },
-        ]}
-      >
-        {t("main.top_songs")}
-      </Text>
+      <Text style={styles.title_text}>{t("main.top_songs")}</Text>
       <TopSongs data={dataSongs} />
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  title_text: {
-    paddingHorizontal: 10,
-    fontFamily: "M-PLUS-2-Bold",
-  },
-});
+const createStyles = (colorText: ThemeText) =>
+  StyleSheet.create({
+    title_text: {
+      paddingHorizontal: 10,
+      fontFamily: "M-PLUS-2-Bold",
+      color: colorText.secondary,
+      fontSize: fontSizes.xl,
+    },
+    title_text_xl2: {
+      paddingHorizontal: 10,
+      fontFamily: "M-PLUS-2-Bold",
+      color: colorText.secondary,
+      fontSize: fontSizes.xl2,
+    },
+  });

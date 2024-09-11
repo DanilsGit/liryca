@@ -35,8 +35,8 @@ export default function ListenerProfile() {
   const { user } = useAuth();
   const { theme } = useTheme();
   const { t } = useTranslation();
-  const styles = createStyles(themesText[theme]);
   const width = Dimensions.get("window").width;
+  const styles = createStyles(themesText[theme]);
 
   const dataPlaylist = [
     {
@@ -118,14 +118,7 @@ export default function ListenerProfile() {
         />
 
         <View style={[styles.header_icon, { left: width / 2 - 75 }]}>
-          <Image
-            source={{ uri: user?.icon }}
-            style={{
-              width: 145,
-              height: 145,
-              borderRadius: 100,
-            }}
-          />
+          <Image source={{ uri: user?.icon }} style={styles.header_icon_img} />
         </View>
 
         {/* Options */}
@@ -195,6 +188,11 @@ const createStyles = (colorText: ThemeText) =>
       shadowOpacity: 0.1,
       shadowOffset: { width: 0, height: 5 },
       elevation: 10,
+    },
+    header_icon_img: {
+      width: 145,
+      height: 145,
+      borderRadius: 100,
     },
     starts: {
       width: "80%",

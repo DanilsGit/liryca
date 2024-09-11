@@ -3,7 +3,7 @@
 // React
 
 // React Native
-import { Dimensions, View, Image, StyleSheet } from "react-native";
+import { Dimensions, Image, StyleSheet } from "react-native";
 import { DataArtistCarousel } from "../lib/types";
 import { LinearGradient } from "expo-linear-gradient";
 import { colors } from "@/constants/tokens";
@@ -23,10 +23,12 @@ interface Props {
 export const ArtistIcon = ({ item, index }: Props) => {
   const width_d = Dimensions.get("window").width;
   const width = width_d / 5.5;
+  const styles = createStyles(width);
+
   return (
     <LinearGradient
       key={item.id}
-      style={[styles.container, { width: width + 8, height: width + 8 }]}
+      style={styles.container}
       colors={[colors.light_blue, colors.light_blue]}
     >
       <Image
@@ -40,12 +42,15 @@ export const ArtistIcon = ({ item, index }: Props) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "red",
-    justifyContent: "center",
-    alignItems: "center",
-    marginHorizontal: 10,
-    borderRadius: 100,
-  },
-});
+const createStyles = (width: number) =>
+  StyleSheet.create({
+    container: {
+      backgroundColor: "red",
+      justifyContent: "center",
+      alignItems: "center",
+      marginHorizontal: 10,
+      borderRadius: 100,
+      width: width + 8,
+      height: width + 8,
+    },
+  });
