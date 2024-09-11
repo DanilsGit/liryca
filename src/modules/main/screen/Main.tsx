@@ -42,25 +42,24 @@ export default function Main() {
       id: 3,
       title: "Motivación",
       image:
-        "https://imgs.search.brave.com/fZuAdK24eco_ewJDh8fdy81YkfAmc6U0zHp8FUWz7Jk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kMWNz/YXJrejhvYmU5dS5j/bG91ZGZyb250Lm5l/dC9wb3N0ZXJwcmV2/aWV3cy9yZWQtJi1v/cmFuZ2UtYWxidW0t/Y292ZXItZGVzaWdu/LXRlbXBsYXRlLTIy/YTBkNWRlOTlkNjU5/MmFjMmM4YTdjOTgx/YzEyM2Y4LmpwZz90/cz0xNzI0OTk5NDI1",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNGVofFKvHcFkiM16u-Gu2gYLJAi_dHZkCAQ&s",
     },
     {
       id: 4,
-      title: "Motivación",
+      title: "Clásicos",
       image:
-        "https://imgs.search.brave.com/fZuAdK24eco_ewJDh8fdy81YkfAmc6U0zHp8FUWz7Jk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kMWNz/YXJrejhvYmU5dS5j/bG91ZGZyb250Lm5l/dC9wb3N0ZXJwcmV2/aWV3cy9yZWQtJi1v/cmFuZ2UtYWxidW0t/Y292ZXItZGVzaWdu/LXRlbXBsYXRlLTIy/YTBkNWRlOTlkNjU5/MmFjMmM4YTdjOTgx/YzEyM2Y4LmpwZz90/cz0xNzI0OTk5NDI1",
+        "https://img.apmcdn.org/d7541cad306c0066445ba32c484471f299122ca6/uncropped/7a648c-20200911-top-89-cover-songs-03.jpg",
     },
     {
       id: 5,
-      title: "Motivación",
-      image:
-        "https://imgs.search.brave.com/fZuAdK24eco_ewJDh8fdy81YkfAmc6U0zHp8FUWz7Jk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kMWNz/YXJrejhvYmU5dS5j/bG91ZGZyb250Lm5l/dC9wb3N0ZXJwcmV2/aWV3cy9yZWQtJi1v/cmFuZ2UtYWxidW0t/Y292ZXItZGVzaWdu/LXRlbXBsYXRlLTIy/YTBkNWRlOTlkNjU5/MmFjMmM4YTdjOTgx/YzEyM2Y4LmpwZz90/cz0xNzI0OTk5NDI1",
+      title: "Depresión",
+      image: "https://i.redd.it/w86hly5tslx71.jpg",
     },
     {
       id: 6,
-      title: "Motivación",
+      title: "Chill",
       image:
-        "https://imgs.search.brave.com/fZuAdK24eco_ewJDh8fdy81YkfAmc6U0zHp8FUWz7Jk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kMWNz/YXJrejhvYmU5dS5j/bG91ZGZyb250Lm5l/dC9wb3N0ZXJwcmV2/aWV3cy9yZWQtJi1v/cmFuZ2UtYWxidW0t/Y292ZXItZGVzaWdu/LXRlbXBsYXRlLTIy/YTBkNWRlOTlkNjU5/MmFjMmM4YTdjOTgx/YzEyM2Y4LmpwZz90/cz0xNzI0OTk5NDI1",
+        "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/f7d49262051957.5b11743c7cf40.jpg",
     },
   ];
 

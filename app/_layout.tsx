@@ -15,6 +15,7 @@ import { themesStatusBar } from "@/constants/themes";
 import { I18nextProvider } from "react-i18next";
 import i18next from "@/services/i18next";
 import { useEffect, useState } from "react";
+import ThemeToggle from "@/modules/core/components/ThemeToggle";
 
 // Hooks
 
@@ -47,7 +48,7 @@ export default function App() {
 }
 
 const RootNavigation = () => {
-  const { selectTheme, theme } = useTheme();
+  const { theme } = useTheme();
   const insets = useSafeAreaInsets();
   const themeStatusBar = themesStatusBar[theme];
 
@@ -59,44 +60,7 @@ const RootNavigation = () => {
         paddingTop: insets.top,
       }}
     >
-      <View
-        style={{
-          position: "absolute",
-          bottom: 50,
-          right: 0,
-          zIndex: 2,
-          gap: 20,
-        }}
-      >
-        <Pressable onPress={() => selectTheme("light")}>
-          <View
-            style={{
-              width: 50,
-              height: 20,
-              borderRadius: 30,
-              backgroundColor: "red",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Text style={{ color: "#fff" }}>Light</Text>
-          </View>
-        </Pressable>
-        <Pressable onPress={() => selectTheme("dark")}>
-          <View
-            style={{
-              width: 50,
-              height: 20,
-              borderRadius: 30,
-              backgroundColor: "red",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Text style={{ color: "#fff" }}>Dark</Text>
-          </View>
-        </Pressable>
-      </View>
+      {/* <ThemeToggle /> */}
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack>

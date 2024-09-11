@@ -39,6 +39,7 @@ export default function TopSongs({ data }: Props) {
             <View
               style={{
                 flexDirection: "row",
+                opacity: pressed ? 0.5 : 1,
                 flex: 1,
                 backgroundColor: themeText.primary,
                 borderRadius: 15,
