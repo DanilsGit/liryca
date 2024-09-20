@@ -14,6 +14,7 @@ import { themesText } from "@/constants/themes";
 import { fontSizes } from "@/constants/tokens";
 
 // Components
+import Header from "@m/main/components/Header";
 import PlaylistCarousel from "@m/core/components/PlaylistCarousel";
 import ArtistCarousel from "@m/main/components/ArtistCarousel";
 import TopSongs from "@m/main/components/TopSongs";
@@ -137,12 +138,12 @@ export default function Main() {
 
   return (
     <View style={{ gap: 30 }}>
+      <Header />
       <View style={{ gap: 10 }}>
-        <Link href={"/listenerProfile"}>Ir a mi perfil</Link>
         <HiText style={styles.title_text_xl2} />
       </View>
       <View style={{ gap: 15 }}>
-        <Text style={styles.title_text}>{t("main.artist")}</Text>
+        {/*<Text style={styles.title_text}>{t("main.artist")}</Text>*/}
         <ArtistCarousel data={dataArtist} />
       </View>
       <View style={{ gap: 15 }}>
@@ -170,6 +171,6 @@ const createStyles = (colorText: ThemeText) =>
       fontFamily: "M-PLUS-2-Bold",
       color: "#F4B1EE",
       fontSize: fontSizes.xl2,
-      letterSpacing: 1,
+      letterSpacing: 0,
     },
   });

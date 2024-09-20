@@ -19,6 +19,7 @@ import { useTheme } from "@/modules/core/hooks/useTheme";
 import { themesText } from "@/constants/themes";
 import { fontSizes } from "@/constants/tokens";
 import { useTranslation } from "react-i18next";
+import { colors } from "@/constants/tokens";
 import { ThemeText } from "@/constants/themesTypes";
 import PlaylistCarousel from "@/modules/core/components/PlaylistCarousel";
 import TopSongs from "@/modules/main/components/TopSongs";
@@ -41,7 +42,7 @@ export default function ListenerProfile() {
   const dataPlaylist = [
     {
       id: 1,
-      title: "Mamona",
+      title: "Top Lana del Rey",
       image:
         "https://cdns-images.dzcdn.net/images/cover/967ac8605268db88a1e597394115365d/1900x1900-000000-80-0-0.jpg",
     },
@@ -53,25 +54,25 @@ export default function ListenerProfile() {
     },
     {
       id: 3,
-      title: "Motivación",
+      title: "Tristeza absoluta",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrewB8Ywe7R2rqWM88ZN-e42mtqjwwZdursw&s",
     },
     {
       id: 4,
-      title: "Motivación",
+      title: "Para el gym",
       image:
         "https://www.premadepixels.com/wp-content/uploads/2022/03/Anterior-Album-Cover-PP1.jpg",
     },
     {
       id: 5,
-      title: "Motivación",
+      title: "study",
       image:
         "https://cdn8.openculture.com/2020/01/13215036/ju-art_record_covers-cover_03430-e1578983028736.jpg",
     },
     {
       id: 6,
-      title: "Motivación",
+      title: "Taylor Swift",
       image:
         "https://people.com/thmb/_6-x9pNd5xMw3WJ6luN9YIdNmwg=/4000x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(999x0:1001x2)/taylor-swift-albums-3-5831d0787fb94e94b56b89cd1d203689.jpg",
     },
@@ -117,7 +118,7 @@ export default function ListenerProfile() {
           style={{ width: width, height: "100%" }}
         />
 
-        <View style={[styles.header_icon, { left: width / 2 - 75 }]}>
+        <View style={[styles.header_icon, { left: width / 2 - 66 }]}>
           <Image source={{ uri: user?.icon }} style={styles.header_icon_img} />
         </View>
 
@@ -126,7 +127,15 @@ export default function ListenerProfile() {
           onPress={() => alert("options")}
           style={{ position: "absolute", bottom: 10, right: 10 }}
         >
-          <Text style={{ color: "white" }}>Options</Text>
+          <Text
+            style={{
+              color: colors.light_purple,
+              fontSize: fontSizes.xl2,
+              fontWeight: "bold",
+            }}
+          >
+            ...
+          </Text>
         </Pressable>
       </View>
 
@@ -156,7 +165,7 @@ export default function ListenerProfile() {
       </View>
 
       {/* Playlists */}
-      <View style={{ marginVertical: 20 }}>
+      <View style={{ marginVertical: 30 }}>
         <PlaylistCarousel data={dataPlaylist} />
       </View>
 
@@ -171,41 +180,41 @@ const createStyles = (colorText: ThemeText) =>
   StyleSheet.create({
     header: {
       position: "relative",
-      marginBottom: 50,
-      height: 200,
+      marginBottom: 75,
+      height: 150,
     },
     header_icon: {
       position: "absolute",
-      backgroundColor: "#fff",
-      width: 150,
-      height: 150,
+      backgroundColor: "#F4B1EE",
+      width: 135,
+      height: 135,
       borderRadius: 100,
-      top: 90,
+      top: 80,
       justifyContent: "center",
       alignItems: "center",
-      shadowColor: "#000",
-      shadowRadius: 10,
+      shadowColor: "#E050C1",
+      shadowRadius: 30,
       shadowOpacity: 0.1,
-      shadowOffset: { width: 0, height: 5 },
+      shadowOffset: { width: 5, height: 5 },
       elevation: 10,
     },
     header_icon_img: {
-      width: 145,
-      height: 145,
+      width: 130,
+      height: 130,
       borderRadius: 100,
     },
     starts: {
       width: "80%",
       alignItems: "center",
-      gap: 5,
+      gap: 10,
     },
     starts_stats: {
       flexDirection: "row",
       width: "100%",
       justifyContent: "space-around",
       paddingTop: 10,
-      borderColor: "#00000011",
-      borderTopWidth: 2,
+      borderColor: "#2C2135", // NOTA: Poner para que cambie según el tema
+      borderTopWidth: 1,
     },
     stats_number_container: {
       alignItems: "center",
@@ -216,10 +225,11 @@ const createStyles = (colorText: ThemeText) =>
       fontWeight: "bold",
     },
     text_xl_margin: {
-      color: colorText.primary,
+      color: colorText.secondary,
       fontSize: fontSizes.xl,
       fontWeight: "bold",
-      marginHorizontal: 10,
+      marginHorizontal: 20,
+      marginBottom: 10,
     },
     text: {
       color: colorText.secondary,
