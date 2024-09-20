@@ -22,14 +22,14 @@ interface Props {
 
 export const ArtistIcon = ({ item, index }: Props) => {
   const width_d = Dimensions.get("window").width;
-  const width = width_d / 5.5;
+  const width = width_d / 4;
   const styles = createStyles(width);
 
   return (
     <LinearGradient
       key={item.id}
       style={styles.container}
-      colors={[colors.light_blue, colors.light_blue]}
+      colors={[colors.black, colors.pink]}
     >
       <Image
         source={{ uri: item.image }}
@@ -50,7 +50,7 @@ const createStyles = (width: number) =>
       alignItems: "center",
       marginHorizontal: 10,
       borderRadius: 100,
-      width: width + 8,
-      height: width + 8,
+      width: width + 5,
+      height: width + 5,
     },
   });

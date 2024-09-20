@@ -7,7 +7,7 @@ type Store = {
 };
 
 export const useTheme = create<Store>()((set) => ({
-  theme: "light",
+  theme: "dark",
   selectTheme: (theme: Themes) => {
     set({ theme });
   },
