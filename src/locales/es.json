@@ -12,5 +12,23 @@
     "likes": "Me gusta",
     "playlists": "Playlist",
     "top_songs": "Tus más escuchadas"
+  },
+  "auth": {
+    "welcome": "Bienvenido",
+    "artist": "Artista",
+    "user": "Estrellita",
+    "login": "Iniciar sesión",
+    "signup": "Únete a nosotros",
+    "text_option": "¿Quieres escuchar música?",
+    "email": "Ingrese su correo",
+    "password": "Ingrese su contraseña",
+    "forgot_password": "¿Olvidaste tu contraseña?",
+    "new_user": "¿Nuevo por aquí? ¡Únete a nosotros!",
+    "have_account": "¿Ya tienes una cuenta? ¡Inicia sesión!",
+    "next": "Siguiente",
+    "register_title": "Regístrate",
+    "register_password": "Establece tu contraseña",
+    "register_password_add": "Establece una contraseña segura para proteger tu cuenta.",
+    "end_register": "Finalizar"
   }
 }

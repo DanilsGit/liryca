@@ -125,7 +125,7 @@ export default function Main() {
   return (
     <View style={{ gap: 10 }}>
       <HiText style={styles.title_text_xl2} />
-      <Link href={"/listenerProfile"}>Search</Link>
+      <Link href={"auth"}>Search</Link>
       <Text style={styles.title_text}>{t("main.playlist")}</Text>
       <PlaylistCarousel data={dataPlaylist} />
       <Text style={styles.title_text}>{t("main.artist")}</Text>

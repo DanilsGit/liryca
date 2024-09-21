@@ -14,7 +14,7 @@ import {
 // React Native
 
 // Hooks
-import { useAuth } from "@/modules/core/hooks/useAuth";
+import { useAuth } from "@/modules/auth/hooks/useAuth";
 import { useTheme } from "@/modules/core/hooks/useTheme";
 import { themesText } from "@/constants/themes";
 import { fontSizes } from "@/constants/tokens";
@@ -32,7 +32,7 @@ import TopSongs from "@/modules/main/components/TopSongs";
 // Api
 
 export default function ListenerProfile() {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const { theme } = useTheme();
   const { t } = useTranslation();
   const width = Dimensions.get("window").width;
@@ -107,7 +107,6 @@ export default function ListenerProfile() {
         "https://design-assets.adobeprojectm.com/content/download/express/public/urn:aaid:sc:VA6C2:7c3b1fb9-cb85-556e-bc39-b03fc1648116/component?assetType=TEMPLATE&etag=504d5d0336ae43219f94cf4659869a24&revision=c96797a5-5486-4e7c-9413-01b6ab631f29&component_id=2935aeda-9179-4584-902d-4f16d2cbff55",
     },
   ];
-
   return (
     <View>
       {/* Header */}
@@ -163,6 +162,11 @@ export default function ListenerProfile() {
       {/* Top Songs */}
       <Text style={styles.text_xl_margin}>{t("profile.top_songs")}</Text>
       <TopSongs data={dataSongs} />
+
+      {/* logout */}
+      <Pressable onPress={logout}>
+        <Text>Logout</Text>
+      </Pressable>
     </View>
   );
 }
@@ -220,6 +224,7 @@ const createStyles = (colorText: ThemeText) =>
       fontSize: fontSizes.xl,
       fontWeight: "bold",
       marginHorizontal: 10,
+      marginBottom: 10,
     },
     text: {
       color: colorText.secondary,
