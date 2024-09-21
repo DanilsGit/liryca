@@ -3,10 +3,10 @@
 // React
 
 // React Native
-import { ScrollView, View } from "react-native";
-import { useTheme } from "../hooks/useTheme";
 import { themesBackground } from "@/constants/themes";
 import { LinearGradient } from "expo-linear-gradient";
+import { ActivityIndicator } from "react-native";
+import { useTheme } from "../hooks/useTheme";
 
 // Hooks
 
@@ -14,30 +14,22 @@ import { LinearGradient } from "expo-linear-gradient";
 
 // Components
 
-//Apis
-
 // Props
 
-export default function Screen({ children }: { children: React.ReactNode }) {
+// Api
+
+export default function ScreenLoading() {
   const { theme } = useTheme();
   const themeBackgroud = themesBackground[theme];
-
   return (
     <LinearGradient
       colors={[themeBackgroud.top, themeBackgroud.bottom]}
       start={{ x: 0, y: -1.5 }}
       end={{ x: 0, y: 1 }}
       locations={[0, 1]}
-      style={{ flex: 1 }}
+      style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
     >
-      <ScrollView>
-        <View style={{ flex: 1 }}>{children}</View>
-        <View style={{ padding: 25 }} />
-      </ScrollView>
+      <ActivityIndicator size="large" color="#a5f" />
     </LinearGradient>
   );
 }
-
-// const styles = StyleSheet.create({
-
-// });

@@ -1,5 +1,5 @@
 // Expo
-import { Tabs } from "expo-router";
+import { Redirect, Tabs } from "expo-router";
 // React
 
 // React Native
@@ -14,7 +14,8 @@ import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { useTheme } from "@m/core/hooks/useTheme";
 import { themesTab } from "@/constants/themes";
 import { colors } from "@/constants/tokens";
-import { useAuth } from "@/modules/core/hooks/useAuth";
+import { useAuth } from "@/modules/auth/hooks/useAuth";
+import ScreenLoading from "@/modules/core/components/ScreenLoading";
 // Hooks
 
 // Definitions
@@ -27,9 +28,11 @@ import { useAuth } from "@/modules/core/hooks/useAuth";
 
 export default function TabsLayout() {
   const { theme } = useTheme();
-  const { user } = useAuth();
-
+  const { user, isLoading } = useAuth();
   const themeTab = themesTab[theme];
+
+  if (isLoading) return <ScreenLoading />;
+  if (!user) return <Redirect href="/(auth)" />;
 
   return (
     <Tabs

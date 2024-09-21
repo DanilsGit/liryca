@@ -2,7 +2,7 @@
 
 import { colors } from "@/constants/tokens";
 import { useTheme } from "@/modules/core/hooks/useTheme";
-import { useAuth } from "@/modules/core/hooks/useAuth";
+import { useAuth } from "@/modules/auth/hooks/useAuth";
 import { ThemeText } from "@/constants/themesTypes";
 import { fontSizes } from "@/constants/tokens";
 import React from "react";
