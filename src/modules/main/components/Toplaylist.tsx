@@ -15,7 +15,7 @@ import { StyleSheet, Text, View } from "react-native";
 
 // Api
 
-export default function Name() {
+export default function TopPlaylist() {
   const styles = createStyles();
   return (
     <View>

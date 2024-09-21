@@ -40,8 +40,8 @@ export default function TabsLayout() {
           position: "absolute",
           borderTopLeftRadius: 35,
         },
-        tabBarActiveTintColor: colors.purple,
-        tabBarInactiveTintColor: colors.pink,
+        tabBarActiveTintColor: colors.light_pink,
+        tabBarInactiveTintColor: colors.light_purple, // NOTA: Arreglar esta parte para que cambie según el tema
         tabBarLabel: () => null,
         tabBarBackground: () => (
           <View

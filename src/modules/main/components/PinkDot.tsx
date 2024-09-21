@@ -23,7 +23,7 @@ export default function PinkDot() {
       style={{
         width: 5,
         height: 5,
-        backgroundColor: colors.dark_purple,
+        backgroundColor: colors.light_purple, // NOTA: Arreglarlo para que cambie según el tema
         borderRadius: 100,
       }}
     />

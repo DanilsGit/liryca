@@ -14,6 +14,7 @@ import { themesText } from "@/constants/themes";
 import { fontSizes } from "@/constants/tokens";
 
 // Components
+import Header from "@m/main/components/Header";
 import PlaylistCarousel from "@m/core/components/PlaylistCarousel";
 import ArtistCarousel from "@m/main/components/ArtistCarousel";
 import TopSongs from "@m/main/components/TopSongs";
@@ -34,7 +35,7 @@ export default function Main() {
     },
     {
       id: 2,
-      title: "Motivación extrema brutal",
+      title: "Motivación extrema",
       image:
         "https://imgs.search.brave.com/hUWULsSUWd_TKSEVBYTMGVDsSU218E8ssqvkkbS4Srs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/Y3JlYXRlLnZpc3Rh/LmNvbS9kb3dubG9h/ZHMvNTdmNTVkNjIt/ZDhmMC00MzE3LTlh/MDEtY2FlYzc0NGM1/YjdiXzQ1MC5qcGVn",
     },
@@ -94,44 +95,65 @@ export default function Main() {
   const dataSongs = [
     {
       id: 1,
-      title: "Cancion 1",
-      album: "Artista 1",
+      title: "I love lt guy",
+      album: "Tyler the creator",
       image:
         "https://www.billboard.com/wp-content/uploads/media/tyler-the-creator-igor-album-art-2019-billboard-embed.jpg?w=600",
     },
     {
       id: 2,
-      title: "Cancion 2",
-      album: "Artista 2",
+      title: "Just white and curly girls",
+      album: "Nirvana",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhF3_2_mVdY5B9Tgh96dj3iJ_r66xhP0di7g&s",
     },
     {
       id: 3,
-      title: "Cancion 3",
-      album: "Artista 3",
+      title: "Fearless",
+      album: "Taylor swift",
       image:
         "https://www.usatoday.com/gcdn/authoring/authoring-images/2024/04/18/USAT/73369581007-001-taylor-swift-2006.jpeg?width=700&height=700&fit=crop&format=pjpg&auto=webp",
     },
     {
       id: 4,
-      title: "Cancion 4",
-      album: "Artista 4",
+      title: "Time is running out",
+      album: "Muse",
+      image: "https://i.scdn.co/image/ab67616d0000b273b6d4566db0d12894a1a3b7a2",
+    },
+    {
+      id: 5,
+      title: "Juno",
+      album: "Sabrina Carpenter",
       image:
-        "https://design-assets.adobeprojectm.com/content/download/express/public/urn:aaid:sc:VA6C2:7c3b1fb9-cb85-556e-bc39-b03fc1648116/component?assetType=TEMPLATE&etag=504d5d0336ae43219f94cf4659869a24&revision=c96797a5-5486-4e7c-9413-01b6ab631f29&component_id=2935aeda-9179-4584-902d-4f16d2cbff55",
+        "https://images.genius.com/6ecbc2e64e62b35ee2fadf8532056f72.1000x1000x1.png",
+    },
+    {
+      id: 6,
+      title: "Joyride",
+      album: "Kesha",
+      image:
+        "https://upload.wikimedia.org/wikipedia/en/9/98/Kesha_%E2%80%93_Joyride_%28official_single_cover%29.png",
     },
   ];
 
   return (
-    <View style={{ gap: 10 }}>
-      <HiText style={styles.title_text_xl2} />
-      <Link href={"/listenerProfile"}>Search</Link>
-      <Text style={styles.title_text}>{t("main.playlist")}</Text>
-      <PlaylistCarousel data={dataPlaylist} />
-      <Text style={styles.title_text}>{t("main.artist")}</Text>
-      <ArtistCarousel data={dataArtist} />
-      <Text style={styles.title_text}>{t("main.top_songs")}</Text>
-      <TopSongs data={dataSongs} />
+    <View style={{ gap: 30 }}>
+      <Header />
+      <View style={{ gap: 10 }}>
+        <HiText style={styles.title_text_xl2} />
+      </View>
+      <View style={{ gap: 15 }}>
+        {/*<Text style={styles.title_text}>{t("main.artist")}</Text>*/}
+        <ArtistCarousel data={dataArtist} />
+      </View>
+      <View style={{ gap: 15 }}>
+        <Text style={styles.title_text}>{t("main.playlist")}</Text>
+        <PlaylistCarousel data={dataPlaylist} />
+      </View>
+      <View style={{ gap: 15 }}>
+        <Text style={styles.title_text}>{t("main.top_songs")}</Text>
+        <TopSongs data={dataSongs} />
+      </View>
     </View>
   );
 }
@@ -141,13 +163,14 @@ const createStyles = (colorText: ThemeText) =>
     title_text: {
       paddingHorizontal: 10,
       fontFamily: "M-PLUS-2-Bold",
-      color: colorText.secondary,
+      color: colorText.primary,
       fontSize: fontSizes.xl,
     },
     title_text_xl2: {
       paddingHorizontal: 10,
       fontFamily: "M-PLUS-2-Bold",
-      color: colorText.secondary,
+      color: "#F4B1EE",
       fontSize: fontSizes.xl2,
+      letterSpacing: 0,
     },
   });

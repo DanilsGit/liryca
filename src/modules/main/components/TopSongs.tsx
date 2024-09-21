@@ -65,25 +65,19 @@ export default function TopSongs({ data }: Props) {
 
 const createStyles = (colorText: ThemeText) =>
   StyleSheet.create({
-    songs_container: { paddingHorizontal: 20, gap: 15, borderRadius: 15 },
+    songs_container: { paddingHorizontal: 15, gap: 0, borderRadius: 0 },
     button_content: {
       flexDirection: "row",
       flex: 1,
-      backgroundColor: colorText.primary,
       borderRadius: 15,
-      justifyContent: "flex-end",
-      padding: 8,
-      shadowColor: "#201536",
-      shadowRadius: 10,
-      shadowOpacity: 0.1,
-      shadowOffset: { width: 0, height: 5 },
-      elevation: 1,
+      justifyContent: "flex-start",
+      padding: 6,
     },
-    image: { width: 60, height: 60, borderRadius: 10 },
+    image: { width: 55, height: 55, borderRadius: 5 },
     text_container: {
-      justifyContent: "center",
+      justifyContent: "flex-start",
       flex: 1,
-      marginLeft: 15,
+      marginLeft: 10,
       padding: 5,
     },
     text: {
@@ -92,7 +86,7 @@ const createStyles = (colorText: ThemeText) =>
       fontSize: fontSizes.md,
     },
     textSm: {
-      color: colorText.secondary,
+      color: colorText.primary,
       fontSize: fontSizes.sm,
       fontFamily: "M-PLUS-2-Regular",
     },
