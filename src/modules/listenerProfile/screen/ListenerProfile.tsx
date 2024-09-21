@@ -16,7 +16,7 @@ import {
 // Hooks
 import { useAuth } from "@/modules/core/hooks/useAuth";
 import { useTheme } from "@/modules/core/hooks/useTheme";
-import { themesText } from "@/constants/themes";
+import { themesLine, themesText } from "@/constants/themes";
 import { fontSizes } from "@/constants/tokens";
 import { useTranslation } from "react-i18next";
 import { colors } from "@/constants/tokens";
@@ -37,7 +37,7 @@ export default function ListenerProfile() {
   const { theme } = useTheme();
   const { t } = useTranslation();
   const width = Dimensions.get("window").width;
-  const styles = createStyles(themesText[theme]);
+  const styles = createStyles(themesText[theme], themesLine[theme]);
 
   const dataPlaylist = [
     {
@@ -176,7 +176,7 @@ export default function ListenerProfile() {
   );
 }
 
-const createStyles = (colorText: ThemeText) =>
+const createStyles = (colorText: ThemeText, colorLine: string) =>
   StyleSheet.create({
     header: {
       position: "relative",
@@ -213,7 +213,7 @@ const createStyles = (colorText: ThemeText) =>
       width: "100%",
       justifyContent: "space-around",
       paddingTop: 10,
-      borderColor: "#2C2135", // NOTA: Poner para que cambie según el tema
+      borderColor: colorLine,
       borderTopWidth: 1,
     },
     stats_number_container: {

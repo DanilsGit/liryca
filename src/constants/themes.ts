@@ -9,7 +9,7 @@ export const themesStatusBar = {
 
 export const themesText: Record<Themes, ThemeText> = {
   light: {
-    primary: colors.light_pink,
+    primary: colors.purple,
     secondary: colors.dark_purple,
   },
   dark: {
@@ -49,4 +49,10 @@ export const themesTab: Record<Themes, ThemeTab> = {
     top: colors.gray,
     bottom: colors.black,
   },
+};
+
+export const themesLine: Record<Themes, string> = {
+  light: colors.light_purple,
+  dark: colors.dark_purple,
+  quiet: colors.pink,
 };

@@ -49,6 +49,7 @@ export default function Header() {
 }
 
 const styles = StyleSheet.create({
+  // NOTA: PASAR A FUNCION
   header: {
     width: "100%",
     flex: 1,
