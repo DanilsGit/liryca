@@ -50,7 +50,7 @@ export default function ButtonRounded({
 const createStyles = () =>
   StyleSheet.create({
     button: {
-      backgroundColor: colors.light_pink,
+      backgroundColor: colors.light_purple,
       borderRadius: 50,
       padding: 10,
       paddingVertical: 15,
@@ -58,7 +58,9 @@ const createStyles = () =>
       alignItems: "center",
     },
     text: {
-      fontSize: fontSizes.md,
-      fontWeight: "bold",
+      fontSize: fontSizes.lg,
+      color: colors.black,
+      fontWeight: "600",
+      letterSpacing: 1.2,
     },
   });
