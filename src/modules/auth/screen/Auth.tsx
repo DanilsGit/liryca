@@ -14,36 +14,13 @@ import Login from "../components/Login";
 import { useTranslation } from "react-i18next";
 import TextButton from "../components/TextButton";
 import Register from "../components/Register";
+import { useAuthScren } from "../hooks/custom-hooks";
 
 // Components
 
 // Props
 
 // Api
-
-type AuthScreen =
-  | "welcome"
-  | "login"
-  | "register"
-  | "forgotPassword"
-  | "setPassword";
-
-const useAuthScren = () => {
-  const [currentScreen, setCurrentScreen] = useState<AuthScreen>("welcome");
-
-  const changeLogin = () => setCurrentScreen("login");
-  const changeRegister = () => setCurrentScreen("register");
-  const changeForgotPassword = () => setCurrentScreen("forgotPassword");
-  const changeSetPassword = () => setCurrentScreen("setPassword");
-
-  return {
-    currentScreen,
-    changeLogin,
-    changeRegister,
-    changeForgotPassword,
-    changeSetPassword,
-  };
-};
 
 export default function Auth() {
   const { currentScreen, changeLogin, changeRegister, changeForgotPassword } =

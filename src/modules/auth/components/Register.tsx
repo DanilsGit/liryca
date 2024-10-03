@@ -46,6 +46,19 @@ export default function Register() {
       {settingPassword ? (
         <View style={styles.white_panel}>
           <View style={{ gap: 20 }}>
+            <Pressable
+              onPress={() => setSettingPassword(false)}
+              style={{
+                position: "absolute",
+                zIndex: 1,
+                top: 0,
+                right: 0,
+                borderRadius: 100,
+                width: 30,
+                height: 30,
+                backgroundColor: colors.light_purple,
+              }}
+            ></Pressable>
             <Text style={styles.title}>{t("auth.register_password")}</Text>
             <Text style={styles.subTitle}>
               {t("auth.register_password_add")}

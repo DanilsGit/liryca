@@ -83,7 +83,7 @@ const createStyles = () =>
       fontFamily: "PlayfairDisplay-Regular",
       marginLeft: 0,
       marginTop: -10,
-      textShadowColor: "#fff",
+      textShadowColor: colors.white,
       textShadowOffset: { width: -1, height: 1 },
       textShadowRadius: 20,
     },

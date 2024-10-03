@@ -5,7 +5,12 @@
     "title_evening": "Buenas noches * . +",
     "playlist": "Tus playlist",
     "artist": "Artistas destacados",
-    "top_songs": "Más escuchados hoy"
+    "top_songs": "Más escuchados hoy",
+    "filter": {
+      "all": "Todas",
+      "songs": "Canciones",
+      "playlist": "Playlist"
+    }
   },
   "profile": {
     "followers": "Seguidores",

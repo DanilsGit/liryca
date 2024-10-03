@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "./useAuth";
 import { getCountries } from "../api/apis";
+import { Alert } from "react-native";
 
 export const useRegistrationForm = () => {
   const { login } = useAuth();
@@ -31,8 +32,8 @@ export const useRegistrationForm = () => {
   const handleRegister = () => {
     const user = {
       id: 1,
-      name: "Gato_feliz01421",
-      email: "johndoe@gmail.com",
+      name: credentials.name,
+      email: credentials.email,
       banner: "https://i.redd.it/6uoazfklyo7b1.jpg",
       icon: "https://preview.redd.it/cat-standing-up-crying-v0-dtmdh6nbxsx81.png?auto=webp&s=a73aac17068f724773facf9a2ce54bc0342cf30e",
       followers: 2,
@@ -42,6 +43,29 @@ export const useRegistrationForm = () => {
       role: "listener",
       token: "",
     };
+
+    if (!user.name) {
+      Alert.alert("Nombre no válido", "Por favor, introduce un nombre");
+      return;
+    }
+
+    if (!user.email) {
+      Alert.alert("Email no válido", "Por favor, introduce un email");
+      return;
+    }
+
+    // Contiene mayúsculas, minúsculas, números y caracteres especiales
+    const regex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[.$@$!%*?&])[A-Za-z\d.$@$!%*?&]{8,}$/;
+
+    if (!regex.test(credentials.password)) {
+      Alert.alert(
+        "Contraseña no válida",
+        "La contraseña debe contener al menos 8 caracteres, una mayúscula, una minúscula, un número y un caracter especial"
+      );
+      return;
+    }
+
     login(user);
   };
 
@@ -80,4 +104,21 @@ export const useCountries = () => {
   }, []);
 
   return { countries, loading };
+};
+
+export const useAuthScren = () => {
+  const [currentScreen, setCurrentScreen] = useState<AuthScreen>("welcome");
+
+  const changeLogin = () => setCurrentScreen("login");
+  const changeRegister = () => setCurrentScreen("register");
+  const changeForgotPassword = () => setCurrentScreen("forgotPassword");
+  const changeSetPassword = () => setCurrentScreen("setPassword");
+
+  return {
+    currentScreen,
+    changeLogin,
+    changeRegister,
+    changeForgotPassword,
+    changeSetPassword,
+  };
 };

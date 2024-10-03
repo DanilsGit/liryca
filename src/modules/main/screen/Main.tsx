@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 
 // Definitions
 import { themesText } from "@/constants/themes";
-import { fontSizes } from "@/constants/tokens";
+import { colors, fontSizes } from "@/constants/tokens";
 
 // Components
 import Header from "@m/main/components/Header";
@@ -169,7 +169,7 @@ const createStyles = (colorText: ThemeText) =>
     title_text_xl2: {
       paddingHorizontal: 10,
       fontFamily: "M-PLUS-2-Bold",
-      color: "#F4B1EE",
+      color: colors.light_pink,
       fontSize: fontSizes.xl2,
       letterSpacing: 0,
     },

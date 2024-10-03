@@ -6,7 +6,7 @@
 import { Dimensions, Text, View, Image, StyleSheet } from "react-native";
 import { DataPlaylistCarousel } from "../lib/types";
 import { LinearGradient } from "expo-linear-gradient";
-import { fontSizes } from "../../../constants/tokens";
+import { colors, fontSizes } from "../../../constants/tokens";
 
 // Hooks
 
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   text: {
     position: "absolute",
     bottom: 10,
-    color: "#fff",
+    color: colors.white,
     fontWeight: "bold",
     textAlign: "center",
     fontSize: fontSizes.md,
