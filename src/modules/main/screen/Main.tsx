@@ -1,12 +1,11 @@
 // Expo
-import { Link } from "expo-router";
 
 // React
 
 // React Native
 import { StyleSheet, Text, View } from "react-native";
 // Hooks
-import { useTheme } from "@m/core/hooks/useTheme";
+import { useTheme } from "@/modules/core/hooks/useTheme";
 import { useTranslation } from "react-i18next";
 
 // Definitions
@@ -17,9 +16,9 @@ import { colors, fontSizes } from "@/constants/tokens";
 import Header from "@m/main/components/Header";
 import PlaylistCarousel from "@m/core/components/PlaylistCarousel";
 import ArtistCarousel from "@m/main/components/ArtistCarousel";
-import TopSongs from "@m/main/components/TopSongs";
 import HiText from "@m/main/components/HiText";
 import { ThemeText } from "@/constants/themesTypes";
+import TracksList from "@/modules/main/components/TracksList";
 
 export default function Main() {
   const { theme } = useTheme();
@@ -99,6 +98,7 @@ export default function Main() {
       album: "Tyler the creator",
       image:
         "https://www.billboard.com/wp-content/uploads/media/tyler-the-creator-igor-album-art-2019-billboard-embed.jpg?w=600",
+      url: "https://firebasestorage.googleapis.com/v0/b/liryca-c9f2e.appspot.com/o/songs%2Fspotifydown.com%20-%20...Baby%20One%20More%20Time.mp3?alt=media&token=5977094d-59c6-4fcc-bfb4-30d46f3b6f81",
     },
     {
       id: 2,
@@ -106,6 +106,7 @@ export default function Main() {
       album: "Nirvana",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhF3_2_mVdY5B9Tgh96dj3iJ_r66xhP0di7g&s",
+      url: "https://firebasestorage.googleapis.com/v0/b/liryca-c9f2e.appspot.com/o/songs%2Fspotifydown.com%20-%20365.mp3?alt=media&token=5997d717-0a04-4ff7-95f4-f23da1284137",
     },
     {
       id: 3,
@@ -113,12 +114,14 @@ export default function Main() {
       album: "Taylor swift",
       image:
         "https://www.usatoday.com/gcdn/authoring/authoring-images/2024/04/18/USAT/73369581007-001-taylor-swift-2006.jpeg?width=700&height=700&fit=crop&format=pjpg&auto=webp",
+      url: "https://firebasestorage.googleapis.com/v0/b/liryca-c9f2e.appspot.com/o/songs%2Fspotifydown.com%20-%20Gimme%20More.mp3?alt=media&token=9ad7676d-9118-44d8-85c6-f97c67d3ec5a",
     },
     {
       id: 4,
       title: "Time is running out",
       album: "Muse",
       image: "https://i.scdn.co/image/ab67616d0000b273b6d4566db0d12894a1a3b7a2",
+      url: "https://firebasestorage.googleapis.com/v0/b/liryca-c9f2e.appspot.com/o/songs%2Fspotifydown.com%20-%20JOYRIDE.mp3?alt=media&token=2d7fd7e9-434a-4435-a8b0-db93152a13a0",
     },
     {
       id: 5,
@@ -126,6 +129,7 @@ export default function Main() {
       album: "Sabrina Carpenter",
       image:
         "https://images.genius.com/6ecbc2e64e62b35ee2fadf8532056f72.1000x1000x1.png",
+      url: "https://firebasestorage.googleapis.com/v0/b/liryca-c9f2e.appspot.com/o/songs%2Fspotifydown.com%20-%20Oops!...I%20Did%20It%20Again.mp3?alt=media&token=3f9b9f5f-861b-4288-b979-0275f91ce954",
     },
     {
       id: 6,
@@ -133,6 +137,7 @@ export default function Main() {
       album: "Kesha",
       image:
         "https://upload.wikimedia.org/wikipedia/en/9/98/Kesha_%E2%80%93_Joyride_%28official_single_cover%29.png",
+      url: "https://firebasestorage.googleapis.com/v0/b/liryca-c9f2e.appspot.com/o/songs%2Fspotifydown.com%20-%20Outrageous.mp3?alt=media&token=a1caf51f-2212-4775-8c56-182bf5102881",
     },
   ];
 
@@ -152,7 +157,7 @@ export default function Main() {
       </View>
       <View style={{ gap: 15 }}>
         <Text style={styles.title_text}>{t("main.top_songs")}</Text>
-        <TopSongs data={dataSongs} />
+        <TracksList data={dataSongs} />
       </View>
     </View>
   );

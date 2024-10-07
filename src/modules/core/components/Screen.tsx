@@ -7,6 +7,7 @@ import { ScrollView, View } from "react-native";
 import { useTheme } from "../hooks/useTheme";
 import { themesBackground } from "@/constants/themes";
 import { LinearGradient } from "expo-linear-gradient";
+import { useActiveTrack } from "react-native-track-player";
 
 // Hooks
 
@@ -20,6 +21,7 @@ import { LinearGradient } from "expo-linear-gradient";
 
 export default function Screen({ children }: { children: React.ReactNode }) {
   const { theme } = useTheme();
+  const activeTrack = useActiveTrack();
   const themeBackgroud = themesBackground[theme];
 
   return (
@@ -32,7 +34,7 @@ export default function Screen({ children }: { children: React.ReactNode }) {
     >
       <ScrollView>
         <View style={{ flex: 1 }}>{children}</View>
-        <View style={{ padding: 25 }} />
+        <View style={{ padding: activeTrack ? 60 : 25 }} />
       </ScrollView>
     </LinearGradient>
   );

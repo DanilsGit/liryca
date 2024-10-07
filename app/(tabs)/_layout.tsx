@@ -11,11 +11,12 @@ import {
 } from "@m/core/components/Icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
-import { useTheme } from "@m/core/hooks/useTheme";
+import { useTheme } from "@/modules/core/hooks/useTheme";
 import { themesTab } from "@/constants/themes";
 import { colors } from "@/constants/tokens";
 import { useAuth } from "@/modules/auth/hooks/useAuth";
 import ScreenLoading from "@/modules/core/components/ScreenLoading";
+import FloatingPlayer from "@/modules/core/components/FloatingPlayer";
 // Hooks
 
 // Definitions
@@ -35,80 +36,90 @@ export default function TabsLayout() {
   if (!user) return <Redirect href="/(auth)" />;
 
   return (
-    <Tabs
-      initialRouteName="home"
-      screenOptions={{
-        headerShown: false,
-        tabBarStyle: {
+    <>
+      <Tabs
+        initialRouteName="home"
+        screenOptions={{
+          headerShown: false,
+          tabBarStyle: {
+            position: "absolute",
+            borderTopLeftRadius: 35,
+          },
+          tabBarActiveTintColor: colors.light_pink,
+          tabBarInactiveTintColor: colors.light_purple, // NOTA: Arreglar esta parte para que cambie según el tema
+          tabBarLabel: () => null,
+          tabBarBackground: () => (
+            <View
+              style={{
+                flex: 1,
+                borderTopLeftRadius: 35,
+                overflow: "hidden",
+                ...StyleSheet.absoluteFillObject,
+              }}
+            >
+              <LinearGradient
+                colors={[themeTab.top, themeTab.bottom]}
+                style={{ flex: 1, overflow: "hidden" }}
+              />
+            </View>
+          ),
+        }}
+      >
+        <Tabs.Screen
+          name="(home)"
+          options={{
+            tabBarIcon: ({ color }) => <HomeIcon color={color} />,
+            tabBarButton: (props) => <TouchableOpacity {...props} />,
+          }}
+        />
+        <Tabs.Screen
+          name="search"
+          options={{
+            tabBarIcon: ({ color }) => <SearchIcon color={color} />,
+            tabBarButton: (props) => <TouchableOpacity {...props} />,
+          }}
+        />
+        <Tabs.Screen
+          name="social"
+          options={{
+            tabBarIcon: ({ color }) => <StarIcon color={color} />,
+            tabBarButton: (props) => <TouchableOpacity {...props} />,
+          }}
+        />
+
+        <Tabs.Screen
+          name="listenerProfile"
+          options={{
+            tabBarIcon: ({ color }) => <PersonIcon color={color} />,
+            tabBarButton: (props) => {
+              return user?.role === "listener" ? (
+                <TouchableOpacity {...props} />
+              ) : null;
+            },
+          }}
+        />
+
+        <Tabs.Screen
+          name="artistProfile"
+          options={{
+            tabBarIcon: ({ color }) => <PersonIcon color={color} />,
+            tabBarButton: (props) => {
+              return user?.role === "artist" ? (
+                <TouchableOpacity {...props} />
+              ) : null;
+            },
+          }}
+        />
+      </Tabs>
+      <FloatingPlayer
+        style={{
           position: "absolute",
-          borderTopLeftRadius: 35,
-        },
-        tabBarActiveTintColor: colors.light_pink,
-        tabBarInactiveTintColor: colors.light_purple, // NOTA: Arreglar esta parte para que cambie según el tema
-        tabBarLabel: () => null,
-        tabBarBackground: () => (
-          <View
-            style={{
-              flex: 1,
-              borderTopLeftRadius: 35,
-              overflow: "hidden",
-              ...StyleSheet.absoluteFillObject,
-            }}
-          >
-            <LinearGradient
-              colors={[themeTab.top, themeTab.bottom]}
-              style={{ flex: 1, overflow: "hidden" }}
-            />
-          </View>
-        ),
-      }}
-    >
-      <Tabs.Screen
-        name="(home)"
-        options={{
-          tabBarIcon: ({ color }) => <HomeIcon color={color} />,
-          tabBarButton: (props) => <TouchableOpacity {...props} />,
+          bottom: 60,
+          left: 8,
+          right: 8,
         }}
       />
-      <Tabs.Screen
-        name="search"
-        options={{
-          tabBarIcon: ({ color }) => <SearchIcon color={color} />,
-          tabBarButton: (props) => <TouchableOpacity {...props} />,
-        }}
-      />
-      <Tabs.Screen
-        name="social"
-        options={{
-          tabBarIcon: ({ color }) => <StarIcon color={color} />,
-          tabBarButton: (props) => <TouchableOpacity {...props} />,
-        }}
-      />
-
-      <Tabs.Screen
-        name="listenerProfile"
-        options={{
-          tabBarIcon: ({ color }) => <PersonIcon color={color} />,
-          tabBarButton: (props) => {
-            return user?.role === "listener" ? (
-              <TouchableOpacity {...props} />
-            ) : null;
-          },
-        }}
-      />
-
-      <Tabs.Screen
-        name="artistProfile"
-        options={{
-          tabBarIcon: ({ color }) => <PersonIcon color={color} />,
-          tabBarButton: (props) => {
-            return user?.role === "artist" ? (
-              <TouchableOpacity {...props} />
-            ) : null;
-          },
-        }}
-      />
-    </Tabs>
+    </>
   );
 }
 

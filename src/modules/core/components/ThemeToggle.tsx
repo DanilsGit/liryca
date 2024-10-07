@@ -23,7 +23,7 @@ export default function ThemeToggle() {
     <View
       style={{
         position: "absolute",
-        bottom: 50,
+        bottom: 200,
         right: 0,
         zIndex: 2,
         gap: 20,
