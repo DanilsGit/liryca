@@ -18,13 +18,15 @@ import { useTheme } from "@/modules/core/hooks/useTheme";
 // Definitions
 import { themesStatusBar } from "@/constants/themes";
 import i18next from "@/services/i18next";
+import "@m/core/actionSheets/sheets";
 
 // Components
-import ThemeToggle from "@/modules/core/components/ThemeToggle";
-import { useAuth } from "@/modules/auth/hooks/useAuth";
-import { useSetupTrackPlayer } from "@/modules/main/hooks/useSetupTrackPlayer";
-import { useLogTrackPlayerState } from "@/modules/main/hooks/useLogTrackPlayerState";
+import ThemeToggle from "@m/core/components/ThemeToggle";
+import { useAuth } from "@m/auth/hooks/useAuth";
+import { useSetupTrackPlayer } from "@m/main/hooks/useSetupTrackPlayer";
+import { useLogTrackPlayerState } from "@m/main/hooks/useLogTrackPlayerState";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { SheetProvider } from "react-native-actions-sheet";
 
 // SplashScreen.preventAutoHideAsync();
 
@@ -59,10 +61,12 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <GestureHandlerRootView style={{ flex: 1 }}>
-        <StatusBar style="auto" />
-        <I18nextProvider i18n={i18next}>
-          <RootNavigation />
-        </I18nextProvider>
+        <SheetProvider>
+          <StatusBar style="auto" />
+          <I18nextProvider i18n={i18next}>
+            <RootNavigation />
+          </I18nextProvider>
+        </SheetProvider>
       </GestureHandlerRootView>
     </SafeAreaProvider>
   );

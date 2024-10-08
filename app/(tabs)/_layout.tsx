@@ -110,6 +110,20 @@ export default function TabsLayout() {
             },
           }}
         />
+
+        <Tabs.Screen
+          name="artistPublicProfile"
+          options={{
+            tabBarButton: () => null,
+          }}
+        />
+
+        <Tabs.Screen
+          name="playlist"
+          options={{
+            tabBarButton: () => null,
+          }}
+        />
       </Tabs>
       <FloatingPlayer
         style={{

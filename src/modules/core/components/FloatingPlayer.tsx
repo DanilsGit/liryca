@@ -5,8 +5,8 @@
 // React Native
 import { colors, fontSizes } from "@/constants/tokens";
 import { Image } from "expo-image";
-import { Pressable, StyleSheet, Text, View, ViewProps } from "react-native";
-import { Track, useActiveTrack } from "react-native-track-player";
+import { Pressable, StyleSheet, View, ViewProps } from "react-native";
+import { useActiveTrack } from "react-native-track-player";
 import PlayPauseButton from "./PlayPauseButton";
 import SkipToNextButton from "./SkipToNextButton";
 import { useLastActiveTrack } from "../hooks/useLastActiveTrack";

@@ -7,6 +7,7 @@ import { Dimensions, Image, StyleSheet } from "react-native";
 import { DataArtistCarousel } from "../lib/types";
 import { LinearGradient } from "expo-linear-gradient";
 import { colors } from "@/constants/tokens";
+import { Link } from "expo-router";
 
 // Hooks
 
@@ -31,6 +32,7 @@ export const ArtistIcon = ({ item, index }: Props) => {
       style={styles.container}
       colors={[colors.black, colors.pink]}
     >
+      <Link href={`/artistPublicProfile/${item.id}`} style={styles.link} />
       <Image
         source={{ uri: item.image }}
         borderRadius={100}
@@ -52,5 +54,14 @@ const createStyles = (width: number) =>
       borderRadius: 100,
       width: width + 5,
       height: width + 5,
+      position: "relative",
+    },
+    link: {
+      backgroundColor: "transparent",
+      width: width + 5,
+      height: width + 5,
+      position: "absolute",
+      borderRadius: 100,
+      zIndex: 1,
     },
   });

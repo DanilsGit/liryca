@@ -23,6 +23,8 @@ import { colors } from "@/constants/tokens";
 import { ThemeText } from "@/constants/themesTypes";
 import PlaylistCarousel from "@/modules/core/components/PlaylistCarousel";
 import TracksList from "@/modules/main/components/TracksList";
+import { SheetManager } from "react-native-actions-sheet";
+import DotsButtom from "@/modules/core/components/DotsButtom";
 
 // Definitions
 
@@ -143,20 +145,18 @@ export default function ListenerProfile() {
 
         {/* Options */}
         <Pressable
-          onPress={() => alert("options")}
+          onPress={() =>
+            SheetManager.show("listener-options-sheet", {
+              payload: { action: () => alert("Hello World") },
+            })
+          }
           style={{ position: "absolute", bottom: 10, right: 10 }}
         >
-          <Text
-            style={{
-              color: colors.light_purple,
-              fontSize: fontSizes.xl2,
-              fontWeight: "bold",
-            }}
-          >
-            ...
-          </Text>
+          <DotsButtom />
         </Pressable>
       </View>
+
+      {/* Actions */}
 
       {/* Stats and Name */}
       <View style={{ alignItems: "center" }}>

@@ -7,6 +7,7 @@ import { Dimensions, Text, View, Image, StyleSheet } from "react-native";
 import { DataPlaylistCarousel } from "../lib/types";
 import { LinearGradient } from "expo-linear-gradient";
 import { colors, fontSizes } from "../../../constants/tokens";
+import { Link } from "expo-router";
 
 // Hooks
 
@@ -25,6 +26,7 @@ export const PlaylistCover = ({ item, index }: Props) => {
   const width = width_d / 2.5;
   return (
     <View key={item.id} style={[styles.container, { width: width }]}>
+      <Link href={`/playlist/${item.id}`} style={styles.link} />
       <Image
         source={{ uri: item.image }}
         width={width}
@@ -58,6 +60,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginHorizontal: 10,
+  },
+  link: {
+    backgroundColor: "transparent",
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+    zIndex: 1,
+    borderRadius: 10,
   },
   gradiente: {
     position: "absolute",
