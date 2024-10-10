@@ -74,7 +74,7 @@ export default function App() {
 
 const RootNavigation = () => {
   const { theme } = useTheme();
-  const insets = useSafeAreaInsets();
+
   const themeStatusBar = themesStatusBar[theme];
 
   return (
@@ -82,7 +82,6 @@ const RootNavigation = () => {
       style={{
         flex: 1,
         backgroundColor: themeStatusBar,
-        paddingTop: insets.top,
       }}
     >
       <ThemeToggle />

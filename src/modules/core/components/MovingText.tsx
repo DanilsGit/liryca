@@ -4,7 +4,6 @@
 
 // React Native
 import { useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
 
 // Hooks
 

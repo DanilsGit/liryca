@@ -18,7 +18,7 @@ import ActionSheet, { SheetProps } from "react-native-actions-sheet";
 // Api
 
 export default function ListenerOptionsSheet(
-  props: SheetProps<"listener-options-sheet">
+  props: SheetProps<"listener-options-sheet">,
 ) {
   const styles = createStyles();
   return (

@@ -4,10 +4,12 @@
 
 // React Native
 import { colors, fontSizes } from "@/constants/tokens";
+import HeaderBackTitleOptions from "@/modules/core/components/HeaderBackTitleOptions";
 import LikeButton from "@/modules/core/components/LikeButton";
 import PlayerControls from "@/modules/core/components/PlayerControls";
 import PlayerProgressBar from "@/modules/core/components/PlayerProgressBar";
 import RepeatButton from "@/modules/core/components/RepeatButton";
+import { HandleShowListenerOptions } from "@/modules/core/constants/handles";
 import { BlurView } from "@react-native-community/blur";
 import { Image, ImageBackground } from "expo-image";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
@@ -46,11 +48,10 @@ export default function PlayerScreen() {
       <BlurView style={styles.absolute} blurType="dark" blurAmount={10} />
 
       <View style={styles.overlay_container}>
-        <View style={styles.header_container}>
-          <Text>Player</Text>
-          <Text>Current</Text>
-          <Text>Options</Text>
-        </View>
+        <HeaderBackTitleOptions
+          dotsAction={HandleShowListenerOptions}
+          title={activeTrack.title}
+        />
 
         <View style={styles.content}>
           <View style={styles.image_container}>
@@ -68,7 +69,7 @@ export default function PlayerScreen() {
                 {activeTrack.title}
               </Text>
               <Text style={styles.information_text_artist}>
-                {activeTrack.album}
+                {activeTrack.artist}
               </Text>
             </View>
             <View style={styles.handle_cotrols}>
@@ -89,6 +90,7 @@ export default function PlayerScreen() {
 const createStyles = ({ top, bottom }: { top: number; bottom: number }) =>
   StyleSheet.create({
     backgroundImage: {
+      paddingTop: top,
       flex: 1,
       resizeMode: "repeat",
     },
@@ -98,11 +100,6 @@ const createStyles = ({ top, bottom }: { top: number; bottom: number }) =>
       left: 0,
       bottom: 0,
       right: 0,
-    },
-    header_container: {
-      flexDirection: "row",
-      justifyContent: "space-between",
-      padding: 5,
     },
     loading_track: {
       flex: 1,

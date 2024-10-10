@@ -23,8 +23,9 @@ import { colors } from "@/constants/tokens";
 import { ThemeText } from "@/constants/themesTypes";
 import PlaylistCarousel from "@/modules/core/components/PlaylistCarousel";
 import TracksList from "@/modules/main/components/TracksList";
-import { SheetManager } from "react-native-actions-sheet";
-import DotsButtom from "@/modules/core/components/DotsButtom";
+import { HandleShowListenerOptions } from "@/modules/core/constants/handles";
+import DotsButton from "@/modules/core/components/DotsButton";
+import { dataPlaylist, dataSongs } from "@/constants/data";
 
 // Definitions
 
@@ -41,95 +42,6 @@ export default function ListenerProfile() {
   const width = Dimensions.get("window").width;
   const styles = createStyles(themesText[theme], themesLine[theme]);
 
-  const dataPlaylist = [
-    {
-      id: 1,
-      title: "Top Lana del Rey",
-      image:
-        "https://cdns-images.dzcdn.net/images/cover/967ac8605268db88a1e597394115365d/1900x1900-000000-80-0-0.jpg",
-    },
-    {
-      id: 2,
-      title: "Motivación extrema brutal",
-      image:
-        "https://blog.spoongraphics.co.uk/wp-content/uploads/2017/album-art/22.jpg",
-    },
-    {
-      id: 3,
-      title: "Tristeza absoluta",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrewB8Ywe7R2rqWM88ZN-e42mtqjwwZdursw&s",
-    },
-    {
-      id: 4,
-      title: "Para el gym",
-      image:
-        "https://www.premadepixels.com/wp-content/uploads/2022/03/Anterior-Album-Cover-PP1.jpg",
-    },
-    {
-      id: 5,
-      title: "study",
-      image:
-        "https://cdn8.openculture.com/2020/01/13215036/ju-art_record_covers-cover_03430-e1578983028736.jpg",
-    },
-    {
-      id: 6,
-      title: "Taylor Swift",
-      image:
-        "https://people.com/thmb/_6-x9pNd5xMw3WJ6luN9YIdNmwg=/4000x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(999x0:1001x2)/taylor-swift-albums-3-5831d0787fb94e94b56b89cd1d203689.jpg",
-    },
-  ];
-
-  const dataSongs = [
-    {
-      id: 1,
-      title: "I love lt guy",
-      album: "Tyler the creator",
-      image:
-        "https://www.billboard.com/wp-content/uploads/media/tyler-the-creator-igor-album-art-2019-billboard-embed.jpg?w=600",
-      url: "https://example.com/igor",
-    },
-    {
-      id: 2,
-      title: "Just white and curly girls",
-      album: "Nirvana",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhF3_2_mVdY5B9Tgh96dj3iJ_r66xhP0di7g&s",
-      url: "https://example.com/nirvana",
-    },
-    {
-      id: 3,
-      title: "Fearless",
-      album: "Taylor swift",
-      image:
-        "https://www.usatoday.com/gcdn/authoring/authoring-images/2024/04/18/USAT/73369581007-001-taylor-swift-2006.jpeg?width=700&height=700&fit=crop&format=pjpg&auto=webp",
-      url: "https://example.com/fearless",
-    },
-    {
-      id: 4,
-      title: "Time is running out",
-      album: "Muse",
-      image: "https://i.scdn.co/image/ab67616d0000b273b6d4566db0d12894a1a3b7a2",
-      url: "https://example.com/muse",
-    },
-    {
-      id: 5,
-      title: "Juno",
-      album: "Sabrina Carpenter",
-      image:
-        "https://images.genius.com/6ecbc2e64e62b35ee2fadf8532056f72.1000x1000x1.png",
-      url: "https://example.com/juno",
-    },
-    {
-      id: 6,
-      title: "Joyride",
-      album: "Kesha",
-      image:
-        "https://upload.wikimedia.org/wikipedia/en/9/98/Kesha_%E2%80%93_Joyride_%28official_single_cover%29.png",
-      url: "https://example.com/joyride",
-    },
-  ];
-
   return (
     <View>
       {/* Header */}
@@ -144,16 +56,9 @@ export default function ListenerProfile() {
         </View>
 
         {/* Options */}
-        <Pressable
-          onPress={() =>
-            SheetManager.show("listener-options-sheet", {
-              payload: { action: () => alert("Hello World") },
-            })
-          }
-          style={{ position: "absolute", bottom: 10, right: 10 }}
-        >
-          <DotsButtom />
-        </Pressable>
+        <View style={{ position: "absolute", bottom: 10, right: 10 }}>
+          <DotsButton action={HandleShowListenerOptions} />
+        </View>
       </View>
 
       {/* Actions */}

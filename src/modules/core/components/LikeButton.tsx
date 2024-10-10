@@ -3,7 +3,7 @@
 // React
 
 // React Native
-import { Pressable, StyleSheet, View } from "react-native";
+import { Pressable, View } from "react-native";
 import { HeartIcon } from "./Icons";
 import { colors } from "@/constants/tokens";
 
@@ -16,10 +16,12 @@ import { colors } from "@/constants/tokens";
 // Props
 interface Props {
   isLiked: boolean;
+  width?: number;
+  height?: number;
 }
 // Api
 
-export default function LikeButton({ isLiked }: Props) {
+export default function LikeButton({ isLiked, width, height }: Props) {
   const handlePress = () => {
     console.log("Like button pressed", isLiked);
   };
@@ -29,8 +31,8 @@ export default function LikeButton({ isLiked }: Props) {
       {isLiked ? (
         <View>
           <HeartIcon
-            width={32}
-            height={32}
+            width={width ?? 30}
+            height={height ?? 30}
             fill={colors.light_purple}
             strokeWidth={0}
           />
@@ -38,10 +40,10 @@ export default function LikeButton({ isLiked }: Props) {
       ) : (
         <View>
           <HeartIcon
-            width={32}
-            height={32}
+            width={width ?? 30}
+            height={height ?? 30}
             fill="transparent"
-            stroke="#fff"
+            stroke={colors.light_purple}
             strokeWidth={2}
           />
         </View>
@@ -49,8 +51,3 @@ export default function LikeButton({ isLiked }: Props) {
     </Pressable>
   );
 }
-
-const createStyles = () =>
-  StyleSheet.create({
-    container: {},
-  });

@@ -19,6 +19,7 @@ import { useTheme } from "@/modules/core/hooks/useTheme";
 import PinkDots from "./PinkDots";
 import LottieView from "lottie-react-native";
 import { PlayTrackIcon } from "@/modules/core/components/Icons";
+import MovingText from "@/modules/core/components/MovingText";
 
 // Props
 interface Props {
@@ -28,10 +29,7 @@ interface Props {
 
 // Api
 
-export default function TrackSongItem({
-  item,
-  onTrackSelect: handleTrackSelect,
-}: Props) {
+export default function TrackSongItem({ item, onTrackSelect }: Props) {
   const { theme } = useTheme();
   const themeText = themesText[theme];
   const { playing } = useIsPlaying();
@@ -39,7 +37,7 @@ export default function TrackSongItem({
   const styles = createStyles(themeText);
 
   return (
-    <Pressable key={item.id} onPress={() => handleTrackSelect(item)}>
+    <Pressable key={item.id} onPress={() => onTrackSelect(item)}>
       {({ pressed }) => (
         <View style={[styles.button_content, { opacity: pressed ? 0.6 : 1 }]}>
           <View style={styles.image_container}>
@@ -60,15 +58,15 @@ export default function TrackSongItem({
           </View>
 
           <View style={styles.text_container}>
-            <Text
+            <MovingText
               style={[
                 styles.text,
                 { color: isActiveSong ? colors.pink : themeText.secondary },
               ]}
-            >
-              {item.title}
-            </Text>
-            <Text style={styles.textSm}>{item.album}</Text>
+              text={item.title}
+              animationThreshold={30}
+            />
+            <Text style={styles.textSm}>{item.artist}</Text>
           </View>
 
           <Pressable
@@ -108,6 +106,7 @@ const createStyles = (colorText: ThemeText) =>
     },
     text_container: {
       justifyContent: "flex-start",
+      overflow: "hidden",
       flex: 1,
       marginLeft: 10,
       padding: 5,
