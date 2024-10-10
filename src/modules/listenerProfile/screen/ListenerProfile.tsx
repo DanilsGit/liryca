@@ -22,7 +22,10 @@ import { useTranslation } from "react-i18next";
 import { colors } from "@/constants/tokens";
 import { ThemeText } from "@/constants/themesTypes";
 import PlaylistCarousel from "@/modules/core/components/PlaylistCarousel";
-import TopSongs from "@/modules/main/components/TopSongs";
+import TracksList from "@/modules/main/components/TracksList";
+import { HandleShowListenerOptions } from "@/modules/core/constants/handles";
+import DotsButton from "@/modules/core/components/DotsButton";
+import { dataPlaylist, dataSongs } from "@/constants/data";
 
 // Definitions
 
@@ -39,75 +42,6 @@ export default function ListenerProfile() {
   const width = Dimensions.get("window").width;
   const styles = createStyles(themesText[theme], themesLine[theme]);
 
-  const dataPlaylist = [
-    {
-      id: 1,
-      title: "Top Lana del Rey",
-      image:
-        "https://cdns-images.dzcdn.net/images/cover/967ac8605268db88a1e597394115365d/1900x1900-000000-80-0-0.jpg",
-    },
-    {
-      id: 2,
-      title: "Motivación extrema brutal",
-      image:
-        "https://blog.spoongraphics.co.uk/wp-content/uploads/2017/album-art/22.jpg",
-    },
-    {
-      id: 3,
-      title: "Tristeza absoluta",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrewB8Ywe7R2rqWM88ZN-e42mtqjwwZdursw&s",
-    },
-    {
-      id: 4,
-      title: "Para el gym",
-      image:
-        "https://www.premadepixels.com/wp-content/uploads/2022/03/Anterior-Album-Cover-PP1.jpg",
-    },
-    {
-      id: 5,
-      title: "study",
-      image:
-        "https://cdn8.openculture.com/2020/01/13215036/ju-art_record_covers-cover_03430-e1578983028736.jpg",
-    },
-    {
-      id: 6,
-      title: "Taylor Swift",
-      image:
-        "https://people.com/thmb/_6-x9pNd5xMw3WJ6luN9YIdNmwg=/4000x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(999x0:1001x2)/taylor-swift-albums-3-5831d0787fb94e94b56b89cd1d203689.jpg",
-    },
-  ];
-
-  const dataSongs = [
-    {
-      id: 1,
-      title: "Cancion 1",
-      album: "Artista 1",
-      image:
-        "https://www.billboard.com/wp-content/uploads/media/tyler-the-creator-igor-album-art-2019-billboard-embed.jpg?w=600",
-    },
-    {
-      id: 2,
-      title: "Cancion 2",
-      album: "Artista 2",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhF3_2_mVdY5B9Tgh96dj3iJ_r66xhP0di7g&s",
-    },
-    {
-      id: 3,
-      title: "Cancion 3",
-      album: "Artista 3",
-      image:
-        "https://www.usatoday.com/gcdn/authoring/authoring-images/2024/04/18/USAT/73369581007-001-taylor-swift-2006.jpeg?width=700&height=700&fit=crop&format=pjpg&auto=webp",
-    },
-    {
-      id: 4,
-      title: "Cancion 4",
-      album: "Artista 4",
-      image:
-        "https://design-assets.adobeprojectm.com/content/download/express/public/urn:aaid:sc:VA6C2:7c3b1fb9-cb85-556e-bc39-b03fc1648116/component?assetType=TEMPLATE&etag=504d5d0336ae43219f94cf4659869a24&revision=c96797a5-5486-4e7c-9413-01b6ab631f29&component_id=2935aeda-9179-4584-902d-4f16d2cbff55",
-    },
-  ];
   return (
     <View>
       {/* Header */}
@@ -122,21 +56,12 @@ export default function ListenerProfile() {
         </View>
 
         {/* Options */}
-        <Pressable
-          onPress={() => alert("options")}
-          style={{ position: "absolute", bottom: 10, right: 10 }}
-        >
-          <Text
-            style={{
-              color: colors.light_purple,
-              fontSize: fontSizes.xl2,
-              fontWeight: "bold",
-            }}
-          >
-            ...
-          </Text>
-        </Pressable>
+        <View style={{ position: "absolute", bottom: 10, right: 10 }}>
+          <DotsButton action={HandleShowListenerOptions} />
+        </View>
       </View>
+
+      {/* Actions */}
 
       {/* Stats and Name */}
       <View style={{ alignItems: "center" }}>
@@ -170,7 +95,7 @@ export default function ListenerProfile() {
 
       {/* Top Songs */}
       <Text style={styles.text_xl_margin}>{t("profile.top_songs")}</Text>
-      <TopSongs data={dataSongs} />
+      <TracksList data={dataSongs} />
 
       {/* logout */}
       <Pressable onPress={logout}>
@@ -189,14 +114,14 @@ const createStyles = (colorText: ThemeText, colorLine: string) =>
     },
     header_icon: {
       position: "absolute",
-      backgroundColor: "#F4B1EE",
+      backgroundColor: colors.light_pink,
       width: 135,
       height: 135,
       borderRadius: 100,
       top: 80,
       justifyContent: "center",
       alignItems: "center",
-      shadowColor: "#E050C1",
+      shadowColor: colors.purple,
       shadowRadius: 30,
       shadowOpacity: 0.1,
       shadowOffset: { width: 5, height: 5 },

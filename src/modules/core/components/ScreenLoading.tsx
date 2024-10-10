@@ -7,6 +7,7 @@ import { themesBackground } from "@/constants/themes";
 import { LinearGradient } from "expo-linear-gradient";
 import { ActivityIndicator } from "react-native";
 import { useTheme } from "../hooks/useTheme";
+import { colors } from "@/constants/tokens";
 
 // Hooks
 
@@ -29,7 +30,7 @@ export default function ScreenLoading() {
       locations={[0, 1]}
       style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
     >
-      <ActivityIndicator size="large" color="#a5f" />
+      <ActivityIndicator size="large" color={colors.purple} />
     </LinearGradient>
   );
 }

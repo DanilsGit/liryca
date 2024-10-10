@@ -1,9 +1,9 @@
 // Expo
 import { StatusBar } from "expo-status-bar";
-import { Stack } from "expo-router";
+import { SplashScreen, Stack } from "expo-router";
 import * as Font from "expo-font";
 // React
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { I18nextProvider } from "react-i18next";
 
 // React Native
@@ -14,17 +14,31 @@ import {
 } from "react-native-safe-area-context";
 
 // Hooks
-import { useTheme } from "@m/core/hooks/useTheme";
+import { useTheme } from "@/modules/core/hooks/useTheme";
 // Definitions
 import { themesStatusBar } from "@/constants/themes";
 import i18next from "@/services/i18next";
+import "@m/core/actionSheets/sheets";
 
 // Components
-import ThemeToggle from "@/modules/core/components/ThemeToggle";
-import { useAuth } from "@/modules/auth/hooks/useAuth";
+import ThemeToggle from "@m/core/components/ThemeToggle";
+import { useAuth } from "@m/auth/hooks/useAuth";
+import { useSetupTrackPlayer } from "@m/main/hooks/useSetupTrackPlayer";
+import { useLogTrackPlayerState } from "@m/main/hooks/useLogTrackPlayerState";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { SheetProvider } from "react-native-actions-sheet";
+
+// SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const { loadAsyncUser } = useAuth();
+  useLogTrackPlayerState();
+
+  const handleTrackPlayerLoaded = useCallback(() => {
+    SplashScreen.hideAsync();
+  }, []);
+
+  useSetupTrackPlayer({ onLoad: handleTrackPlayerLoaded });
 
   const [fontsLoaded, setFontsLoaded] = useState(false);
   useEffect(() => {
@@ -46,17 +60,21 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <StatusBar style="auto" />
-      <I18nextProvider i18n={i18next}>
-        <RootNavigation />
-      </I18nextProvider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <SheetProvider>
+          <StatusBar style="auto" />
+          <I18nextProvider i18n={i18next}>
+            <RootNavigation />
+          </I18nextProvider>
+        </SheetProvider>
+      </GestureHandlerRootView>
     </SafeAreaProvider>
   );
 }
 
 const RootNavigation = () => {
   const { theme } = useTheme();
-  const insets = useSafeAreaInsets();
+
   const themeStatusBar = themesStatusBar[theme];
 
   return (
@@ -64,7 +82,6 @@ const RootNavigation = () => {
       style={{
         flex: 1,
         backgroundColor: themeStatusBar,
-        paddingTop: insets.top,
       }}
     >
       <ThemeToggle />
@@ -72,6 +89,15 @@ const RootNavigation = () => {
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="(auth)" />
+        <Stack.Screen
+          name="playerScreen"
+          options={{
+            presentation: "card",
+            gestureEnabled: true,
+            gestureDirection: "vertical",
+            animationDuration: 400,
+          }}
+        />
       </Stack>
     </View>
   );

@@ -4,13 +4,36 @@
     "title_afternoon": "Good afternoon * . +",
     "title_evening": "Good evening * . +",
     "playlist": "Your playlists",
-    "artist": "Don't lose track of them!",
-    "top_songs": "Most listened to today"
+    "artist": "Featured artists",
+    "top_songs": "Top songs today",
+    "filter": {
+      "all": "All",
+      "songs": "Songs",
+      "playlist": "Playlists"
+    }
   },
   "profile": {
     "followers": "Followers",
     "likes": "Likes",
     "playlists": "Playlists",
-    "top_songs": "Your most listened to"
+    "top_songs": "Your most listened"
+  },
+  "auth": {
+    "welcome": "Welcome",
+    "artist": "Artist",
+    "user": "Little star",
+    "login": "Login",
+    "signup": "Join us",
+    "text_option": "Want to listen to music?",
+    "email": "Enter your email",
+    "password": "Enter your password",
+    "forgot_password": "Forgot your password?",
+    "new_user": "New here? Join us!",
+    "have_account": "Already have an account? Login!",
+    "next": "Next",
+    "register_title": "Sign up",
+    "register_password": "Set your password",
+    "register_password_add": "Set a strong password to protect your account.",
+    "end_register": "Finish"
   }
 }

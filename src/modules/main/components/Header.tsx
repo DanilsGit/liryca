@@ -8,6 +8,7 @@ import { fontSizes } from "@/constants/tokens";
 import React from "react";
 
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
+import { useTranslation } from "react-i18next";
 
 // FALTARÍA: Hacer que los botones sean presionables, como en la nav bar
 
@@ -27,6 +28,7 @@ import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 
 export default function Header() {
   const { user } = useAuth();
+  const { t } = useTranslation();
 
   return (
     <View style={styles.header}>
@@ -35,13 +37,13 @@ export default function Header() {
       </View>
       <View style={styles.buttons}>
         <View style={styles.button}>
-          <Text style={styles.header_text}>Todas</Text>
+          <Text style={styles.header_text}>{t("main.filter.all")}</Text>
         </View>
         <View style={styles.button}>
-          <Text style={styles.header_text}>Canciones</Text>
+          <Text style={styles.header_text}>{t("main.filter.songs")}</Text>
         </View>
         <View style={styles.button}>
-          <Text style={styles.header_text}>Playlist</Text>
+          <Text style={styles.header_text}>{t("main.filter.playlist")}</Text>
         </View>
       </View>
     </View>
@@ -60,7 +62,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
   },
   header_icon: {
-    backgroundColor: "#F4B1EE",
+    backgroundColor: colors.light_pink,
     width: 45,
     height: 45,
     borderRadius: 100,
