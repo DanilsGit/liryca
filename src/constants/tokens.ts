@@ -6,6 +6,7 @@ export const colors = {
   pink: "#E06FD5", // text
   purple: "#7744AB", // background color
   dark_purple: "#1C1521", // text
+  medium_purple: "#2f2238", // text
   light_pink: "#c69bd4", // background color
   light_blue: "#6F8FAC", // gradient for artist icon
   light_purple: "#DAC3E9",

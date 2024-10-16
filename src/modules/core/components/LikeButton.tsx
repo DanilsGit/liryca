@@ -31,8 +31,8 @@ export default function LikeButton({ isLiked, width, height }: Props) {
       {isLiked ? (
         <View>
           <HeartIcon
-            width={width ?? 30}
-            height={height ?? 30}
+            width={width ?? 25}
+            height={height ?? 25}
             fill={colors.light_purple}
             strokeWidth={0}
           />
@@ -40,10 +40,10 @@ export default function LikeButton({ isLiked, width, height }: Props) {
       ) : (
         <View>
           <HeartIcon
-            width={width ?? 30}
-            height={height ?? 30}
-            fill="transparent"
-            stroke={colors.light_purple}
+            width={width ?? 22}
+            height={height ?? 22}
+            fill={colors.light_pink}
+            stroke={colors.light_pink}
             strokeWidth={2}
           />
         </View>

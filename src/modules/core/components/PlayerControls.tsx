@@ -7,6 +7,8 @@ import { StyleSheet, View, ViewStyle } from "react-native";
 import SkipToPreviusButton from "./SkipToPreviusButton";
 import SkipToNextButton from "./SkipToNextButton";
 import PlayPausePlayerButton from "./PlayPausePlayerButton";
+import LikeButton from "@/modules/core/components/LikeButton";
+import RepeatButton from "@/modules/core/components/RepeatButton";
 
 // Hooks
 
@@ -21,13 +23,16 @@ interface Props {
 // Api
 
 export default function PlayerControls({ style }: Props) {
+  const isLiked = false;
   const styles = createStyles();
   return (
     <View style={[styles.container, style]}>
       <View style={styles.row}>
-        <SkipToPreviusButton size={30} />
-        <PlayPausePlayerButton size={50} />
-        <SkipToNextButton size={30} />
+        <RepeatButton />
+        <SkipToPreviusButton size={35} />
+        <PlayPausePlayerButton size={70} />
+        <SkipToNextButton size={35} />
+        <LikeButton isLiked={isLiked} />
       </View>
     </View>
   );
@@ -40,7 +45,7 @@ const createStyles = () =>
     },
     row: {
       flexDirection: "row",
-      justifyContent: "space-evenly",
+      justifyContent: "space-between",
       alignItems: "center",
     },
   });

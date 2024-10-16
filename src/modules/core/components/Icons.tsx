@@ -4,6 +4,7 @@ import Octicons from "@expo/vector-icons/Octicons";
 import { Image } from "react-native";
 import Svg, { Circle, Path, Rect } from "react-native-svg";
 import { SvgIconProps } from "../lib/types";
+import { colors } from "@/constants/tokens";
 
 export const HomeIcon = (props: any) => {
   return <AntDesign name="home" size={24} color="#fff" {...props} />;
@@ -75,7 +76,7 @@ export const PlayPlayerIcon = (props: SvgIconProps) => {
       <Path
         d="M129.725 90.725L77.382 48a1 1 0 00-1.632.775v85.45a1 1 0 001.632.775l52.343-42.725a1 1 0 000-1.55z"
         fill="#2C2135"
-        stroke="#2C2135"
+        stroke="#fff"
         strokeWidth={8}
       />
     </Svg>
@@ -140,7 +141,7 @@ export const ShareIcon = (props: SvgIconProps) => {
   return (
     <Svg
       viewBox="0 0 58 58"
-      fill="none"
+      fill={colors.light_pink}
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >

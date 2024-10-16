@@ -29,7 +29,6 @@ import { useActiveTrack } from "react-native-track-player";
 export default function PlayerScreen() {
   const { top, bottom } = useSafeAreaInsets();
   const styles = createStyles({ top, bottom });
-  const isLiked = false;
 
   const activeTrack = useActiveTrack();
 
@@ -45,7 +44,7 @@ export default function PlayerScreen() {
       source={{ uri: activeTrack.image }}
       style={styles.backgroundImage}
     >
-      <BlurView style={styles.absolute} blurType="dark" blurAmount={10} />
+      <BlurView style={styles.absolute} blurType="dark" blurAmount={100} />
 
       <View style={styles.overlay_container}>
         <HeaderBackTitleOptions
@@ -72,14 +71,10 @@ export default function PlayerScreen() {
                 {activeTrack.artist}
               </Text>
             </View>
-            <View style={styles.handle_cotrols}>
-              <RepeatButton />
-              <LikeButton isLiked={isLiked} />
-            </View>
             <PlayerProgressBar
-              style={{ marginTop: 20, height: 30, width: "100%" }}
+              style={{ marginTop: 35, height: 30, width: "100%" }}
             />
-            <PlayerControls style={{ marginTop: 20 }} />
+            <PlayerControls style={{ marginTop: 30 }} />
           </View>
         </View>
       </View>
@@ -117,7 +112,7 @@ const createStyles = ({ top, bottom }: { top: number; bottom: number }) =>
     image_container: {
       justifyContent: "center",
       alignItems: "center",
-      height: "40%",
+      height: "50%",
     },
     image_shadow: {
       height: "100%",
@@ -144,22 +139,25 @@ const createStyles = ({ top, bottom }: { top: number; bottom: number }) =>
       justifyContent: "center",
       alignItems: "center",
       paddingHorizontal: 30,
-      gap: 20,
+      gap: 10,
     },
     knowed_content: {
       alignItems: "flex-start",
       width: "100%",
+      gap: 5,
     },
     information_text_title: {
       color: colors.white,
       fontSize: fontSizes.xl2,
-      fontFamily: "PlayfairDisplay-Regular",
+      fontFamily: "PlayfairDisplay-Bold",
       textAlign: "center",
+      textTransform: "capitalize",
     },
     information_text_artist: {
-      color: colors.white,
+      color: "#fff9",
       fontSize: fontSizes.lg,
       fontFamily: "M-PLUS-2-Regular",
+      letterSpacing: 1.5,
     },
     handle_cotrols: {
       flexDirection: "row",

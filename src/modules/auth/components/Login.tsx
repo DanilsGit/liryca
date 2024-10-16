@@ -103,12 +103,12 @@ const createStyles = (height: number) =>
       justifyContent: "space-between",
     },
     title: {
-      fontSize: fontSizes.xl2,
+      fontSize: fontSizes.xl3,
       fontFamily: "M-PLUS-2-Bold",
     },
     input_container: {
       flex: 1,
       justifyContent: "center",
-      gap: 30,
+      gap: 50,
     },
   });

@@ -3,6 +3,7 @@
 // React
 
 // React Native
+import React, { useState, useEffect } from "react";
 import { colors, fontSizes } from "@/constants/tokens";
 import { Image } from "expo-image";
 import { Pressable, StyleSheet, View, ViewProps } from "react-native";
@@ -10,9 +11,9 @@ import { useActiveTrack } from "react-native-track-player";
 import PlayPauseButton from "./PlayPauseButton";
 import SkipToNextButton from "./SkipToNextButton";
 import { useLastActiveTrack } from "../hooks/useLastActiveTrack";
-import { LinearGradient } from "expo-linear-gradient";
 import MovingText from "./MovingText";
 import { useRouter } from "expo-router";
+import { getColors } from "react-native-image-colors";
 
 // Hooks
 
@@ -33,6 +34,8 @@ export default function FloatingPlayer({ style }: ViewProps) {
   const activeTrack = useActiveTrack();
   const lastActiveTrack = useLastActiveTrack();
 
+  // Para el color de fondo
+
   const displayedTrack = activeTrack ?? lastActiveTrack;
 
   if (!displayedTrack) return null;
@@ -43,13 +46,7 @@ export default function FloatingPlayer({ style }: ViewProps) {
 
   return (
     <Pressable style={[style]} onPress={handlePress}>
-      <LinearGradient
-        colors={[colors.pink, colors.purple, colors.light_blue]}
-        start={{ x: 0, y: -1.5 }}
-        end={{ x: 0, y: 1 }}
-        locations={[0, 0.5, 1]}
-        style={styles.pressable}
-      >
+      <View style={styles.pressable}>
         <Image
           source={{ uri: displayedTrack.image }}
           style={{ ...styles.image }}
@@ -60,13 +57,18 @@ export default function FloatingPlayer({ style }: ViewProps) {
             animationThreshold={32}
             text={displayedTrack.title}
           />
+          <MovingText
+            style={styles.subtitle}
+            animationThreshold={32}
+            text={displayedTrack.artist}
+          />
         </View>
 
         <View style={styles.controllers_container}>
           <PlayPauseButton size={24} />
           <SkipToNextButton size={24} />
         </View>
-      </LinearGradient>
+      </View>
     </Pressable>
   );
 }
@@ -77,15 +79,15 @@ const createStyles = () =>
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "space-between",
-      padding: 8,
-      backgroundColor: colors.pink,
-      borderRadius: 12,
-      paddingVertical: 10,
+      padding: 15,
+      borderRadius: 20,
+      paddingVertical: 12,
+      backgroundColor: colors.medium_purple,
     },
     image: {
-      width: 40,
-      height: 40,
-      borderRadius: 5,
+      width: 50,
+      height: 50,
+      borderRadius: 100,
     },
     title_container: {
       overflow: "hidden",
@@ -93,15 +95,24 @@ const createStyles = () =>
       flex: 1,
     },
     title: {
-      fontSize: fontSizes.xl,
+      fontSize: fontSizes.lg,
       fontWeight: "bold",
-      paddingLeft: 10,
+      paddingLeft: 6,
+      color: colors.light_purple,
+      textTransform: "capitalize",
+    },
+    subtitle: {
+      fontSize: fontSizes.md,
+      fontWeight: "semibold",
+      paddingLeft: 6,
       color: colors.white,
+      opacity: 0.7,
     },
     controllers_container: {
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "space-between",
       paddingRight: 10,
+      gap: 5,
     },
   });

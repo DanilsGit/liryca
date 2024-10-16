@@ -49,8 +49,8 @@ export default function PlayerProgressBar({ style }: Props) {
         thumbWidth={15}
         renderBubble={() => null}
         theme={{
-          maximumTrackTintColor: colors.black,
-          minimumTrackTintColor: colors.light_purple,
+          maximumTrackTintColor: "#fff2",
+          minimumTrackTintColor: colors.light_pink,
         }}
         onSlidingStart={() => (isSliding.value = true)}
         onValueChange={async (value) => {
@@ -65,7 +65,7 @@ export default function PlayerProgressBar({ style }: Props) {
       <View style={styles.time_row}>
         <Text style={styles.time_text}>{trackElapsedTime}</Text>
         <Text style={styles.time_text}>
-          {"-"}
+          {"- "}
           {trackRemainingTime}
         </Text>
       </View>
@@ -76,17 +76,18 @@ export default function PlayerProgressBar({ style }: Props) {
 const createStyles = () =>
   StyleSheet.create({
     slider: {
-      height: 7,
-      borderRadius: 16,
+      height: 4,
+      borderRadius: 5,
     },
     time_row: {
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "baseline",
-      marginTop: 5,
+      marginTop: 15,
     },
     time_text: {
-      color: colors.white,
-      fontSize: fontSizes.md,
+      color: "#fff9",
+      fontFamily: "M-PLUS-2-Bold",
+      fontSize: fontSizes.sm,
     },
   });
