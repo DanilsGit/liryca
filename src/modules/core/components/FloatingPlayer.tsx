@@ -3,7 +3,7 @@
 // React
 
 // React Native
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { colors, fontSizes } from "@/constants/tokens";
 import { Image } from "expo-image";
 import { Pressable, StyleSheet, View, ViewProps } from "react-native";
@@ -13,9 +13,9 @@ import SkipToNextButton from "./SkipToNextButton";
 import { useLastActiveTrack } from "../hooks/useLastActiveTrack";
 import MovingText from "./MovingText";
 import { useRouter } from "expo-router";
-import { getColors } from "react-native-image-colors";
 
 // Hooks
+import { useImageColors } from "../hooks/useImageColors";
 
 // Definitions
 
@@ -26,7 +26,6 @@ import { getColors } from "react-native-image-colors";
 // Api
 
 export default function FloatingPlayer({ style }: ViewProps) {
-  const styles = createStyles();
   // Apertura para la card
   const router = useRouter();
 
@@ -38,6 +37,9 @@ export default function FloatingPlayer({ style }: ViewProps) {
 
   const displayedTrack = activeTrack ?? lastActiveTrack;
 
+  const imageColors = useImageColors(displayedTrack?.image);
+  const styles = createStyles(imageColors);
+
   if (!displayedTrack) return null;
 
   const handlePress = () => {
@@ -45,7 +47,7 @@ export default function FloatingPlayer({ style }: ViewProps) {
   };
 
   return (
-    <Pressable style={[style]} onPress={handlePress}>
+    <Pressable style={style} onPress={handlePress}>
       <View style={styles.pressable}>
         <Image
           source={{ uri: displayedTrack.image }}
@@ -73,7 +75,7 @@ export default function FloatingPlayer({ style }: ViewProps) {
   );
 }
 
-const createStyles = () =>
+const createStyles = (imageColors: any) =>
   StyleSheet.create({
     pressable: {
       flexDirection: "row",
@@ -82,7 +84,7 @@ const createStyles = () =>
       padding: 15,
       borderRadius: 20,
       paddingVertical: 12,
-      backgroundColor: colors.medium_purple,
+      backgroundColor: imageColors?.dominant || colors.purple,
     },
     image: {
       width: 50,
