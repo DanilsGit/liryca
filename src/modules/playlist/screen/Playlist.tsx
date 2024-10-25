@@ -3,18 +3,14 @@
 // React
 
 // React Native
-import { themesText } from "@/constants/themes";
-import { ThemeText } from "@/constants/themesTypes";
 import { colors, fontSizes } from "@/constants/tokens";
 import HeaderBackTitleOptions from "@/modules/core/components/HeaderBackTitleOptions";
 import LikeButton from "@/modules/core/components/LikeButton";
 import ShareButton from "@/modules/core/components/ShareButton";
 import { HandleShowListenerOptions } from "@/modules/core/constants/handles";
-import { useTheme } from "@/modules/core/hooks/useTheme";
 import { Image } from "expo-image";
 import { StyleSheet, Text, View } from "react-native";
 import TrackIndexList from "../components/TrackIndexList";
-import { dataSongs } from "@/constants/data";
 import { Track } from "react-native-track-player";
 
 // Hooks

@@ -3,11 +3,13 @@ export const colors = {
   white: "#fff",
   gray: "#888",
   orange: "#FFA500",
-  pink: "#E06FD5", // text
-  purple: "#7744AB", // background color
-  dark_purple: "#1C1521", // text
-  light_pink: "#c69bd4", // background color
-  light_blue: "#6F8FAC", // gradient for artist icon
+  pink: "#E06FD5",
+  purple: "#7744AB",
+  semi_dark_purple: "#2C2135",
+  dark_purple: "#1C1521",
+  light_pink: "#c69bd4",
+  dark_pink: "#4D2F55",
+  light_blue: "#6F8FAC",
   light_purple: "#DAC3E9",
 };
 

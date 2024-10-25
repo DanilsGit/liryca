@@ -1,3 +1,5 @@
+import { Album, Post } from "@/modules/core/lib/types";
+
 export const dataPlaylist = [
   {
     id: 1,
@@ -61,6 +63,96 @@ export const dataArtist = [
     id: 5,
     image:
       "https://imgs.search.brave.com/OiCkBUVt1zO9jzLVN7wGpt3kZXp2y3P1v9pAhWh1jPk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sYXN0/Zm0uZnJlZXRscy5m/YXN0bHkubmV0L2kv/dS8zMDB4MzAwLzgy/ZmI2YWM4NTQ5N2Mz/ZThjYTlkODRjY2My/Y2I0Y2MxLmpwZw",
+  },
+];
+
+export const dataAlbums: Album[] = [
+  {
+    id: 1,
+    title: "Album One",
+    year: 2020,
+    image:
+      "https://lastfm.freetls.fastly.net/i/u/300x300/136966ce3225f90e17f0e1f273c48835.jpg",
+    type: "Album",
+    from: "Artist1",
+  },
+  {
+    id: 2,
+    title: "Album Two",
+    year: 2019,
+    image:
+      "https://cdns-images.dzcdn.net/images/cover/bd904e47db5549124f099c1fef304dc9/500x500.jpg",
+    type: "Album",
+    from: "Artist2",
+  },
+  {
+    id: 3,
+    title: "Album Three",
+    year: 2021,
+    image:
+      "https://akamai.sscdn.co/uploadfile/letras/albuns/8/8/a/f/192201695664406.jpg",
+    type: "Album",
+    from: "Artist3",
+  },
+  {
+    id: 4,
+    title: "Album Four",
+    year: 2018,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJCBtNDxSmuGoIDqZjhaCIZ72rPioivqbTow&s",
+    type: "Album",
+    from: "Artist4",
+  },
+  {
+    id: 5,
+    title: "Album Five",
+    year: 2022,
+    image: "https://i.scdn.co/image/ab6761610000e5eb3a49b0a3954e460a8a76ed90",
+    type: "Album",
+    from: "Artist5",
+  },
+];
+
+export const dataPost: Post[] = [
+  {
+    id: 1,
+    from: "King Crimson",
+    message: "Check out this new album!",
+    created_time: "2023-10-01T10:00:00Z",
+    album_attachment: null,
+  },
+  {
+    id: 2,
+    from: "King Crimson",
+    message: "Loving this song!",
+    created_time: "2023-10-02T11:00:00Z",
+  },
+  {
+    id: 3,
+    from: "King Crimson",
+    message: "Hi fans!! Tomorrow we travel to alemania for meeting girls!!!!",
+    created_time: "2023-10-03T12:00:00Z",
+    album_attachment: dataAlbums[3],
+  },
+  {
+    id: 4,
+    from: "King Crimson",
+    message: "Can't stop listening to this song!",
+    created_time: "2023-10-04T13:00:00Z",
+    song_attachment: {
+      id: 4,
+      title: "Time is running out",
+      artist: "Muse",
+      image: "https://i.scdn.co/image/ab67616d0000b273b6d4566db0d12894a1a3b7a2",
+      url: "https://firebasestorage.googleapis.com/v0/b/liryca-c9f2e.appspot.com/o/songs%2Fspotifydown.com%20-%20JOYRIDE.mp3?alt=media&token=2d7fd7e9-434a-4435-a8b0-db93152a13a0",
+    },
+  },
+  {
+    id: 5,
+    from: "King Crimson",
+    message: "New album release!",
+    created_time: "2023-10-05T14:00:00Z",
+    album_attachment: dataAlbums[4],
   },
 ];
 

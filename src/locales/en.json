@@ -16,7 +16,9 @@
     "followers": "Followers",
     "likes": "Likes",
     "playlists": "Playlists",
-    "top_songs": "Your most listened"
+    "top_songs": "Your most listened",
+    "filter_music": "Music",
+    "filter_posts": "Posts"
   },
   "auth": {
     "welcome": "Welcome",
@@ -34,6 +36,16 @@
     "register_title": "Sign up",
     "register_password": "Set your password",
     "register_password_add": "Set a strong password to protect your account.",
+    "back_register": "Back",
     "end_register": "Finish"
+  },
+  "artist_public_profile": {
+    "following": "Following",
+    "follow": "Follow",
+    "followers": "Followers",
+    "likes": "Likes"
+  },
+  "post": {
+    "recommended": "has recommended"
   }
 }

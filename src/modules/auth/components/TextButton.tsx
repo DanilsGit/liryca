@@ -63,6 +63,6 @@ const createStyles = () =>
       fontSize: fontSizes.sm,
       color: colors.white,
       textAlign: "center",
-      fontFamily: "M-PLUS-2-Regular",
+      fontFamily: "M-PLUS-2-Bold",
     },
   });
