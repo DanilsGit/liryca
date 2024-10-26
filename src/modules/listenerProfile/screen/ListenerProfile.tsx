@@ -38,9 +38,9 @@ import { dataPlaylist, dataSongs } from "@/constants/data";
 export default function ListenerProfile() {
   const { user, logout } = useAuth();
   const { theme } = useTheme();
+  const styles = createStyles(themesText[theme], themesLine[theme]);
   const { t } = useTranslation();
   const width = Dimensions.get("window").width;
-  const styles = createStyles(themesText[theme], themesLine[theme]);
 
   return (
     <View>
@@ -96,11 +96,6 @@ export default function ListenerProfile() {
       {/* Top Songs */}
       <Text style={styles.text_xl_margin}>{t("profile.top_songs")}</Text>
       <TracksList data={dataSongs} />
-
-      {/* logout */}
-      <Pressable onPress={logout}>
-        <Text>Logout</Text>
-      </Pressable>
     </View>
   );
 }

@@ -6,7 +6,6 @@
 import { colors, fontSizes } from "@/constants/tokens";
 import { useTranslation } from "react-i18next";
 import {
-  Button,
   Dimensions,
   Pressable,
   StyleSheet,
@@ -45,20 +44,7 @@ export default function Register() {
     <View style={styles.container}>
       {settingPassword ? (
         <View style={styles.white_panel}>
-          <View style={{ gap: 20 }}>
-            <Pressable
-              onPress={() => setSettingPassword(false)}
-              style={{
-                position: "absolute",
-                zIndex: 1,
-                top: 0,
-                right: 0,
-                borderRadius: 100,
-                width: 30,
-                height: 30,
-                backgroundColor: colors.light_purple,
-              }}
-            ></Pressable>
+          <View style={{ gap: 10 }}>
             <Text style={styles.title}>{t("auth.register_password")}</Text>
             <Text style={styles.subTitle}>
               {t("auth.register_password_add")}
@@ -80,6 +66,10 @@ export default function Register() {
               onChangeText={(text) => handleChange("confirmPassword", text)}
             />
           </View>
+          <ButtonRounded
+            handleClick={() => setSettingPassword(false)}
+            text={t("auth.back_register")}
+          />
           <ButtonRounded
             handleClick={handleRegister}
             text={t("auth.end_register")}
@@ -170,6 +160,7 @@ const createStyles = (height: number) =>
       width: "80%",
       height: height * 0.7,
       padding: 30,
+      gap: 20,
     },
     title: {
       fontSize: fontSizes.xl2,

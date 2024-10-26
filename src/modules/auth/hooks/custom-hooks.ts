@@ -40,7 +40,7 @@ export const useRegistrationForm = () => {
       following: 3,
       playlist: 10,
       liked: 3,
-      role: "listener",
+      role: "artist",
       token: "",
     };
 
@@ -104,21 +104,4 @@ export const useCountries = () => {
   }, []);
 
   return { countries, loading };
-};
-
-export const useAuthScren = () => {
-  const [currentScreen, setCurrentScreen] = useState<AuthScreen>("welcome");
-
-  const changeLogin = () => setCurrentScreen("login");
-  const changeRegister = () => setCurrentScreen("register");
-  const changeForgotPassword = () => setCurrentScreen("forgotPassword");
-  const changeSetPassword = () => setCurrentScreen("setPassword");
-
-  return {
-    currentScreen,
-    changeLogin,
-    changeRegister,
-    changeForgotPassword,
-    changeSetPassword,
-  };
 };

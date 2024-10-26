@@ -4,14 +4,11 @@
 
 // React Native
 import { dataSongs } from "@/constants/data";
-import { themesText } from "@/constants/themes";
-import { ThemeText } from "@/constants/themesTypes";
-import Screen from "@/modules/core/components/Screen";
+
 import ScreenImage from "@/modules/core/components/ScreenImage";
-import { useTheme } from "@/modules/core/hooks/useTheme";
+
 import Playlist from "@/modules/playlist/screen/Playlist";
 import { useLocalSearchParams } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
 
 // Hooks
 

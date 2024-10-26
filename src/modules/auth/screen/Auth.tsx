@@ -3,47 +3,42 @@
 // React
 
 // React Native
-import { Dimensions, Image, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 // Hooks
 
 // Definitions
-import { useState } from "react";
 import Welcome from "../components/Welcome";
 import Login from "../components/Login";
 import { useTranslation } from "react-i18next";
 import TextButton from "../components/TextButton";
 import Register from "../components/Register";
-import { useAuthScren } from "../hooks/custom-hooks";
+import { ImageBackground } from "expo-image";
+import { useKeyboard } from "../hooks/useActiveKeyboard";
+import { useAuthScreen } from "../hooks/useAuthScreen";
 
 // Components
-
 // Props
 
 // Api
 
 export default function Auth() {
   const { currentScreen, changeLogin, changeRegister, changeForgotPassword } =
-    useAuthScren();
+    useAuthScreen();
+
+  const { keyboardVisible } = useKeyboard();
 
   const { t } = useTranslation();
 
-  const [width, height] = [
-    Dimensions.get("window").width,
-    Dimensions.get("window").height,
-  ];
-
-  const styles = createStyles(height);
+  const styles = createStyles(keyboardVisible);
 
   return (
-    <View style={{ flex: 1 }}>
-      <Image
-        source={{
-          uri: "https://firebasestorage.googleapis.com/v0/b/liryca-c9f2e.appspot.com/o/auth%2Fspace.png?alt=media&token=fc1a9458-f62b-491c-a20e-2eb2d800731c",
-        }}
-        style={{ flex: 1, position: "absolute", width, height }}
-        resizeMode="repeat"
-      />
+    <ImageBackground
+      source={{
+        uri: "https://firebasestorage.googleapis.com/v0/b/liryca-c9f2e.appspot.com/o/auth%2Fspace.png?alt=media&token=fc1a9458-f62b-491c-a20e-2eb2d800731c",
+      }}
+      style={{ flex: 1, position: "absolute", width: "100%", height: "100%" }}
+    >
       {currentScreen === "welcome" && (
         <Welcome
           redirectLogin={changeLogin}
@@ -54,6 +49,7 @@ export default function Auth() {
       {currentScreen === "register" && <Register />}
       {currentScreen === "forgotPassword" && <View />}
 
+      {/* Texto flotante en la parte de abajo de las vistas */}
       <TextButton
         text={
           (currentScreen === "login" && t("auth.new_user")) ||
@@ -67,15 +63,16 @@ export default function Auth() {
         }
         containerStyles={styles.register_text}
       />
-    </View>
+    </ImageBackground>
   );
 }
 
-const createStyles = (height: number) =>
+const createStyles = (keyboardVisible: boolean) =>
   StyleSheet.create({
     register_text: {
-      position: "absolute",
-      bottom: height * 0.05,
+      display: keyboardVisible ? "none" : "flex",
       width: "100%",
+      position: "absolute",
+      bottom: 40,
     },
   });
