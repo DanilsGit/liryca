@@ -23,7 +23,7 @@ export default function ShareButton({ width, height }: Props) {
   return (
     <Pressable onPress={() => console.log("Share button pressed")}>
       <View>
-        <ShareIcon width={width ?? 30} height={height ?? 30} />
+        <ShareIcon width={width ?? 24} height={height ?? 24} />
       </View>
     </Pressable>
   );

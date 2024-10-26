@@ -67,7 +67,7 @@ const createStyles = () =>
       flexDirection: "row",
       alignItems: "center",
       padding: 10,
-      gap: 25,
+      gap: 20,
     },
     texts: {
       flex: 1,
@@ -78,6 +78,7 @@ const createStyles = () =>
       color: "white",
       fontSize: fontSizes.md,
       fontFamily: "M-PLUS-2-Regular",
+      textTransform: "capitalize",
     },
     text_index: {
       fontFamily: "M-PLUS-2-Bold",
@@ -85,6 +86,7 @@ const createStyles = () =>
     text_title: {
       fontSize: fontSizes.lg,
       fontFamily: "M-PLUS-2-Bold",
+      textTransform: "capitalize",
     },
     pressable_dots: {
       alignItems: "center",

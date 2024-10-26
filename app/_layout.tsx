@@ -48,6 +48,7 @@ export default function App() {
         "M-PLUS-2-ExtraBold": require("@/assets/fonts/MPLUS2-ExtraBold.ttf"),
         "M-PLUS-2-Regular": require("@/assets/fonts/MPLUS2-Regular.ttf"),
         "PlayfairDisplay-Regular": require("@/assets/fonts/PlayfairDisplay-VariableFont_wght.ttf"),
+        "PlayfairDisplay-Bold": require("@/assets/fonts/PlayfairDisplay-Bold.ttf"),
       }).then(() => setFontsLoaded(true));
     }
   }, [fontsLoaded]);

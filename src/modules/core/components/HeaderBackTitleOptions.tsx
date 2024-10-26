@@ -46,7 +46,7 @@ const createStyles = () =>
     header_container: {
       flexDirection: "row",
       justifyContent: "space-between",
-      padding: 5,
+      padding: 10,
     },
     movingText_container: {
       flex: 1,
@@ -57,9 +57,11 @@ const createStyles = () =>
     },
     header_text: {
       color: colors.white,
-      fontSize: fontSizes.xl,
-      fontFamily: "M-PLUS-2-Regular",
+      fontSize: fontSizes.md,
+      fontFamily: "M-PLUS-2-semibold",
       textAlign: "center",
       width: "100%",
+      textTransform: "uppercase",
+      letterSpacing: 2,
     },
   });

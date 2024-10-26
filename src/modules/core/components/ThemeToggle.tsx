@@ -2,6 +2,7 @@
 
 import { Pressable, Text, View } from "react-native";
 import { useTheme } from "../hooks/useTheme";
+import { colors } from "@/constants/tokens";
 
 // React
 
@@ -23,10 +24,10 @@ export default function ThemeToggle() {
     <View
       style={{
         position: "absolute",
-        bottom: 200,
+        bottom: 300,
         right: 0,
         zIndex: 2,
-        gap: 20,
+        gap: 10,
       }}
     >
       <Pressable onPress={() => selectTheme("light")}>
@@ -35,12 +36,12 @@ export default function ThemeToggle() {
             width: 50,
             height: 20,
             borderRadius: 30,
-            backgroundColor: "red",
+            backgroundColor: colors.light_purple,
             alignItems: "center",
             justifyContent: "center",
           }}
         >
-          <Text style={{ color: "#fff" }}>Light</Text>
+          <Text style={{ color: "#000" }}>Claro</Text>
         </View>
       </Pressable>
       <Pressable onPress={() => selectTheme("dark")}>
@@ -49,12 +50,12 @@ export default function ThemeToggle() {
             width: 50,
             height: 20,
             borderRadius: 30,
-            backgroundColor: "red",
+            backgroundColor: colors.dark_purple,
             alignItems: "center",
             justifyContent: "center",
           }}
         >
-          <Text style={{ color: "#fff" }}>Dark</Text>
+          <Text style={{ color: "#fff" }}>Oscuro</Text>
         </View>
       </Pressable>
     </View>

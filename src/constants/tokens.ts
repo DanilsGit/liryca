@@ -5,6 +5,7 @@ export const colors = {
   orange: "#FFA500",
   pink: "#E06FD5",
   purple: "#7744AB",
+  medium_purple: "#2f2238",
   semi_dark_purple: "#2C2135",
   dark_purple: "#1C1521",
   light_pink: "#c69bd4",

@@ -79,9 +79,10 @@ const createStyles = () =>
       flex: 1,
     },
     text: {
-      color: colors.white,
-      fontSize: fontSizes.lg,
-      fontFamily: "M-PLUS-2-Regular",
+      color: colors.light_pink,
+      fontSize: fontSizes.md,
+      fontFamily: "M-PLUS-2-Bold",
+      textTransform: "capitalize",
     },
     presentation: {
       padding: 20,
@@ -104,6 +105,7 @@ const createStyles = () =>
       fontFamily: "M-PLUS-2-Bold",
       color: colors.light_purple,
       width: 200,
+      textTransform: "capitalize",
     },
     text_presentation_header: {
       color: colors.white,
@@ -114,6 +116,7 @@ const createStyles = () =>
       flexDirection: "row",
       justifyContent: "space-between",
       marginTop: 20,
+      paddingHorizontal: 10,
     },
     presentation_controls_like: {
       flexDirection: "row",
