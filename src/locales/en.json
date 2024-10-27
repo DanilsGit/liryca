@@ -1,4 +1,10 @@
 {
+  "theme": {
+    "title": "Choose your theme",
+    "light": "Light",
+    "dark": "Dark",
+    "quiet": "Quiet"
+  },
   "main": {
     "title_morning": "Good morning * . +",
     "title_afternoon": "Good afternoon * . +",
@@ -18,7 +24,10 @@
     "playlists": "Playlists",
     "top_songs": "Your most listened",
     "filter_music": "Music",
-    "filter_posts": "Posts"
+    "filter_posts": "Posts",
+    "liked_songs": "Liked songs",
+    "liked_playlists": "Liked playlists",
+    "saved_albums": "Saved albums"
   },
   "auth": {
     "welcome": "Welcome",
@@ -43,9 +52,19 @@
     "following": "Following",
     "follow": "Follow",
     "followers": "Followers",
-    "likes": "Likes"
+    "likes": "Likes",
+    "top_songs": "Greatest hits",
+    "albums": "Albums"
+  },
+  "playlist": {
+    "like": "Like",
+    "share": "Share"
   },
   "post": {
     "recommended": "has recommended"
+  },
+  "optionsSheet": {
+    "language": "Change language",
+    "theme": "Change theme"
   }
 }

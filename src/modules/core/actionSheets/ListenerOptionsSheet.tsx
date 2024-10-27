@@ -3,7 +3,8 @@
 // React
 
 // React Native
-import { colors } from "@/constants/tokens";
+import { colors, fontSizes } from "@/constants/tokens";
+import { useTranslation } from "react-i18next";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import ActionSheet, { SheetProps } from "react-native-actions-sheet";
 
@@ -21,6 +22,7 @@ export default function ListenerOptionsSheet(
   props: SheetProps<"listener-options-sheet">,
 ) {
   const styles = createStyles();
+  const { t } = useTranslation();
   return (
     <ActionSheet
       gestureEnabled
@@ -28,9 +30,11 @@ export default function ListenerOptionsSheet(
       containerStyle={styles.sheet}
     >
       <View style={styles.container}>
-        <Text style={styles.text}>Hello World</Text>
-        <Pressable onPress={props.payload?.action}>
-          <Text style={styles.text}>Action</Text>
+        <Pressable onPress={props.payload?.goToLanguageScreen}>
+          <Text style={styles.text}>{t("optionsSheet.language")}</Text>
+        </Pressable>
+        <Pressable onPress={props.payload?.goToThemeScreen}>
+          <Text style={styles.text}>{t("optionsSheet.theme")}</Text>
         </Pressable>
       </View>
     </ActionSheet>
@@ -45,10 +49,12 @@ const createStyles = () =>
     },
     container: {
       padding: 16,
-      paddingVertical: 24,
+      paddingVertical: 10,
       gap: 16,
     },
     text: {
       color: colors.white,
+      fontFamily: "M-PLUS-2-Regular",
+      fontSize: fontSizes.md,
     },
   });

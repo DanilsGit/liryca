@@ -4,7 +4,12 @@ export const formatSecondsToMinute = (seconds: number) => {
   const formattedMinutes = String(minutes).padStart(2, "0");
   const formattedSeconds = String(remainingSeconds).padStart(2, "0");
   const secondsWithOutFloat = formattedSeconds.split(".")[0];
-  return `${formattedMinutes}:${secondsWithOutFloat}`;
+  const ZeroSeconds =
+    Number(secondsWithOutFloat) < 10
+      ? `0${secondsWithOutFloat}`
+      : secondsWithOutFloat;
+
+  return `${formattedMinutes}:${ZeroSeconds}`;
 };
 
 export const formatMillionsToM_HundredsToK = (number: number) => {

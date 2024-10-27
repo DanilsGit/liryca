@@ -3,7 +3,6 @@
 // React
 
 // React Native
-import { BlurView } from "@react-native-community/blur";
 import { ImageBackground } from "expo-image";
 import { ScrollView, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";

@@ -1,13 +1,6 @@
 // Expo
 
-import {
-  Dimensions,
-  Image,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
 
 // React
 
@@ -21,11 +14,12 @@ import { fontSizes } from "@/constants/tokens";
 import { useTranslation } from "react-i18next";
 import { colors } from "@/constants/tokens";
 import { ThemeText } from "@/constants/themesTypes";
-import PlaylistCarousel from "@/modules/core/components/PlaylistCarousel";
 import TracksList from "@/modules/main/components/TracksList";
 import { HandleShowListenerOptions } from "@/modules/core/constants/handles";
 import DotsButton from "@/modules/core/components/DotsButton";
-import { dataPlaylist, dataSongs } from "@/constants/data";
+import { dataSongs } from "@/constants/data";
+import LargelikedButton from "../components/LargelikedButton";
+import { HeartIcon } from "@/modules/core/components/Icons";
 
 // Definitions
 
@@ -36,7 +30,7 @@ import { dataPlaylist, dataSongs } from "@/constants/data";
 // Api
 
 export default function ListenerProfile() {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
   const { theme } = useTheme();
   const styles = createStyles(themesText[theme], themesLine[theme]);
   const { t } = useTranslation();
@@ -66,7 +60,7 @@ export default function ListenerProfile() {
       {/* Stats and Name */}
       <View style={{ alignItems: "center" }}>
         <View style={styles.starts}>
-          <Text style={styles.text_xl}>{user?.name}</Text>
+          <Text style={styles.text_name}>{user?.name}</Text>
           {/* Stats */}
           <View style={styles.starts_stats}>
             {/* Followers */}
@@ -88,9 +82,44 @@ export default function ListenerProfile() {
         </View>
       </View>
 
-      {/* Playlists */}
-      <View style={{ marginVertical: 30 }}>
-        <PlaylistCarousel data={dataPlaylist} />
+      {/* Buttons */}
+      <View style={{ margin: 20, gap: 10 }}>
+        <LargelikedButton
+          onPress={() => console.log("xd")}
+          icon={
+            <HeartIcon
+              width={20}
+              height={20}
+              fill={colors.purple}
+              strokeWidth={0}
+            />
+          }
+          text={t("profile.liked_songs")}
+        />
+        <LargelikedButton
+          onPress={() => console.log("xd")}
+          icon={
+            <HeartIcon
+              width={20}
+              height={20}
+              fill={colors.purple}
+              strokeWidth={0}
+            />
+          }
+          text={t("profile.liked_playlists")}
+        />
+        <LargelikedButton
+          onPress={() => console.log("xd")}
+          icon={
+            <HeartIcon
+              width={20}
+              height={20}
+              fill={colors.purple}
+              strokeWidth={0}
+            />
+          }
+          text={t("profile.saved_albums")}
+        />
       </View>
 
       {/* Top Songs */}
@@ -136,22 +165,26 @@ const createStyles = (colorText: ThemeText, colorLine: string) =>
       flexDirection: "row",
       width: "100%",
       justifyContent: "space-around",
-      paddingTop: 10,
       borderColor: colorLine,
       borderTopWidth: 1,
     },
     stats_number_container: {
       alignItems: "center",
     },
-    text_xl: {
+    text_name: {
       color: colorText.primary,
       fontSize: fontSizes.xl,
-      fontWeight: "bold",
+      fontFamily: "M-PLUS-2-Bold",
+    },
+    text_xl: {
+      color: colorText.secondary,
+      fontSize: fontSizes.xl2,
+      fontFamily: "M-PLUS-2-Bold",
     },
     text_xl_margin: {
       color: colorText.secondary,
       fontSize: fontSizes.xl,
-      fontWeight: "bold",
+      fontFamily: "M-PLUS-2-Bold",
       marginHorizontal: 20,
       marginBottom: 10,
     },

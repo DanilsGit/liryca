@@ -6,5 +6,9 @@
   "es": {
     "name": "Español",
     "code": "es"
+  },
+  "zh": {
+    "name": "Chinese",
+    "code": "zh"
   }
 }

@@ -8,10 +8,7 @@ import { I18nextProvider } from "react-i18next";
 
 // React Native
 import { View } from "react-native";
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from "react-native-safe-area-context";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 // Hooks
 import { useTheme } from "@/modules/core/hooks/useTheme";
@@ -92,6 +89,15 @@ const RootNavigation = () => {
         <Stack.Screen name="(auth)" />
         <Stack.Screen
           name="playerScreen"
+          options={{
+            presentation: "card",
+            gestureEnabled: true,
+            gestureDirection: "vertical",
+            animationDuration: 400,
+          }}
+        />
+        <Stack.Screen
+          name="languageScreen"
           options={{
             presentation: "card",
             gestureEnabled: true,

@@ -10,7 +10,6 @@ import PlayerControls from "@/modules/core/components/PlayerControls";
 import PlayerProgressBar from "@/modules/core/components/PlayerProgressBar";
 import RepeatButton from "@/modules/core/components/RepeatButton";
 import { HandleShowListenerOptions } from "@/modules/core/constants/handles";
-import { BlurView } from "@react-native-community/blur";
 import { Image, ImageBackground } from "expo-image";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -44,8 +43,18 @@ export default function PlayerScreen() {
       source={{ uri: activeTrack.image }}
       style={styles.backgroundImage}
     >
-      <BlurView style={styles.absolute} blurType="dark" blurAmount={100} />
-
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: colors.black,
+          opacity: 0.8,
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+        }}
+      />
       <View style={styles.overlay_container}>
         <HeaderBackTitleOptions
           dotsAction={HandleShowListenerOptions}
@@ -88,13 +97,6 @@ const createStyles = ({ top, bottom }: { top: number; bottom: number }) =>
       paddingTop: top,
       flex: 1,
       resizeMode: "repeat",
-    },
-    absolute: {
-      position: "absolute",
-      top: 0,
-      left: 0,
-      bottom: 0,
-      right: 0,
     },
     loading_track: {
       flex: 1,
