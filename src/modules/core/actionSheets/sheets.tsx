@@ -9,7 +9,8 @@ declare module "react-native-actions-sheet" {
   interface Sheets {
     "listener-options-sheet": SheetDefinition<{
       payload: {
-        action: () => void;
+        goToLanguageScreen: () => void;
+        goToThemeScreen: () => void;
       };
     }>;
   }

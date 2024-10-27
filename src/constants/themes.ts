@@ -53,6 +53,12 @@ export const themesTab: Record<Themes, ThemeTab> = {
 
 export const themesLine: Record<Themes, string> = {
   light: colors.light_purple,
-  dark: colors.dark_purple,
+  dark: colors.light_pink,
+  quiet: colors.pink,
+};
+
+export const themesBackgroundPost: Record<Themes, string> = {
+  light: colors.extra_light_purple,
+  dark: colors.semi_dark_purple,
   quiet: colors.pink,
 };

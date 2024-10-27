@@ -12,6 +12,7 @@ import { Image } from "expo-image";
 import { StyleSheet, Text, View } from "react-native";
 import TrackIndexList from "../components/TrackIndexList";
 import { Track } from "react-native-track-player";
+import { useTranslation } from "react-i18next";
 
 // Hooks
 
@@ -33,7 +34,7 @@ interface Props {
 
 export default function Playlist({ data }: Props) {
   const styles = createStyles();
-
+  const { t } = useTranslation();
   return (
     <View style={styles.overlay_container}>
       <HeaderBackTitleOptions
@@ -47,7 +48,6 @@ export default function Playlist({ data }: Props) {
             source={{ uri: data.image }}
             style={styles.presentation_header_image}
           />
-
           <View>
             <Text style={styles.title_presentation_header}>{data.title}</Text>
             <Text style={styles.text_presentation_header}>{data.artist}</Text>
@@ -57,11 +57,11 @@ export default function Playlist({ data }: Props) {
         <View style={styles.presentation_controls}>
           <View style={styles.presentation_controls_like}>
             <LikeButton isLiked={false} />
-            <Text style={styles.text}>Me gusta</Text>
+            <Text style={styles.text}>{t("playlist.like")}</Text>
           </View>
           <View style={styles.presentation_controls_share}>
             <ShareButton />
-            <Text style={styles.text}>Compartir</Text>
+            <Text style={styles.text}>{t("playlist.share")}</Text>
           </View>
         </View>
       </View>

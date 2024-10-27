@@ -1,4 +1,10 @@
 {
+  "theme": {
+    "title": "Escoge un tema",
+    "light": "Claro",
+    "dark": "Oscuro",
+    "quiet": "Tranquilo"
+  },
   "main": {
     "title_morning": "Buenos días * . +",
     "title_afternoon": "Buenas tardes * . +",
@@ -16,7 +22,12 @@
     "followers": "Seguidores",
     "likes": "Me gusta",
     "playlists": "Playlist",
-    "top_songs": "Tus más escuchadas"
+    "top_songs": "Tus más escuchadas",
+    "filter_music": "Música",
+    "filter_posts": "Publicaciones",
+    "liked_songs": "Canciones que te gustan",
+    "liked_playlists": "Playlist que te gustan",
+    "saved_albums": "Álbumes guardados"
   },
   "auth": {
     "welcome": "Bienvenido",
@@ -34,6 +45,26 @@
     "register_title": "Regístrate",
     "register_password": "Establece tu contraseña",
     "register_password_add": "Establece una contraseña segura para proteger tu cuenta.",
+    "back_register": "Volver",
     "end_register": "Finalizar"
+  },
+  "artist_public_profile": {
+    "following": "Siguiendo",
+    "follow": "Seguir",
+    "followers": "Seguidores",
+    "likes": "Me gusta",
+    "top_songs": "Grandes Éxitos",
+    "albums": "Álbumes"
+  },
+  "playlist": {
+    "like": "Me gusta",
+    "share": "Compartir"
+  },
+  "post": {
+    "recommended": "ha recomendado"
+  },
+  "optionsSheet": {
+    "language": "Cambiar idioma",
+    "theme": "Cambiar tema"
   }
 }

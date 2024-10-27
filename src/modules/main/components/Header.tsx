@@ -33,7 +33,7 @@ export default function Header() {
   return (
     <View style={styles.header}>
       <View style={styles.header_icon}>
-        <Image source={{ uri: user?.icon }} style={styles.header_icon_img} />
+        <Image source={{ uri: user.icon }} style={styles.header_icon_img} />
       </View>
       <View style={styles.buttons}>
         <View style={styles.button}>

@@ -1,0 +1,70 @@
+{
+  "theme": {
+    "title": "主题",
+    "light": "明亮",
+    "dark": "黑暗",
+    "quiet": "安静"
+  },
+  "main": {
+    "title_morning": "早上好 * . +",
+    "title_afternoon": "下午好 * . +",
+    "title_evening": "晚上好 * . +",
+    "playlist": "您的播放列表",
+    "artist": "精选艺术家",
+    "top_songs": "今日热门歌曲",
+    "filter": {
+      "all": "全部",
+      "songs": "歌曲",
+      "playlist": "播放列表"
+    }
+  },
+  "profile": {
+    "followers": "粉丝",
+    "likes": "点赞",
+    "playlists": "播放列表",
+    "top_songs": "您的最常听",
+    "filter_music": "音乐",
+    "filter_posts": "帖子",
+    "liked_songs": "喜欢的歌曲",
+    "liked_playlists": "喜欢的播放列表",
+    "saved_albums": "已保存的专辑"
+  },
+  "auth": {
+    "welcome": "欢迎",
+    "artist": "艺术家",
+    "user": "小星星",
+    "login": "登录",
+    "signup": "加入我们",
+    "text_option": "想听音乐吗？",
+    "email": "请输入您的邮箱",
+    "password": "请输入您的密码",
+    "forgot_password": "忘记密码？",
+    "new_user": "新用户？加入我们！",
+    "have_account": "已有账户？登录！",
+    "next": "下一步",
+    "register_title": "注册",
+    "register_password": "设置密码",
+    "register_password_add": "设置一个强密码来保护您的账户。",
+    "back_register": "返回",
+    "end_register": "完成"
+  },
+  "artist_public_profile": {
+    "following": "已关注",
+    "follow": "关注",
+    "followers": "粉丝",
+    "likes": "点赞",
+    "top_songs": "热门歌曲",
+    "albums": "专辑"
+  },
+  "playlist": {
+    "like": "喜欢",
+    "share": "分享"
+  },
+  "post": {
+    "recommended": "推荐了"
+  },
+  "optionsSheet": {
+    "language": "更改语言",
+    "theme": "更改主题"
+  }
+}

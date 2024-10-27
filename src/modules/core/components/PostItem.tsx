@@ -6,7 +6,7 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Post } from "../lib/types";
 import { useTheme } from "../hooks/useTheme";
-import { themesText } from "@/constants/themes";
+import { themesBackgroundPost, themesText } from "@/constants/themes";
 import { ThemeText } from "@/constants/themesTypes";
 import { colors, fontSizes } from "@/constants/tokens";
 import { useTranslation } from "react-i18next";
@@ -29,14 +29,14 @@ interface Props {
 export default function PostItem({ item, onPostSelect }: Props) {
   const { theme } = useTheme();
   const { t } = useTranslation();
-  const styles = createStyles(themesText[theme]);
+  const styles = createStyles(themesText[theme], themesBackgroundPost[theme]);
   return (
     <Pressable
       onPress={() => onPostSelect(item)}
       style={styles.pressable_container}
     >
       {({ pressed }) => (
-        <View style={[styles.post_container, { opacity: pressed ? 0.5 : 1 }]}>
+        <View style={[styles.post_container, { opacity: pressed ? 0.8 : 1 }]}>
           <View>
             <Text style={styles.from_text}>
               {item.from} {t("post.recommended")}
@@ -68,7 +68,7 @@ export default function PostItem({ item, onPostSelect }: Props) {
   );
 }
 
-const createStyles = (colorText: ThemeText) =>
+const createStyles = (colorText: ThemeText, bgPost: string) =>
   StyleSheet.create({
     pressable_container: {
       backgroundColor: colors.dark_pink,
@@ -76,7 +76,7 @@ const createStyles = (colorText: ThemeText) =>
       paddingLeft: 5,
     },
     post_container: {
-      backgroundColor: colors.semi_dark_purple,
+      backgroundColor: bgPost,
       padding: 10,
     },
     from_text: {
