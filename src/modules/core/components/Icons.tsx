@@ -156,6 +156,24 @@ export const ShareIcon = (props: SvgIconProps) => {
   );
 };
 
+export const CommentIcon = (props: SvgIconProps) => {
+  return (
+    <Svg
+      width={51}
+      height={51}
+      viewBox="0 0 51 51"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <Path
+        d="M48.181 37.13A25.48 25.48 0 0051 25.5C51 11.44 39.56 0 25.5 0S0 11.44 0 25.5 11.44 51 25.5 51c4.038 0 8.04-.972 11.633-2.817L48.12 50.93a2.31 2.31 0 002.2-.61 2.318 2.318 0 00.61-2.202L48.18 37.13zm-4.713.255l2.026 8.109-8.109-2.028a2.331 2.331 0 00-1.694.227 20.84 20.84 0 01-10.191 2.67c-11.505 0-20.864-9.36-20.864-20.863S13.995 4.636 25.5 4.636 46.364 13.997 46.364 25.5a20.855 20.855 0 01-2.669 10.188 2.307 2.307 0 00-.227 1.697z"
+        fill="#A985C5"
+      />
+    </Svg>
+  );
+};
+
 export const RepeatIcon = (props: any) => {
   return <AntDesign name="retweet" size={24} color="#fff" {...props} />;
 };

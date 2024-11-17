@@ -16,6 +16,7 @@ export interface Album {
 }
 
 export interface Post {
+  isLiked: boolean;
   id: number;
   from: string;
   message: string;
