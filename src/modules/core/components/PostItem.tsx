@@ -11,6 +11,11 @@ import { ThemeText } from "@/constants/themesTypes";
 import { colors, fontSizes } from "@/constants/tokens";
 import { useTranslation } from "react-i18next";
 import { Image } from "expo-image";
+import { Ionicons } from "@expo/vector-icons";
+
+import LikeButton from "@/modules/core/components/LikeButton";
+import ShareButton from "@/modules/core/components/ShareButton";
+import CommentButton from "@/modules/core/components/CommentButton";
 
 // Hooks
 
@@ -62,6 +67,20 @@ export default function PostItem({ item, onPostSelect }: Props) {
               </Text>
             </View>
           )}
+          <View style={styles.actions_container}>
+            <View style={styles.buttons_container}>
+              <LikeButton isLiked={item.isLiked} />
+              <Text style={styles.buttons_text}>{t("Like")}</Text>
+            </View>
+            <View style={styles.buttons_container}>
+              <CommentButton />
+              <Text style={styles.buttons_text}>Comentar</Text>
+            </View>
+            <View style={styles.buttons_container}>
+              <ShareButton />
+              <Text style={styles.buttons_text}>Compartir</Text>
+            </View>
+          </View>
         </View>
       )}
     </Pressable>
@@ -108,5 +127,32 @@ const createStyles = (colorText: ThemeText, bgPost: string) =>
       color: colorText.primary,
       fontSize: fontSizes.sm,
       opacity: 0.7,
+    },
+    actions_container: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      marginTop: 10,
+      paddingTop: 10,
+      paddingHorizontal: 10,
+    },
+    action_button: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 5,
+    },
+    action_text: {
+      color: colors.white,
+      fontSize: fontSizes.sm,
+      marginLeft: 5,
+    },
+    buttons_container: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 8,
+    },
+    buttons_text: {
+      color: colors.light_pink,
+      fontSize: fontSizes.sm,
     },
   });
