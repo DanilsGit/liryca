@@ -36,6 +36,9 @@ export default function ListenerOptionsSheet(
         <Pressable onPress={props.payload?.goToThemeScreen}>
           <Text style={styles.text}>{t("optionsSheet.theme")}</Text>
         </Pressable>
+        <Pressable onPress={props.payload?.logout}>
+          <Text style={styles.text}>{t("optionsSheet.logout")}</Text>
+        </Pressable>
       </View>
     </ActionSheet>
   );
@@ -50,7 +53,7 @@ const createStyles = () =>
     container: {
       padding: 16,
       paddingVertical: 10,
-      gap: 16,
+      gap: 25,
     },
     text: {
       color: colors.white,

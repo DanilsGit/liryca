@@ -24,11 +24,14 @@ import { useSetupTrackPlayer } from "@m/main/hooks/useSetupTrackPlayer";
 import { useLogTrackPlayerState } from "@m/main/hooks/useLogTrackPlayerState";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SheetProvider } from "react-native-actions-sheet";
+import { useLanguage } from "@/modules/core/hooks/useLanguage";
 
 // SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const { loadAsyncUser } = useAuth();
+  const { loadAsyncTheme } = useTheme();
+  const { loadAsyncLanguage } = useLanguage();
   useLogTrackPlayerState();
 
   const handleTrackPlayerLoaded = useCallback(() => {
@@ -52,7 +55,9 @@ export default function App() {
 
   useEffect(() => {
     loadAsyncUser();
-  }, [loadAsyncUser]);
+    loadAsyncTheme();
+    loadAsyncLanguage();
+  }, [loadAsyncLanguage, loadAsyncTheme, loadAsyncUser]);
 
   if (!fontsLoaded) return <View />;
 
@@ -72,8 +77,10 @@ export default function App() {
 
 const RootNavigation = () => {
   const { theme } = useTheme();
-
   const themeStatusBar = themesStatusBar[theme];
+
+  // Sólo en producción
+  const isProduction = process.env.NODE_ENV === "production";
 
   return (
     <View
@@ -82,11 +89,20 @@ const RootNavigation = () => {
         backgroundColor: themeStatusBar,
       }}
     >
-      <ThemeToggle />
+      {!isProduction && <ThemeToggle />}
 
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="(auth)" />
+        <Stack.Screen
+          name="editAlbum"
+          options={{
+            presentation: "card",
+            gestureEnabled: true,
+            gestureDirection: "vertical",
+            animationDuration: 400,
+          }}
+        />
         <Stack.Screen
           name="playerScreen"
           options={{
@@ -98,6 +114,15 @@ const RootNavigation = () => {
         />
         <Stack.Screen
           name="languageScreen"
+          options={{
+            presentation: "card",
+            gestureEnabled: true,
+            gestureDirection: "vertical",
+            animationDuration: 400,
+          }}
+        />
+        <Stack.Screen
+          name="uploadAlbum"
           options={{
             presentation: "card",
             gestureEnabled: true,

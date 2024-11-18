@@ -1,0 +1,70 @@
+{
+  "theme": {
+    "title": "Choisis un thème",
+    "light": "Clair",
+    "dark": "Sombre",
+    "quiet": "Calme"
+  },
+  "main": {
+    "title_morning": "Bonjour * . +",
+    "title_afternoon": "Bon après-midi * . +",
+    "title_evening": "Bonsoir * . +",
+    "playlist": "Tes playlists",
+    "artist": "Artistes à la une",
+    "top_songs": "Les plus écoutées aujourd'hui",
+    "filter": {
+      "all": "Toutes",
+      "songs": "Chansons",
+      "playlist": "Playlists"
+    }
+  },
+  "profile": {
+    "followers": "Abonnés",
+    "likes": "J'aime",
+    "playlists": "Playlists",
+    "top_songs": "Tes plus écoutées",
+    "filter_music": "Musique",
+    "filter_posts": "Publications",
+    "liked_songs": "Chansons que tu aimes",
+    "liked_playlists": "Playlists que tu aimes",
+    "saved_albums": "Albums enregistrés"
+  },
+  "auth": {
+    "welcome": "Bienvenue",
+    "artist": "Artiste",
+    "user": "Petit Étoile",
+    "login": "Se connecter",
+    "signup": "Rejoins-nous",
+    "text_option": "Veux-tu écouter de la musique?",
+    "email": "Saisis ton email",
+    "password": "Saisis ton mot de passe",
+    "forgot_password": "Mot de passe oublié?",
+    "new_user": "Nouveau ici? Rejoins-nous!",
+    "have_account": "Tu as déjà un compte? Connecte-toi!",
+    "next": "Suivant",
+    "register_title": "Inscription",
+    "register_password": "Définis ton mot de passe",
+    "register_password_add": "Définis un mot de passe sûr pour protéger ton compte.",
+    "back_register": "Retour",
+    "end_register": "Terminer"
+  },
+  "artist_public_profile": {
+    "following": "Suivis",
+    "follow": "Suivre",
+    "followers": "Abonnés",
+    "likes": "J'aime",
+    "top_songs": "Grands Succès",
+    "albums": "Albums"
+  },
+  "playlist": {
+    "like": "J'aime",
+    "share": "Partager"
+  },
+  "post": {
+    "recommended": "a recommandé"
+  },
+  "optionsSheet": {
+    "language": "Changer la langue",
+    "theme": "Changer de thème"
+  }
+}

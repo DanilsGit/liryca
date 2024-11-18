@@ -4,8 +4,7 @@
 
 // React Native
 import { colors, fontSizes } from "@/constants/tokens";
-import { HeartIcon } from "@/modules/core/components/Icons";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View, ViewStyle } from "react-native";
 
 // Hooks
 
@@ -18,16 +17,23 @@ interface Props {
   onPress: () => void;
   text: string;
   icon: React.ReactNode;
+  style?: ViewStyle;
 }
 
 // Api
 
-export default function LargelikedButton({ onPress, text, icon }: Props) {
+export default function LargeIconButton({ onPress, text, icon, style }: Props) {
   const styles = createStyles();
   return (
-    <Pressable style={styles.container} onPress={onPress}>
+    <Pressable style={[styles.container]} onPress={onPress}>
       {({ pressed }) => (
-        <View style={[styles.likes_container, { opacity: pressed ? 0.5 : 1 }]}>
+        <View
+          style={[
+            styles.likes_container,
+            style,
+            { opacity: pressed ? 0.5 : 1 },
+          ]}
+        >
           <View style={styles.likes_svg_container}>{icon}</View>
           {/* Text */}
           <Text style={styles.likes_text}>{text}</Text>
@@ -41,8 +47,10 @@ const createStyles = () =>
   StyleSheet.create({
     container: {
       width: "100%",
+      alignItems: "center",
     },
     likes_container: {
+      width: "100%",
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "flex-start",

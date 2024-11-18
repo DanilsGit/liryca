@@ -4,7 +4,7 @@
 
 // React Native
 import { FlatListProps, StyleSheet, Text, View } from "react-native";
-import { Post } from "../lib/types";
+import { Post } from "../lib/types_tracks";
 import { FlatList } from "react-native-actions-sheet";
 import PostItem from "./PostItem";
 

@@ -13,6 +13,7 @@ export const colors = {
   light_blue: "#6F8FAC",
   light_purple: "#DAC3E9",
   extra_light_purple: "#F4F1F9",
+  error: "#FF4320",
 };
 
 export const fontSizes = {

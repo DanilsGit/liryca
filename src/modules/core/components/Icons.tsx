@@ -110,6 +110,27 @@ export const DownArrowIcon = (props: SvgIconProps) => {
   );
 };
 
+export const AddSquareIcon = (props: SvgIconProps) => {
+  return (
+    <Svg
+      width={98}
+      height={98}
+      viewBox="0 0 98 98"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <Path
+        d="M49 32.667v32.666M32.667 49h32.666M20.417 12.25h57.166a8.167 8.167 0 018.167 8.167v57.166a8.167 8.167 0 01-8.167 8.167H20.417a8.167 8.167 0 01-8.167-8.167V20.417a8.167 8.167 0 018.167-8.167z"
+        stroke={props.stroke ?? "#DAC3E9"}
+        strokeWidth={props.strokeWidth ?? 5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  );
+};
+
 export const DotsIcon = (props: SvgIconProps) => {
   return (
     <Svg
@@ -149,6 +170,27 @@ export const ShareIcon = (props: SvgIconProps) => {
         d="M20.76 32.65l16.505 9.618m-.024-26.535L20.759 25.35M50.75 12.084a7.25 7.25 0 11-14.5 0 7.25 7.25 0 0114.5 0zM21.75 29a7.25 7.25 0 11-14.5 0 7.25 7.25 0 0114.5 0zm29 16.917a7.25 7.25 0 11-14.5 0 7.25 7.25 0 0114.5 0z"
         stroke={props.stroke ?? "#A985C5"}
         strokeWidth={props.strokeWidth ?? 2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  );
+};
+
+export const UploadIcon = (props: SvgIconProps) => {
+  return (
+    <Svg
+      width={65}
+      height={65}
+      viewBox="0 0 65 65"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <Path
+        d="M10.833 41.178v9.99c0 1.513.571 2.965 1.587 4.035 1.016 1.07 2.393 1.672 3.83 1.672h32.5c1.437 0 2.814-.601 3.83-1.672a5.867 5.867 0 001.587-4.036v-9.989m-21.665-.709V8.125m0 0L20.121 20.484M32.502 8.125l12.38 12.359"
+        stroke={props.stroke ?? "#000"}
+        strokeWidth={props.strokeWidth ?? 5}
         strokeLinecap="round"
         strokeLinejoin="round"
       />

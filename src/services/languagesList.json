@@ -7,8 +7,16 @@
     "name": "Español",
     "code": "es"
   },
+  "fr": {
+    "name": "Français",
+    "code": "fr"
+  },
+  "de": {
+    "name": "Deutsch",
+    "code": "de"
+  },
   "zh": {
-    "name": "Chinese",
+    "name": "中文",
     "code": "zh"
   }
 }

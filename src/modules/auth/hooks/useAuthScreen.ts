@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { AuthScreen } from "../types/types";
 
 export const useAuthScreen = () => {
   const [currentScreen, setCurrentScreen] = useState<AuthScreen>("welcome");

@@ -39,13 +39,11 @@ export default function AlbumItem({ item, onAlbumSelect }: Props) {
           <View
             style={[styles.image_container, { opacity: pressed ? 0.5 : 1 }]}
           >
-            <Image source={{ uri: item.image }} style={styles.image} />
+            <Image source={{ uri: item.icon }} style={styles.image} />
           </View>
           <View style={styles.info_container}>
             <Text style={styles.info_text_title}>{item.title}</Text>
-            <Text style={styles.info_text}>
-              {item.year} - {item.type}
-            </Text>
+            <Text style={styles.info_text}>{item.release_date}</Text>
           </View>
         </>
       )}

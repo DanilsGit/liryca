@@ -12,21 +12,33 @@ import { FlatList, FlatListProps, StyleSheet, Text, View } from "react-native";
 // Components
 import TrackSongItem from "./TrackSongItem";
 import TrackPlayer, { Track } from "react-native-track-player";
+import { useQueue } from "@/modules/core/hooks/useQueue";
+import { useRef } from "react";
+import { handleTrackQueue } from "@/modules/core/constants/handles";
 
 // Props
 
 type Props = Partial<FlatListProps<Track>> & {
+  id: string;
   data: Track[];
 };
 
 // Api
 
-export default function TracksList({ data }: Props) {
+export default function TracksList({ id, data }: Props) {
   const styles = createStyles();
+  const queueOffset = useRef(0);
+  const { activeQueueId, setActiveQueueId } = useQueue();
 
-  const handleTrackSelect = async (track: Track) => {
-    await TrackPlayer.load(track);
-    await TrackPlayer.play();
+  const handleTrackSelect = async (selectedTrack: Track) => {
+    handleTrackQueue(
+      selectedTrack,
+      activeQueueId,
+      setActiveQueueId,
+      queueOffset,
+      id,
+      data,
+    );
   };
 
   return (

@@ -5,7 +5,7 @@
 // React Native
 import { colors, fontSizes } from "@/constants/tokens";
 import { InputPasswordIcon } from "@/modules/core/components/Icons";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, TextInput, View } from "react-native";
 
 // Hooks
 
@@ -14,10 +14,13 @@ import { StyleSheet, Text, TextInput, View } from "react-native";
 // Components
 
 // Props
-
+interface Props {
+  handleType: (field, value) => void;
+  value: string;
+}
 // Api
 
-export default function InputPassword() {
+export default function InputPassword({ handleType, value }: Props) {
   const styles = createStyles();
 
   return (
@@ -26,6 +29,8 @@ export default function InputPassword() {
       <TextInput
         style={styles.input}
         placeholder="Contraseña"
+        onChangeText={(text) => handleType("password", text)}
+        value={value}
         secureTextEntry
       />
     </View>

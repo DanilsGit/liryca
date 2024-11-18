@@ -19,11 +19,10 @@ import DotsButton from "./DotsButton";
 // Props
 interface Props {
   title: string;
-  dotsAction: () => void;
 }
 // Api
 
-export default function HeaderBackTitleOptions({ title, dotsAction }: Props) {
+export default function HeaderBackTitleOptions({ title }: Props) {
   const styles = createStyles();
   const router = useRouter();
   return (
@@ -36,7 +35,11 @@ export default function HeaderBackTitleOptions({ title, dotsAction }: Props) {
           style={styles.header_text}
         />
       </View>
-      <DotsButton action={dotsAction} />
+      <DotsButton
+        action={() => {
+          console.log("xd");
+        }}
+      />
     </View>
   );
 }

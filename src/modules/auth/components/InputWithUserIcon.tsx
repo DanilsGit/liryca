@@ -14,16 +14,25 @@ import { StyleSheet, TextInput, View } from "react-native";
 // Components
 
 // Props
-
+interface Props {
+  handleType: (field, value) => void;
+  value: string;
+}
 // Api
 
-export default function InputWithUserIcon() {
+export default function InputWithUserIcon({ handleType, value }: Props) {
   const styles = createStyles();
 
   return (
     <View style={styles.input_container}>
       <InputUserIcon />
-      <TextInput style={styles.input} placeholder="Correo electrónico" />
+      <TextInput
+        style={styles.input}
+        keyboardType="email-address"
+        placeholder="Correo electrónico"
+        onChangeText={(text) => handleType("email", text)}
+        value={value}
+      />
     </View>
   );
 }

@@ -5,10 +5,8 @@
 // React Native
 import { colors, fontSizes } from "@/constants/tokens";
 import HeaderBackTitleOptions from "@/modules/core/components/HeaderBackTitleOptions";
-import LikeButton from "@/modules/core/components/LikeButton";
 import PlayerControls from "@/modules/core/components/PlayerControls";
 import PlayerProgressBar from "@/modules/core/components/PlayerProgressBar";
-import RepeatButton from "@/modules/core/components/RepeatButton";
 import { HandleShowListenerOptions } from "@/modules/core/constants/handles";
 import { Image, ImageBackground } from "expo-image";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";

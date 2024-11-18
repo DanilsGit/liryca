@@ -9,6 +9,7 @@ import { ThemeText } from "@/constants/themesTypes";
 import { fontSizes } from "@/constants/tokens";
 import AlbumList from "@/modules/core/components/AlbumList";
 import { useTheme } from "@/modules/core/hooks/useTheme";
+import { generateTrackListId } from "@/modules/core/utils/miscellaneous";
 import TracksList from "@/modules/main/components/TracksList";
 import { useTranslation } from "react-i18next";
 import { StyleSheet, Text, View } from "react-native";
@@ -36,7 +37,7 @@ export default function MusicArtistPublicProfile({ id }: Props) {
         <Text style={styles.top_songs_title}>
           {t("artist_public_profile.top_songs")}
         </Text>
-        <TracksList data={dataSongs} />
+        <TracksList id={generateTrackListId("artist_list")} data={dataSongs} />
       </View>
       <View style={styles.top_songs_section}>
         <Text style={styles.top_songs_title}>

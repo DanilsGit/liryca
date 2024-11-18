@@ -1,4 +1,37 @@
-import { Album, Post } from "@/modules/core/lib/types";
+import { Album } from "@/modules/core/lib/types";
+import { Post } from "@/modules/core/lib/types_tracks";
+
+export const genres = [
+  "Pop",
+  "Rock",
+  "Indie",
+  "Jazz",
+  "Hip Hop",
+  "Rap",
+  "Reggaeton",
+  "Country",
+  "Blues",
+  "Metal",
+  "Punk",
+  "Folk",
+  "Soul",
+  "R&B",
+  "Electronic",
+  "Dance",
+  "Reggae",
+  "Classical",
+  "Opera",
+  "Flamenco",
+  "Ska",
+  "Funk",
+  "Disco",
+  "Techno",
+  "House",
+  "Trance",
+  "Dubstep",
+  "Drum and bass",
+  "Hardcore",
+];
 
 export const dataPlaylist = [
   {
@@ -40,7 +73,7 @@ export const dataPlaylist = [
 
 export const dataArtist = [
   {
-    id: 1,
+    id: "264e1f6c-52ec-48ea-bfb1-13100f8b5cf3",
     image:
       "https://imgs.search.brave.com/UHHkHar9E432pXtQXSpKmTMjZDl0dU7lLAzhrwqbsxY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sYXN0/Zm0uZnJlZXRscy5m/YXN0bHkubmV0L2kv/dS9hdmF0YXIxNzBz/LzIyNTkyMWY5ZTY4/NGI0ODA0YjQ3ZGJm/MjdkM2MzZmZh",
   },
@@ -71,8 +104,7 @@ export const dataAlbums: Album[] = [
     id: 1,
     title: "Album One",
     year: 2020,
-    image:
-      "https://lastfm.freetls.fastly.net/i/u/300x300/136966ce3225f90e17f0e1f273c48835.jpg",
+    icon: "https://lastfm.freetls.fastly.net/i/u/300x300/136966ce3225f90e17f0e1f273c48835.jpg",
     type: "Album",
     from: "Artist1",
   },
@@ -80,8 +112,7 @@ export const dataAlbums: Album[] = [
     id: 2,
     title: "Album Two",
     year: 2019,
-    image:
-      "https://cdns-images.dzcdn.net/images/cover/bd904e47db5549124f099c1fef304dc9/500x500.jpg",
+    icon: "https://cdns-images.dzcdn.net/images/cover/bd904e47db5549124f099c1fef304dc9/500x500.jpg",
     type: "Album",
     from: "Artist2",
   },
@@ -89,8 +120,7 @@ export const dataAlbums: Album[] = [
     id: 3,
     title: "Album Three",
     year: 2021,
-    image:
-      "https://akamai.sscdn.co/uploadfile/letras/albuns/8/8/a/f/192201695664406.jpg",
+    icon: "https://akamai.sscdn.co/uploadfile/letras/albuns/8/8/a/f/192201695664406.jpg",
     type: "Album",
     from: "Artist3",
   },
@@ -98,8 +128,7 @@ export const dataAlbums: Album[] = [
     id: 4,
     title: "Album Four",
     year: 2018,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJCBtNDxSmuGoIDqZjhaCIZ72rPioivqbTow&s",
+    icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJCBtNDxSmuGoIDqZjhaCIZ72rPioivqbTow&s",
     type: "Album",
     from: "Artist4",
   },
@@ -107,7 +136,7 @@ export const dataAlbums: Album[] = [
     id: 5,
     title: "Album Five",
     year: 2022,
-    image: "https://i.scdn.co/image/ab6761610000e5eb3a49b0a3954e460a8a76ed90",
+    icon: "https://i.scdn.co/image/ab6761610000e5eb3a49b0a3954e460a8a76ed90",
     type: "Album",
     from: "Artist5",
   },
@@ -163,7 +192,7 @@ export const dataSongs = [
     artist: "Tyler the creator",
     image:
       "https://www.billboard.com/wp-content/uploads/media/tyler-the-creator-igor-album-art-2019-billboard-embed.jpg?w=600",
-    url: "https://firebasestorage.googleapis.com/v0/b/liryca-c9f2e.appspot.com/o/songs%2Fspotifydown.com%20-%20...Baby%20One%20More%20Time.mp3?alt=media&token=5977094d-59c6-4fcc-bfb4-30d46f3b6f81",
+    url: "https://firebasestorage.googleapis.com/v0/b/liryca-c9f2e.appspot.com/o/songs%2Fspotifydown.com%20-%20Gimme%20More.mp3?alt=media&token=9ad7676d-9118-44d8-85c6-f97c67d3ec5a",
   },
   {
     id: 2,
@@ -179,14 +208,14 @@ export const dataSongs = [
     artist: "Taylor swift",
     image:
       "https://www.usatoday.com/gcdn/authoring/authoring-images/2024/04/18/USAT/73369581007-001-taylor-swift-2006.jpeg?width=700&height=700&fit=crop&format=pjpg&auto=webp",
-    url: "https://firebasestorage.googleapis.com/v0/b/liryca-c9f2e.appspot.com/o/songs%2Fspotifydown.com%20-%20Gimme%20More.mp3?alt=media&token=9ad7676d-9118-44d8-85c6-f97c67d3ec5a",
+    url: "https://firebasestorage.googleapis.com/v0/b/liryca-c9f2e.appspot.com/o/songs%2Fspotifydown.com%20-%20...Baby%20One%20More%20Time.mp3?alt=media&token=5977094d-59c6-4fcc-bfb4-30d46f3b6f81",
   },
   {
     id: 4,
     title: "Time is running out",
     artist: "Muse",
     image: "https://i.scdn.co/image/ab67616d0000b273b6d4566db0d12894a1a3b7a2",
-    url: "https://firebasestorage.googleapis.com/v0/b/liryca-c9f2e.appspot.com/o/songs%2Fspotifydown.com%20-%20JOYRIDE.mp3?alt=media&token=2d7fd7e9-434a-4435-a8b0-db93152a13a0",
+    url: "https://firebasestorage.googleapis.com/v0/b/liryca-c9f2e.appspot.com/o/songs%2Fspotifydown.com%20-%20Outrageous.mp3?alt=media&token=a1caf51f-2212-4775-8c56-182bf5102881",
   },
   {
     id: 5,
@@ -202,38 +231,6 @@ export const dataSongs = [
     artist: "Kesha",
     image:
       "https://upload.wikimedia.org/wikipedia/en/9/98/Kesha_%E2%80%93_Joyride_%28official_single_cover%29.png",
-    url: "https://firebasestorage.googleapis.com/v0/b/liryca-c9f2e.appspot.com/o/songs%2Fspotifydown.com%20-%20...Baby%20One%20More%20Time.mp3?alt=media&token=5977094d-59c6-4fcc-bfb4-30d46f3b6f81",
-  },
-  {
-    id: 7,
-    title: "Outrageous",
-    artist: "Britney Spears",
-    image:
-      "https://upload.wikimedia.org/wikipedia/en/4/4e/Britney_Spears_-_Outrageous.png",
-    url: "https://firebasestorage.googleapis.com/v0/b/liryca-c9f2e.appspot.com/o/songs%2Fspotifydown.com%20-%20Time%20Is%20Running%20Out.mp3?alt=media&token=5c7d1c6f-4b9b-4b4c-8c3b-4c7b7d2b2a6c",
-  },
-  {
-    id: 8,
-    title: "Oops!...I Did It Again",
-    artist: "Britney Spears",
-    image:
-      "https://upload.wikimedia.org/wikipedia/en/5/5f/Britney_Spears_-_Oops%21..._I_Did_It_Again_single_cover.png",
-    url: "https://firebasestorage.googleapis.com/v0/b/liryca-c9f2e.appspot.com/o/songs%2Fspotifydown.com%20",
-  },
-  {
-    id: 9,
-    title: "Gimme More",
-    artist: "Britney Spears",
-    image:
-      "https://upload.wikimedia.org/wikipedia/en/9/9b/Britney_Spears_-_Gimme_More.png",
-    url: "https://firebasestorage.googleapis.com/v0/b/liryca-c9f2e.appspot.com/o/songs%2Fspotifydown.com%20",
-  },
-  {
-    id: 10,
-    title: "365",
-    artist: "Katy Perry",
-    image:
-      "https://upload.wikimedia.org/wikipedia/en/9/9e/Katy_Perry_-_365.png",
-    url: "https://firebasestorage.googleapis.com/v0/b/liryca-c9f2e.appspot.com/o/songs%2Fspotifydown.com%20",
+    url: "https://firebasestorage.googleapis.com/v0/b/liryca-c9f2e.appspot.com/o/songs%2Fspotifydown.com%20-%20JOYRIDE.mp3?alt=media&token=2d7fd7e9-434a-4435-a8b0-db93152a13a0",
   },
 ];

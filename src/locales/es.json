@@ -5,6 +5,9 @@
     "dark": "Oscuro",
     "quiet": "Tranquilo"
   },
+  "language": {
+    "title": "Escoge un idioma"
+  },
   "main": {
     "title_morning": "Buenos días * . +",
     "title_afternoon": "Buenas tardes * . +",
@@ -29,6 +32,18 @@
     "liked_playlists": "Playlist que te gustan",
     "saved_albums": "Álbumes guardados"
   },
+  "profile_Artist": {
+    "upload_Album": "Crear un nuevo éxito",
+    "my_albums": "Mis Álbumes",
+    "album_page": {
+      "title": "Crea tu siguiente éxito",
+      "information": "Información",
+      "cover": "Portada",
+      "songs": "Canciones",
+      "upload_song": "Agregar canción",
+      "done": "Todo listo y publicar"
+    }
+  },
   "auth": {
     "welcome": "Bienvenido",
     "artist": "Artista",
@@ -46,7 +61,8 @@
     "register_password": "Establece tu contraseña",
     "register_password_add": "Establece una contraseña segura para proteger tu cuenta.",
     "back_register": "Volver",
-    "end_register": "Finalizar"
+    "end_register": "Finalizar",
+    "invalid_password": "La contraseña debe tener al menos 8 caracteres"
   },
   "artist_public_profile": {
     "following": "Siguiendo",
@@ -65,6 +81,7 @@
   },
   "optionsSheet": {
     "language": "Cambiar idioma",
-    "theme": "Cambiar tema"
+    "theme": "Cambiar tema",
+    "logout": "Cerrar sesión"
   }
 }

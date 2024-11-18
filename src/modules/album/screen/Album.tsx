@@ -7,12 +7,12 @@ import { colors, fontSizes } from "@/constants/tokens";
 import HeaderBackTitleOptions from "@/modules/core/components/HeaderBackTitleOptions";
 import LikeButton from "@/modules/core/components/LikeButton";
 import ShareButton from "@/modules/core/components/ShareButton";
-import { HandleShowListenerOptions } from "@/modules/core/constants/handles";
 import { Image } from "expo-image";
 import { StyleSheet, Text, View } from "react-native";
 import TrackIndexList from "../components/TrackIndexList";
-import { Track } from "react-native-track-player";
 import { useTranslation } from "react-i18next";
+import { generateTrackListId } from "@/modules/core/utils/miscellaneous";
+import { Album as AlbumType } from "@/modules/core/lib/types";
 
 // Hooks
 
@@ -21,26 +21,18 @@ import { useTranslation } from "react-i18next";
 // Components
 // Props
 interface Props {
-  data: {
-    id: string;
-    title: string;
-    artist: string;
-    image: string;
-    tracks: Track[];
-  };
+  data: AlbumType;
 }
 
 // Api
 
-export default function Playlist({ data }: Props) {
+export default function Album({ data }: Props) {
   const styles = createStyles();
   const { t } = useTranslation();
+
   return (
     <View style={styles.overlay_container}>
-      <HeaderBackTitleOptions
-        title={data.title}
-        dotsAction={HandleShowListenerOptions}
-      />
+      <HeaderBackTitleOptions title={data.title} />
 
       <View style={styles.presentation}>
         <View style={styles.presentation_header}>
@@ -67,7 +59,10 @@ export default function Playlist({ data }: Props) {
       </View>
 
       <View style={{ paddingTop: 20 }}>
-        <TrackIndexList data={data.tracks} />
+        <TrackIndexList
+          id={generateTrackListId("playlist_list", data.title)}
+          data={data.tracks}
+        />
       </View>
     </View>
   );

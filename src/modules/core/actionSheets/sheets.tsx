@@ -11,6 +11,7 @@ declare module "react-native-actions-sheet" {
       payload: {
         goToLanguageScreen: () => void;
         goToThemeScreen: () => void;
+        logout: () => void;
       };
     }>;
   }

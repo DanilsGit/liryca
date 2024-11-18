@@ -21,7 +21,7 @@ interface Props {
 
 export default function SkipToNextButton({ size }: Props) {
   return (
-    <Pressable onPress={() => TrackPlayer.skipToNext}>
+    <Pressable onPress={() => TrackPlayer.skipToNext()}>
       {({ pressed }) => (
         <View style={{ opacity: pressed ? 0.6 : 1 }}>
           <SkipToNextTrackIcon size={size} />

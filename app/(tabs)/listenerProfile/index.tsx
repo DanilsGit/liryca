@@ -11,7 +11,6 @@
 // Components
 import Screen from "@m/core/components/Screen";
 import ListenerProfile from "@/modules/listenerProfile/screen/ListenerProfile";
-
 // Props
 
 // Api
@@ -23,7 +22,3 @@ export default function ListenerProfileScreen() {
     </Screen>
   );
 }
-
-// const styles = StyleSheet.create({
-
-// });

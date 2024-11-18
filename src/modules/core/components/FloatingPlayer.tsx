@@ -49,6 +49,16 @@ export default function FloatingPlayer({ style }: ViewProps) {
   return (
     <Pressable style={style} onPress={handlePress}>
       <View style={styles.pressable}>
+        <View
+          style={{
+            position: "absolute",
+            backgroundColor: colors.black,
+            width: "200%",
+            height: "200%",
+            opacity: 0.2,
+            borderRadius: 20,
+          }}
+        />
         <Image
           source={{ uri: displayedTrack.image }}
           style={{ ...styles.image }}
@@ -81,6 +91,7 @@ const createStyles = (imageColors: any) =>
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "space-between",
+      overflow: "hidden",
       padding: 15,
       borderRadius: 20,
       paddingVertical: 12,
