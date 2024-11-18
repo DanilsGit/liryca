@@ -1,0 +1,70 @@
+{
+  "theme": {
+    "title": "Wähle ein Thema",
+    "light": "Hell",
+    "dark": "Dunkel",
+    "quiet": "Ruhig"
+  },
+  "main": {
+    "title_morning": "Guten Morgen * . +",
+    "title_afternoon": "Guten Nachmittag * . +",
+    "title_evening": "Guten Abend * . +",
+    "playlist": "Deine Playlists",
+    "artist": "Beliebte Künstler",
+    "top_songs": "Heute meist gehört",
+    "filter": {
+      "all": "Alle",
+      "songs": "Lieder",
+      "playlist": "Playlists"
+    }
+  },
+  "profile": {
+    "followers": "Follower",
+    "likes": "Gefällt mir",
+    "playlists": "Playlists",
+    "top_songs": "Deine meistgehörten",
+    "filter_music": "Musik",
+    "filter_posts": "Beiträge",
+    "liked_songs": "Lieder, die dir gefallen",
+    "liked_playlists": "Playlists, die dir gefallen",
+    "saved_albums": "Gespeicherte Alben"
+  },
+  "auth": {
+    "welcome": "Willkommen",
+    "artist": "Künstler",
+    "user": "Sternchen",
+    "login": "Einloggen",
+    "signup": "Mach mit",
+    "text_option": "Möchtest du Musik hören?",
+    "email": "Gib deine E-Mail ein",
+    "password": "Gib dein Passwort ein",
+    "forgot_password": "Passwort vergessen?",
+    "new_user": "Neu hier? Mach mit!",
+    "have_account": "Schon ein Konto? Melde dich an!",
+    "next": "Weiter",
+    "register_title": "Registrieren",
+    "register_password": "Setze dein Passwort",
+    "register_password_add": "Setze ein sicheres Passwort, um dein Konto zu schützen.",
+    "back_register": "Zurück",
+    "end_register": "Fertigstellen"
+  },
+  "artist_public_profile": {
+    "following": "Gefolgt",
+    "follow": "Folgen",
+    "followers": "Follower",
+    "likes": "Gefällt mir",
+    "top_songs": "Große Erfolge",
+    "albums": "Alben"
+  },
+  "playlist": {
+    "like": "Gefällt mir",
+    "share": "Teilen"
+  },
+  "post": {
+    "recommended": "hat empfohlen"
+  },
+  "optionsSheet": {
+    "language": "Sprache ändern",
+    "theme": "Thema ändern"
+  }
+}

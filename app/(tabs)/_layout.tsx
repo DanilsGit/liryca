@@ -1,5 +1,5 @@
 // Expo
-import { Redirect, Tabs } from "expo-router";
+import { Redirect, Tabs, useRouter } from "expo-router";
 // React
 
 // React Native
@@ -17,6 +17,7 @@ import { colors } from "@/constants/tokens";
 import { useAuth } from "@/modules/auth/hooks/useAuth";
 import ScreenLoading from "@/modules/core/components/ScreenLoading";
 import FloatingPlayer from "@/modules/core/components/FloatingPlayer";
+import { useEffect } from "react";
 // Hooks
 
 // Definitions
@@ -29,11 +30,19 @@ import FloatingPlayer from "@/modules/core/components/FloatingPlayer";
 
 export default function TabsLayout() {
   const { theme } = useTheme();
-  const { user, isLoading } = useAuth();
+  const { user } = useAuth();
   const themeTab = themesTab[theme];
+  const router = useRouter();
 
-  if (isLoading) return <ScreenLoading />;
+  useEffect(() => {
+    if (user && user.role === "artist") {
+      router.push("artistProfile");
+    }
+  }, [user, router]);
+
+  // if (isLoading) return <ScreenLoading />;
   if (!user) return <Redirect href="/(auth)" />;
+  // if (user.role === "artist") return <Redirect href="/artistProfile" />;
 
   return (
     <>
@@ -43,6 +52,8 @@ export default function TabsLayout() {
           headerShown: false,
           tabBarStyle: {
             position: "absolute",
+            borderTopWidth: 1,
+            borderColor: themeTab.top,
             borderTopLeftRadius: 35,
           },
           tabBarActiveTintColor: colors.light_pink,
@@ -69,21 +80,24 @@ export default function TabsLayout() {
           name="(home)"
           options={{
             tabBarIcon: ({ color }) => <HomeIcon color={color} />,
-            tabBarButton: (props) => <TouchableOpacity {...props} />,
+            tabBarButton: (props) =>
+              user.role === "user" && <TouchableOpacity {...props} />,
           }}
         />
         <Tabs.Screen
           name="search"
           options={{
             tabBarIcon: ({ color }) => <SearchIcon color={color} />,
-            tabBarButton: (props) => <TouchableOpacity {...props} />,
+            tabBarButton: (props) =>
+              user.role === "user" && <TouchableOpacity {...props} />,
           }}
         />
         <Tabs.Screen
           name="social"
           options={{
             tabBarIcon: ({ color }) => <StarIcon color={color} />,
-            tabBarButton: (props) => <TouchableOpacity {...props} />,
+            tabBarButton: (props) =>
+              user.role === "user" && <TouchableOpacity {...props} />,
           }}
         />
 
@@ -92,7 +106,7 @@ export default function TabsLayout() {
           options={{
             tabBarIcon: ({ color }) => <PersonIcon color={color} />,
             tabBarButton: (props) => {
-              return user?.role === "listener" ? (
+              return user.role === "user" ? (
                 <TouchableOpacity {...props} />
               ) : null;
             },
@@ -104,7 +118,7 @@ export default function TabsLayout() {
           options={{
             tabBarIcon: ({ color }) => <PersonIcon color={color} />,
             tabBarButton: (props) => {
-              return user?.role === "artist" ? (
+              return user.role === "artist" ? (
                 <TouchableOpacity {...props} />
               ) : null;
             },
@@ -119,7 +133,7 @@ export default function TabsLayout() {
         />
 
         <Tabs.Screen
-          name="playlist"
+          name="album"
           options={{
             tabBarButton: () => null,
           }}

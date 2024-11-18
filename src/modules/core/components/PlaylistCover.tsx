@@ -26,7 +26,7 @@ export const PlaylistCover = ({ item, index }: Props) => {
   const width = width_d / 2.5;
   return (
     <View key={item.id} style={[styles.container, { width: width }]}>
-      <Link href={`/playlist/${item.id}`} style={styles.link} />
+      {/* <Link href={`/playlist/${item.id}`} style={styles.link} /> */}
       <Image
         source={{ uri: item.image }}
         width={width}

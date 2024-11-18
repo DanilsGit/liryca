@@ -2,14 +2,12 @@
 import { Stack, Redirect } from "expo-router";
 
 // React
-import { useState } from "react";
 
 // React Native
 
 // Hooks
 import { useAuth } from "@/modules/auth/hooks/useAuth";
-import { View } from "react-native";
-import ScreenLoading from "@/modules/core/components/ScreenLoading";
+import { SheetManager } from "react-native-actions-sheet";
 
 // Definitions
 
@@ -20,9 +18,8 @@ import ScreenLoading from "@/modules/core/components/ScreenLoading";
 // Api
 
 export default function AuthLayout() {
-  const { user, isLoading } = useAuth();
-
-  if (isLoading) return <ScreenLoading />;
+  const { user } = useAuth();
+  SheetManager.hide("listener-options-sheet");
   if (user) return <Redirect href="/(tabs)" />;
 
   return (

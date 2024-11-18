@@ -16,10 +16,11 @@ import { colors } from "@/constants/tokens";
 import { ThemeText } from "@/constants/themesTypes";
 import TracksList from "@/modules/main/components/TracksList";
 import { HandleShowListenerOptions } from "@/modules/core/constants/handles";
-import DotsButton from "@/modules/core/components/DotsButton";
 import { dataSongs } from "@/constants/data";
-import LargelikedButton from "../components/LargelikedButton";
 import { HeartIcon } from "@/modules/core/components/Icons";
+import { generateTrackListId } from "@/modules/core/utils/miscellaneous";
+import HeaderProfiles from "@/modules/core/components/HeaderProfiles";
+import LargeIconButton from "@/modules/core/components/LargeIconButton";
 
 // Definitions
 
@@ -34,48 +35,31 @@ export default function ListenerProfile() {
   const { theme } = useTheme();
   const styles = createStyles(themesText[theme], themesLine[theme]);
   const { t } = useTranslation();
-  const width = Dimensions.get("window").width;
 
   return (
     <View>
       {/* Header */}
-      <View style={styles.header}>
-        <Image
-          source={{ uri: user?.banner }}
-          style={{ width: width, height: "100%" }}
-        />
-
-        <View style={[styles.header_icon, { left: width / 2 - 66 }]}>
-          <Image source={{ uri: user?.icon }} style={styles.header_icon_img} />
-        </View>
-
-        {/* Options */}
-        <View style={{ position: "absolute", bottom: 10, right: 10 }}>
-          <DotsButton action={HandleShowListenerOptions} />
-        </View>
-      </View>
-
-      {/* Actions */}
+      <HeaderProfiles handleDotsButton={HandleShowListenerOptions} />
 
       {/* Stats and Name */}
       <View style={{ alignItems: "center" }}>
         <View style={styles.starts}>
-          <Text style={styles.text_name}>{user?.name}</Text>
+          <Text style={styles.text_name}>{user.username}</Text>
           {/* Stats */}
           <View style={styles.starts_stats}>
             {/* Followers */}
             <View style={styles.stats_number_container}>
-              <Text style={styles.text_xl}>{user?.followers}</Text>
+              <Text style={styles.text_xl}>999</Text>
               <Text style={styles.text}>{t("profile.followers")}</Text>
             </View>
             {/* Likes */}
             <View style={styles.stats_number_container}>
-              <Text style={styles.text_xl}>{user?.liked}</Text>
+              <Text style={styles.text_xl}>999</Text>
               <Text style={styles.text}>{t("profile.likes")}</Text>
             </View>
             {/* Playlist */}
             <View style={styles.stats_number_container}>
-              <Text style={styles.text_xl}>{user?.playlist}</Text>
+              <Text style={styles.text_xl}>99</Text>
               <Text style={styles.text}>{t("profile.playlists")}</Text>
             </View>
           </View>
@@ -84,7 +68,7 @@ export default function ListenerProfile() {
 
       {/* Buttons */}
       <View style={{ margin: 20, gap: 10 }}>
-        <LargelikedButton
+        <LargeIconButton
           onPress={() => console.log("xd")}
           icon={
             <HeartIcon
@@ -96,7 +80,7 @@ export default function ListenerProfile() {
           }
           text={t("profile.liked_songs")}
         />
-        <LargelikedButton
+        <LargeIconButton
           onPress={() => console.log("xd")}
           icon={
             <HeartIcon
@@ -108,7 +92,7 @@ export default function ListenerProfile() {
           }
           text={t("profile.liked_playlists")}
         />
-        <LargelikedButton
+        <LargeIconButton
           onPress={() => console.log("xd")}
           icon={
             <HeartIcon
@@ -124,38 +108,16 @@ export default function ListenerProfile() {
 
       {/* Top Songs */}
       <Text style={styles.text_xl_margin}>{t("profile.top_songs")}</Text>
-      <TracksList data={dataSongs} />
+      <TracksList
+        id={generateTrackListId("listenerTop_list")}
+        data={dataSongs}
+      />
     </View>
   );
 }
 
 const createStyles = (colorText: ThemeText, colorLine: string) =>
   StyleSheet.create({
-    header: {
-      position: "relative",
-      marginBottom: 75,
-      height: 150,
-    },
-    header_icon: {
-      position: "absolute",
-      backgroundColor: colors.light_pink,
-      width: 135,
-      height: 135,
-      borderRadius: 100,
-      top: 80,
-      justifyContent: "center",
-      alignItems: "center",
-      shadowColor: colors.purple,
-      shadowRadius: 30,
-      shadowOpacity: 0.1,
-      shadowOffset: { width: 5, height: 5 },
-      elevation: 10,
-    },
-    header_icon_img: {
-      width: 130,
-      height: 130,
-      borderRadius: 100,
-    },
     starts: {
       width: "80%",
       alignItems: "center",

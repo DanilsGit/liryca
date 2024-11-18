@@ -36,7 +36,7 @@ export default function Screen({ children }: { children: React.ReactNode }) {
     >
       <ScrollView>
         <View style={{ flex: 1 }}>{children}</View>
-        <View style={{ padding: activeTrack ? 60 : 25 }} />
+        <View style={{ padding: activeTrack ? 70 : 25 }} />
       </ScrollView>
     </LinearGradient>
   );

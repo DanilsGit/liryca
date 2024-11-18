@@ -7,7 +7,7 @@ import { colors, fontSizes } from "@/constants/tokens";
 import MovingText from "@/modules/core/components/MovingText";
 import PinkDots from "@/modules/main/components/PinkDots";
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { Track, useActiveTrack, useIsPlaying } from "react-native-track-player";
+import { Track, useActiveTrack } from "react-native-track-player";
 
 // Hooks
 
@@ -24,7 +24,6 @@ interface Props {
 // Api
 
 export default function TrackIndexItem({ item, index, onTrackSelect }: Props) {
-  const { playing } = useIsPlaying();
   const isActiveSong = useActiveTrack()?.url === item.url;
   const styles = createStyles();
 
@@ -48,7 +47,7 @@ export default function TrackIndexItem({ item, index, onTrackSelect }: Props) {
             />
             <Text style={styles.text}>{item.artist}</Text>
           </View>
-
+          <Text style={[styles.text, styles.text_index]}>{item.duration}</Text>
           <Pressable
             onPress={() => alert("golaa")}
             style={styles.pressable_dots}

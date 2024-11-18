@@ -3,10 +3,12 @@
 // React
 
 // React Native
-import { FlatListProps, StyleSheet, Text, View } from "react-native";
+import { FlatListProps, StyleSheet, View } from "react-native";
 import { FlatList } from "react-native-actions-sheet";
 import { Album } from "../lib/types";
 import AlbumItem from "./AlbumItem";
+import { useRouter } from "expo-router";
+import NoListYet from "./NoListYet";
 
 // Hooks
 
@@ -24,9 +26,9 @@ type Props = Partial<FlatListProps<Album>> & {
 
 export default function AlbumList({ data }: Props) {
   const styles = createStyles();
-
+  const router = useRouter();
   const handleAlbumSelect = async (album: Album) => {
-    console.log(album);
+    router.push(`/album/${album.id}`);
   };
 
   return (
@@ -38,7 +40,7 @@ export default function AlbumList({ data }: Props) {
         )}
         keyExtractor={(item) => item.id.toString()}
         scrollEnabled={false}
-        ListEmptyComponent={<Text>No Albums</Text>}
+        ListEmptyComponent={<NoListYet>No albums yet</NoListYet>}
       />
     </View>
   );
@@ -46,5 +48,5 @@ export default function AlbumList({ data }: Props) {
 
 const createStyles = () =>
   StyleSheet.create({
-    songs_container: { paddingHorizontal: 15 },
+    songs_container: {},
   });

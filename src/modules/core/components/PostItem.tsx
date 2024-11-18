@@ -4,7 +4,7 @@
 
 // React Native
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { Post } from "../lib/types";
+import { Post } from "../lib/types_tracks";
 import { useTheme } from "../hooks/useTheme";
 import { themesBackgroundPost, themesText } from "@/constants/themes";
 import { ThemeText } from "@/constants/themesTypes";

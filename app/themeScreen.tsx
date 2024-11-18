@@ -1,5 +1,5 @@
 // Expo
-
+import * as SecureStorage from "expo-secure-store";
 // React
 
 // React Native
@@ -31,7 +31,7 @@ export default function ThemeScreen() {
 
   const data: Themes[] = ["light", "dark", "quiet"];
 
-  const handleSelectTheme = (theme: Themes) => {
+  const handleSelectTheme = async (theme: Themes) => {
     router.back();
     selectTheme(theme);
   };
@@ -39,7 +39,7 @@ export default function ThemeScreen() {
   return (
     <Screen>
       <View style={styles.container}>
-        <Text style={styles.text_title}>Choose your theme</Text>
+        <Text style={styles.text_title}>{t("theme.title")}</Text>
         <FlatList
           scrollEnabled={false}
           data={data}

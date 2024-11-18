@@ -14,10 +14,13 @@ import {
   View,
 } from "react-native";
 import ButtonRounded from "./ButtonRounded";
-import { useCountries, useRegistrationForm } from "../hooks/custom-hooks";
-import DateTimePicker from "@react-native-community/datetimepicker";
+
 import { useState } from "react";
 import { Picker } from "@react-native-picker/picker";
+import { CheckBox } from "react-native-elements";
+import { useCountries } from "@/modules/core/hooks/useCountries";
+import { useRegistrationForm } from "../hooks/useRegistrationForm";
+import DatePicker from "@/modules/core/components/DatePicker";
 
 // Hooks
 
@@ -35,8 +38,14 @@ export default function Register() {
 
   const { countries, loading } = useCountries();
 
-  const { credentials, handleChange, handleDateChange, handleRegister } =
-    useRegistrationForm();
+  const {
+    credentials,
+    handleChange,
+    handleDateChange,
+    handleRegister,
+    error,
+    loading: loadingRegister,
+  } = useRegistrationForm();
 
   const [settingPassword, setSettingPassword] = useState(false);
 
@@ -49,6 +58,7 @@ export default function Register() {
             <Text style={styles.subTitle}>
               {t("auth.register_password_add")}
             </Text>
+            {error && <Text style={styles.text_error}>{error}</Text>}
           </View>
           <View style={styles.input_container_password}>
             <TextInput
@@ -62,18 +72,24 @@ export default function Register() {
               style={styles.input}
               placeholder="Confirmar contraseña"
               secureTextEntry
-              value={credentials.confirmPassword}
-              onChangeText={(text) => handleChange("confirmPassword", text)}
+              value={credentials.password_confirmation}
+              onChangeText={(text) =>
+                handleChange("password_confirmation", text)
+              }
             />
           </View>
           <ButtonRounded
             handleClick={() => setSettingPassword(false)}
             text={t("auth.back_register")}
           />
-          <ButtonRounded
-            handleClick={handleRegister}
-            text={t("auth.end_register")}
-          />
+          {loadingRegister ? (
+            <ButtonRounded handleClick={() => {}} text={t("auth.loading")} />
+          ) : (
+            <ButtonRounded
+              handleClick={handleRegister}
+              text={t("auth.end_register")}
+            />
+          )}
         </View>
       ) : (
         <View style={styles.white_panel}>
@@ -82,8 +98,8 @@ export default function Register() {
             <TextInput
               style={styles.input}
               placeholder="Usuario"
-              value={credentials.name}
-              onChangeText={(text) => handleChange("name", text)}
+              value={credentials.username}
+              onChangeText={(text) => handleChange("username", text)}
             />
 
             <TextInput
@@ -94,22 +110,18 @@ export default function Register() {
               keyboardType="email-address"
             />
 
-            <View>
-              <Pressable onPress={() => handleChange("showDatePicker", true)}>
-                <View style={styles.input}>
-                  <Text>{credentials.birthdate.toLocaleDateString()}</Text>
-                </View>
-              </Pressable>
-            </View>
-
-            {credentials.showDatePicker && (
-              <DateTimePicker
-                value={credentials.birthdate}
-                mode="date"
-                display="default"
-                onChange={handleDateChange}
-              />
-            )}
+            <DatePicker
+              handlePress={() => {
+                handleChange("showDatePicker", true);
+              }}
+              text={credentials.birthday.toLocaleDateString()}
+              showPicker={credentials.showDatePicker}
+              pickerValue={credentials.birthday}
+              handleDateChange={(_, select) => {
+                handleDateChange(_, select);
+              }}
+              styles={styles.input}
+            />
 
             {loading ? (
               <TextInput
@@ -136,6 +148,14 @@ export default function Register() {
                 </Picker>
               </View>
             )}
+
+            <CheckBox
+              title={
+                <Text style={styles.label_checkbox}>¿Deseas ser artista?</Text>
+              }
+              checked={credentials.role}
+              onPress={() => handleChange("role", !credentials.role)}
+            />
           </View>
           <ButtonRounded
             handleClick={() => setSettingPassword(true)}
@@ -179,6 +199,10 @@ const createStyles = (height: number) =>
     label: {
       marginVertical: 10,
     },
+    label_checkbox: {
+      fontFamily: "M-PLUS-2-Regular",
+      marginLeft: 10,
+    },
     input: {
       borderBottomWidth: 2,
       borderBottomColor: colors.dark_purple,
@@ -189,6 +213,11 @@ const createStyles = (height: number) =>
       borderBottomColor: colors.dark_purple,
     },
     subTitle: {
+      fontSize: fontSizes.sm,
+      fontFamily: "M-PLUS-2-Regular",
+    },
+    text_error: {
+      color: colors.error,
       fontSize: fontSizes.sm,
       fontFamily: "M-PLUS-2-Regular",
     },

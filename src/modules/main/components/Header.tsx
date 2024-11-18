@@ -1,14 +1,13 @@
 // Expo
 
 import { colors } from "@/constants/tokens";
-import { useTheme } from "@/modules/core/hooks/useTheme";
 import { useAuth } from "@/modules/auth/hooks/useAuth";
-import { ThemeText } from "@/constants/themesTypes";
 import { fontSizes } from "@/constants/tokens";
 import React from "react";
 
-import { StyleSheet, Text, View, Image, Pressable } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { useTranslation } from "react-i18next";
+import { Image } from "expo-image";
 
 // FALTARÍA: Hacer que los botones sean presionables, como en la nav bar
 
@@ -33,7 +32,10 @@ export default function Header() {
   return (
     <View style={styles.header}>
       <View style={styles.header_icon}>
-        <Image source={{ uri: user.icon }} style={styles.header_icon_img} />
+        <Image
+          source={{ uri: user?.profile_picture }}
+          style={styles.header_icon_img}
+        />
       </View>
       <View style={styles.buttons}>
         <View style={styles.button}>

@@ -3,10 +3,14 @@
 // React
 
 // React Native
-import { FlatListProps, StyleSheet, Text, View } from "react-native";
+import { FlatListProps, StyleSheet, View } from "react-native";
 import { FlatList } from "react-native-actions-sheet";
-import TrackPlayer, { Track } from "react-native-track-player";
+import { Track } from "react-native-track-player";
 import TrackIndexItem from "./TrackIndexItem";
+import { useRef } from "react";
+import { useQueue } from "@/modules/core/hooks/useQueue";
+import { handleTrackQueue } from "@/modules/core/constants/handles";
+import NoListYet from "@/modules/core/components/NoListYet";
 
 // Hooks
 
@@ -16,16 +20,26 @@ import TrackIndexItem from "./TrackIndexItem";
 
 // Props
 type Props = Partial<FlatListProps<Track>> & {
+  id: string;
   data: Track[];
 };
 // Api
 
-export default function TrackIndexList({ data }: Props) {
+export default function TrackIndexList({ id, data }: Props) {
   const styles = createStyles();
 
-  const handleTrackSelect = async (track: Track) => {
-    await TrackPlayer.load(track);
-    await TrackPlayer.play();
+  const queueOffset = useRef(0);
+  const { activeQueueId, setActiveQueueId } = useQueue();
+
+  const handleTrackSelect = async (selectedTrack: Track) => {
+    handleTrackQueue(
+      selectedTrack,
+      activeQueueId,
+      setActiveQueueId,
+      queueOffset,
+      id,
+      data,
+    );
   };
 
   return (
@@ -41,7 +55,7 @@ export default function TrackIndexList({ data }: Props) {
         )}
         keyExtractor={(item) => item.id.toString()}
         scrollEnabled={false}
-        ListEmptyComponent={<Text>No songs</Text>}
+        ListEmptyComponent={<NoListYet>No songs yet</NoListYet>}
       />
     </View>
   );

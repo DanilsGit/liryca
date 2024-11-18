@@ -21,7 +21,7 @@ interface Props {
 
 export default function SkipToPreviusButton({ size }: Props) {
   return (
-    <Pressable onPress={() => TrackPlayer.skipToPrevious}>
+    <Pressable onPress={() => TrackPlayer.skipToPrevious()}>
       {({ pressed }) => (
         <View style={{ opacity: pressed ? 0.6 : 1 }}>
           <SkipToPreviousTrackIcon size={size} />
