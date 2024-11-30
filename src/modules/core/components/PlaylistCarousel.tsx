@@ -6,6 +6,7 @@
 import { FlatList } from "react-native";
 import { DataPlaylistCarousel } from "../lib/types";
 import { PlaylistCover } from "./PlaylistCover";
+import NoListYet from "./NoListYet";
 
 // Hooks
 
@@ -29,6 +30,7 @@ export default function PlaylistCarousel({ data }: Props) {
       renderItem={PlaylistCover}
       horizontal
       showsHorizontalScrollIndicator={false}
+      ListEmptyComponent={<NoListYet>Aún no tienes nada por aquí</NoListYet>}
     />
   );
 }

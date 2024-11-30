@@ -60,7 +60,7 @@ export const useUploadAlbumScreen = () => {
         song.genre === "" ||
         song.song_uploaded === "" ||
         song.file === null ||
-        song.time === ""
+        song.time === "",
     );
     if (emptyField) {
       Alert.alert("Please fill all fields");

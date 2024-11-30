@@ -1,6 +1,6 @@
 export interface DataPlaylistCarousel {
   id: number;
-  title: string;
+  name: string;
   image: string;
 }
 interface AlbumCreating {
@@ -11,11 +11,23 @@ interface AlbumCreating {
   icon: string;
   file: any;
 }
-
+export interface PublicArtist {
+  id: string;
+  user_id: string;
+  username: string;
+  birthday: string;
+  country: string;
+  email: string;
+  description: string;
+  is_active: boolean;
+  profile_picture: string;
+  profile_banner: string;
+}
 export interface Album {
   id: number;
   title: string;
   artist_id: number;
+  artist_name?: string;
   release_date: string;
   description: string;
   icon: string;

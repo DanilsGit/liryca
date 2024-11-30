@@ -1,7 +1,6 @@
 // Expo
-
-import { Text, View } from "react-native";
 import Screen from "@m/core/components/Screen";
+import Search from "@/modules/search/screen/Search";
 
 // React
 
@@ -20,9 +19,7 @@ import Screen from "@m/core/components/Screen";
 export default function SearchScreen() {
   return (
     <Screen>
-      <View>
-        <Text>Search</Text>
-      </View>
+      <Search />
     </Screen>
   );
 }

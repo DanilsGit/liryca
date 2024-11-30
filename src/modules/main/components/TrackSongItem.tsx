@@ -20,6 +20,7 @@ import PinkDots from "./PinkDots";
 import LottieView from "lottie-react-native";
 import { PlayTrackIcon } from "@/modules/core/components/Icons";
 import MovingText from "@/modules/core/components/MovingText";
+import TrackOptionsMenu from "@/modules/core/components/TrackOptionsMenu";
 
 // Props
 interface Props {
@@ -37,47 +38,47 @@ export default function TrackSongItem({ item, onTrackSelect }: Props) {
   const styles = createStyles(themeText);
 
   return (
-    <Pressable key={item.id} onPress={() => onTrackSelect(item)}>
-      {({ pressed }) => (
-        <View style={[styles.button_content, { opacity: pressed ? 0.6 : 1 }]}>
-          <View style={styles.image_container}>
-            <Image
-              source={{ uri: item.image }}
-              style={{ ...styles.image, opacity: isActiveSong ? 0.4 : 1 }}
-            />
-            {isActiveSong &&
-              (playing ? (
-                <LottieView
-                  autoPlay
-                  style={styles.playing_animation}
-                  source={require("@/assets/animations/PlayingTrack.json")}
-                />
-              ) : (
-                <PlayTrackIcon style={styles.play_icon} />
-              ))}
-          </View>
+    <View style={{ flexDirection: "row" }}>
+      <Pressable
+        key={item.id}
+        onPress={() => onTrackSelect(item)}
+        style={{ flex: 1 }}
+      >
+        {({ pressed }) => (
+          <View style={[styles.button_content, { opacity: pressed ? 0.6 : 1 }]}>
+            <View style={styles.image_container}>
+              <Image
+                source={{ uri: item.image }}
+                style={{ ...styles.image, opacity: isActiveSong ? 0.4 : 1 }}
+              />
+              {isActiveSong &&
+                (playing ? (
+                  <LottieView
+                    autoPlay
+                    style={styles.playing_animation}
+                    source={require("@/assets/animations/PlayingTrack.json")}
+                  />
+                ) : (
+                  <PlayTrackIcon style={styles.play_icon} />
+                ))}
+            </View>
 
-          <View style={styles.text_container}>
-            <MovingText
-              style={[
-                styles.text,
-                { color: isActiveSong ? colors.pink : themeText.secondary },
-              ]}
-              text={item.title}
-              animationThreshold={30}
-            />
-            <Text style={styles.textSm}>{item.artist}</Text>
+            <View style={styles.text_container}>
+              <MovingText
+                style={[
+                  styles.text,
+                  { color: isActiveSong ? colors.pink : themeText.secondary },
+                ]}
+                text={item.title}
+                animationThreshold={30}
+              />
+              <Text style={styles.textSm}>{item.artist}</Text>
+            </View>
           </View>
-
-          <Pressable
-            onPress={() => alert("golaa")}
-            style={styles.pressable_dots}
-          >
-            <PinkDots />
-          </Pressable>
-        </View>
-      )}
-    </Pressable>
+        )}
+      </Pressable>
+      <TrackOptionsMenu track={item} />
+    </View>
   );
 }
 
@@ -93,11 +94,11 @@ const createStyles = (colorText: ThemeText) =>
     image_container: {
       position: "relative",
     },
-    image: { width: 55, height: 55, borderRadius: 5 },
+    image: { width: 45, height: 45, borderRadius: 5 },
     playing_animation: {
       position: "absolute",
-      width: 55,
-      height: 55,
+      width: 45,
+      height: 45,
     },
     play_icon: {
       top: "25%",
@@ -120,10 +121,5 @@ const createStyles = (colorText: ThemeText) =>
       color: colorText.primary,
       fontSize: fontSizes.sm,
       fontFamily: "M-PLUS-2-Regular",
-    },
-    pressable_dots: {
-      alignItems: "center",
-      justifyContent: "center",
-      padding: 15,
     },
   });

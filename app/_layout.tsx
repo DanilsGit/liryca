@@ -16,6 +16,7 @@ import { useTheme } from "@/modules/core/hooks/useTheme";
 import { themesStatusBar } from "@/constants/themes";
 import i18next from "@/services/i18next";
 import "@m/core/actionSheets/sheets";
+import { MenuProvider } from "react-native-popup-menu";
 
 // Components
 import ThemeToggle from "@m/core/components/ThemeToggle";
@@ -29,10 +30,12 @@ import { useLanguage } from "@/modules/core/hooks/useLanguage";
 // SplashScreen.preventAutoHideAsync();
 
 export default function App() {
-  const { loadAsyncUser } = useAuth();
+  const { loadAsyncUser, user } = useAuth();
   const { loadAsyncTheme } = useTheme();
   const { loadAsyncLanguage } = useLanguage();
   useLogTrackPlayerState();
+
+  console.log("user", user);
 
   const handleTrackPlayerLoaded = useCallback(() => {
     SplashScreen.hideAsync();
@@ -65,10 +68,12 @@ export default function App() {
     <SafeAreaProvider>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <SheetProvider>
-          <StatusBar style="auto" />
-          <I18nextProvider i18n={i18next}>
-            <RootNavigation />
-          </I18nextProvider>
+          <MenuProvider>
+            <StatusBar style="auto" />
+            <I18nextProvider i18n={i18next}>
+              <RootNavigation />
+            </I18nextProvider>
+          </MenuProvider>
         </SheetProvider>
       </GestureHandlerRootView>
     </SafeAreaProvider>
@@ -96,6 +101,15 @@ const RootNavigation = () => {
         <Stack.Screen name="(auth)" />
         <Stack.Screen
           name="editAlbum"
+          options={{
+            presentation: "card",
+            gestureEnabled: true,
+            gestureDirection: "vertical",
+            animationDuration: 400,
+          }}
+        />
+        <Stack.Screen
+          name="album"
           options={{
             presentation: "card",
             gestureEnabled: true,

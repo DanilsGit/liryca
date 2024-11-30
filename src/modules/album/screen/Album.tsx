@@ -13,6 +13,7 @@ import TrackIndexList from "../components/TrackIndexList";
 import { useTranslation } from "react-i18next";
 import { generateTrackListId } from "@/modules/core/utils/miscellaneous";
 import { Album as AlbumType } from "@/modules/core/lib/types";
+import { Track } from "react-native-track-player";
 
 // Hooks
 
@@ -22,11 +23,12 @@ import { Album as AlbumType } from "@/modules/core/lib/types";
 // Props
 interface Props {
   data: AlbumType;
+  tracks: Track[];
 }
 
 // Api
 
-export default function Album({ data }: Props) {
+export default function Album({ data, tracks }: Props) {
   const styles = createStyles();
   const { t } = useTranslation();
 
@@ -37,12 +39,14 @@ export default function Album({ data }: Props) {
       <View style={styles.presentation}>
         <View style={styles.presentation_header}>
           <Image
-            source={{ uri: data.image }}
+            source={{ uri: data.icon }}
             style={styles.presentation_header_image}
           />
           <View>
             <Text style={styles.title_presentation_header}>{data.title}</Text>
-            <Text style={styles.text_presentation_header}>{data.artist}</Text>
+            <Text style={styles.text_presentation_header}>
+              {data.release_date}
+            </Text>
           </View>
         </View>
 
@@ -60,8 +64,8 @@ export default function Album({ data }: Props) {
 
       <View style={{ paddingTop: 20 }}>
         <TrackIndexList
-          id={generateTrackListId("playlist_list", data.title)}
-          data={data.tracks}
+          id={generateTrackListId("publicAlbum_list", data.title)}
+          data={tracks}
         />
       </View>
     </View>

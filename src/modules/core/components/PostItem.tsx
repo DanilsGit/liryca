@@ -11,7 +11,6 @@ import { ThemeText } from "@/constants/themesTypes";
 import { colors, fontSizes } from "@/constants/tokens";
 import { useTranslation } from "react-i18next";
 import { Image } from "expo-image";
-import { Ionicons } from "@expo/vector-icons";
 
 import LikeButton from "@/modules/core/components/LikeButton";
 import ShareButton from "@/modules/core/components/ShareButton";
@@ -52,7 +51,7 @@ export default function PostItem({ item, onPostSelect }: Props) {
               <View style={styles.attachment_img_container}>
                 <Image
                   style={styles.attachment_img}
-                  source={{ uri: item.album_attachment.image }}
+                  source={{ uri: item.album_attachment.icon }}
                 />
               </View>
             )}
@@ -63,7 +62,8 @@ export default function PostItem({ item, onPostSelect }: Props) {
           {item.album_attachment && (
             <View style={styles.attachment}>
               <Text style={styles.attachment_text}>
-                {item.album_attachment.title} - {item.album_attachment.from}
+                {item.album_attachment.title} -{" "}
+                {item.album_attachment.artist_name}
               </Text>
             </View>
           )}

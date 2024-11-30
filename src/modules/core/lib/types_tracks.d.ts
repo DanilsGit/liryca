@@ -1,4 +1,5 @@
 import { Track } from "react-native-track-player";
+import { Album } from "./types";
 
 export interface Post {
   id: number;
@@ -7,6 +8,7 @@ export interface Post {
   created_time: string;
   album_attachment?: Album;
   song_attachment?: Track;
+  isLiked: boolean;
 }
 
 export interface Playlist {

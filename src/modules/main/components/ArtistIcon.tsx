@@ -3,11 +3,11 @@
 // React
 
 // React Native
-import { Dimensions, Image, StyleSheet } from "react-native";
-import { DataArtistCarousel } from "../lib/types";
+import { Dimensions, Image, Pressable, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { colors } from "@/constants/tokens";
 import { Link } from "expo-router";
+import { PublicArtist } from "@/modules/core/lib/types";
 
 // Hooks
 
@@ -17,30 +17,32 @@ import { Link } from "expo-router";
 
 // Props
 interface Props {
-  item: DataArtistCarousel;
+  item: PublicArtist;
   index: number;
+  handlePress: (id: string) => void;
 }
 
-export const ArtistIcon = ({ item, index }: Props) => {
+export const ArtistIcon = ({ item, index, handlePress }: Props) => {
   const width_d = Dimensions.get("window").width;
   const width = width_d / 4;
   const styles = createStyles(width);
 
   return (
-    <LinearGradient
-      key={item.id}
-      style={styles.container}
-      colors={[colors.black, colors.pink]}
-    >
-      <Link href={`/artistPublicProfile/${item.id}`} style={styles.link} />
-      <Image
-        source={{ uri: item.image }}
-        borderRadius={100}
-        width={width}
-        height={width}
-        resizeMode="cover"
-      />
-    </LinearGradient>
+    <Pressable onPress={() => handlePress(item.id)}>
+      <LinearGradient
+        key={item.id}
+        style={styles.container}
+        colors={[colors.black, colors.pink]}
+      >
+        <Image
+          source={{ uri: item.profile_picture }}
+          borderRadius={100}
+          width={width}
+          height={width}
+          resizeMode="cover"
+        />
+      </LinearGradient>
+    </Pressable>
   );
 };
 
@@ -55,13 +57,5 @@ const createStyles = (width: number) =>
       width: width + 5,
       height: width + 5,
       position: "relative",
-    },
-    link: {
-      backgroundColor: "transparent",
-      width: width + 5,
-      height: width + 5,
-      position: "absolute",
-      borderRadius: 100,
-      zIndex: 1,
     },
   });

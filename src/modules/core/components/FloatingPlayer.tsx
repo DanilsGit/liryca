@@ -16,6 +16,7 @@ import { useRouter } from "expo-router";
 
 // Hooks
 import { useImageColors } from "../hooks/useImageColors";
+import { useKeyboard } from "@/modules/auth/hooks/useActiveKeyboard";
 
 // Definitions
 
@@ -28,6 +29,7 @@ import { useImageColors } from "../hooks/useImageColors";
 export default function FloatingPlayer({ style }: ViewProps) {
   // Apertura para la card
   const router = useRouter();
+  const { keyboardVisible } = useKeyboard();
 
   // Utilidades para las tracks
   const activeTrack = useActiveTrack();
@@ -41,6 +43,7 @@ export default function FloatingPlayer({ style }: ViewProps) {
   const styles = createStyles(imageColors);
 
   if (!displayedTrack) return null;
+  if (keyboardVisible) return null;
 
   const handlePress = () => {
     router.navigate("/playerScreen");

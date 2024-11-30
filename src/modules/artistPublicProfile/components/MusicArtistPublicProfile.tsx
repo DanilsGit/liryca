@@ -6,13 +6,15 @@
 import { dataAlbums, dataSongs } from "@/constants/data";
 import { themesText } from "@/constants/themes";
 import { ThemeText } from "@/constants/themesTypes";
-import { fontSizes } from "@/constants/tokens";
+import { colors, fontSizes } from "@/constants/tokens";
 import AlbumList from "@/modules/core/components/AlbumList";
 import { useTheme } from "@/modules/core/hooks/useTheme";
 import { generateTrackListId } from "@/modules/core/utils/miscellaneous";
 import TracksList from "@/modules/main/components/TracksList";
+
 import { useTranslation } from "react-i18next";
-import { StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { usePublicAlbums } from "../hooks/usePublicAlbum";
 
 // Hooks
 
@@ -30,6 +32,9 @@ export default function MusicArtistPublicProfile({ id }: Props) {
   const { theme } = useTheme();
   const styles = createStyles(themesText[theme]);
   const { t } = useTranslation();
+  const { albums, loading } = usePublicAlbums(id);
+
+  if (loading) return <ActivityIndicator size="large" color={colors.purple} />;
 
   return (
     <View style={styles.music_section}>
@@ -43,7 +48,9 @@ export default function MusicArtistPublicProfile({ id }: Props) {
         <Text style={styles.top_songs_title}>
           {t("artist_public_profile.albums")}
         </Text>
-        <AlbumList data={dataAlbums} />
+        <View style={{ paddingHorizontal: 20 }}>
+          <AlbumList data={albums} />
+        </View>
       </View>
     </View>
   );

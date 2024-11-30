@@ -82,6 +82,7 @@ export const getAudioDuration = async (uri) => {
 };
 
 export const sameValueOfKeyInArrayElements = (array: any[], key: string) => {
+  if (array.length === 1) return false;
   const values = array.map((element) => element[key]);
   return values.every((value) => value === values[0]);
 };

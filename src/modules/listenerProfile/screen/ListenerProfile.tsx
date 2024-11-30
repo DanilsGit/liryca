@@ -1,6 +1,6 @@
 // Expo
 
-import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 // React
 
@@ -15,12 +15,12 @@ import { useTranslation } from "react-i18next";
 import { colors } from "@/constants/tokens";
 import { ThemeText } from "@/constants/themesTypes";
 import TracksList from "@/modules/main/components/TracksList";
-import { HandleShowListenerOptions } from "@/modules/core/constants/handles";
 import { dataSongs } from "@/constants/data";
 import { HeartIcon } from "@/modules/core/components/Icons";
 import { generateTrackListId } from "@/modules/core/utils/miscellaneous";
 import HeaderProfiles from "@/modules/core/components/HeaderProfiles";
 import LargeIconButton from "@/modules/core/components/LargeIconButton";
+import { useRouter } from "expo-router";
 
 // Definitions
 
@@ -35,11 +35,16 @@ export default function ListenerProfile() {
   const { theme } = useTheme();
   const styles = createStyles(themesText[theme], themesLine[theme]);
   const { t } = useTranslation();
+  const router = useRouter();
+
+  const handleGoToPlaylists = () => {
+    router.navigate("myPlaylist");
+  };
 
   return (
     <View>
       {/* Header */}
-      <HeaderProfiles handleDotsButton={HandleShowListenerOptions} />
+      <HeaderProfiles />
 
       {/* Stats and Name */}
       <View style={{ alignItems: "center" }}>
@@ -55,12 +60,12 @@ export default function ListenerProfile() {
             {/* Likes */}
             <View style={styles.stats_number_container}>
               <Text style={styles.text_xl}>999</Text>
-              <Text style={styles.text}>{t("profile.likes")}</Text>
+              <Text style={styles.text}>{t("profile.following")}</Text>
             </View>
             {/* Playlist */}
             <View style={styles.stats_number_container}>
               <Text style={styles.text_xl}>99</Text>
-              <Text style={styles.text}>{t("profile.playlists")}</Text>
+              <Text style={styles.text}>{t("profile.likes")}</Text>
             </View>
           </View>
         </View>
@@ -81,7 +86,7 @@ export default function ListenerProfile() {
           text={t("profile.liked_songs")}
         />
         <LargeIconButton
-          onPress={() => console.log("xd")}
+          onPress={() => handleGoToPlaylists()}
           icon={
             <HeartIcon
               width={20}
@@ -91,18 +96,6 @@ export default function ListenerProfile() {
             />
           }
           text={t("profile.liked_playlists")}
-        />
-        <LargeIconButton
-          onPress={() => console.log("xd")}
-          icon={
-            <HeartIcon
-              width={20}
-              height={20}
-              fill={colors.purple}
-              strokeWidth={0}
-            />
-          }
-          text={t("profile.saved_albums")}
         />
       </View>
 

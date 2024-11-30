@@ -3,11 +3,11 @@
 // React
 
 // React Native
-import { Dimensions, Text, View, Image, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Pressable } from "react-native";
 import { DataPlaylistCarousel } from "../lib/types";
 import { LinearGradient } from "expo-linear-gradient";
 import { colors, fontSizes } from "../../../constants/tokens";
-import { Link } from "expo-router";
+import { Image } from "expo-image";
 
 // Hooks
 
@@ -22,25 +22,21 @@ interface Props {
 }
 
 export const PlaylistCover = ({ item, index }: Props) => {
-  const width_d = Dimensions.get("window").width;
-  const width = width_d / 2.5;
   return (
-    <View key={item.id} style={[styles.container, { width: width }]}>
-      {/* <Link href={`/playlist/${item.id}`} style={styles.link} /> */}
-      <Image
-        source={{ uri: item.image }}
-        width={width}
-        height={170}
-        borderRadius={10}
-        resizeMode="cover"
-        style={{ position: "relative" }}
-      />
-      <LinearGradient
-        colors={["transparent", "black"]}
-        style={styles.gradiente}
-      />
-      <Text style={styles.text}>{item.title}</Text>
-    </View>
+    <Pressable onPress={() => console.log(item.id)}>
+      <View key={item.id} style={styles.container}>
+        <Image
+          source={{ uri: item.image }}
+          contentFit="cover"
+          style={styles.image}
+        />
+        <LinearGradient
+          colors={["transparent", "black"]}
+          style={styles.gradiente}
+        />
+        <Text style={styles.text}>{item.name}</Text>
+      </View>
+    </Pressable>
   );
 };
 
@@ -60,13 +56,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginHorizontal: 10,
+    width: 160,
   },
-  link: {
-    backgroundColor: "transparent",
+  image: {
+    position: "relative",
     width: "100%",
     height: "100%",
-    position: "absolute",
-    zIndex: 1,
     borderRadius: 10,
   },
   gradiente: {

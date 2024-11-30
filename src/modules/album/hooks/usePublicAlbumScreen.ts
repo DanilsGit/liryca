@@ -1,15 +1,16 @@
 import { useAuth } from "@/modules/auth/hooks/useAuth";
-import { Album, PlayableSong } from "@/modules/core/lib/types";
+import { Album } from "@/modules/core/lib/types";
 import { useCallback, useEffect, useState } from "react";
 import {
   albumInformationGetRequest,
   albumTracksGetRequest,
 } from "../api/album";
 import { onlyMinutes } from "@/modules/core/utils/miscellaneous";
+import { Track } from "react-native-track-player";
 
 export const usePublicAlbumScreen = ({ id }: { id: string }) => {
   const [album, setAlbum] = useState<Album>(null);
-  const [tracks, setTracks] = useState<PlayableSong[]>([]);
+  const [tracks, setTracks] = useState<Track[]>([]);
   const [loading, setLoading] = useState(true);
   const { user } = useAuth();
 
@@ -36,7 +37,7 @@ export const usePublicAlbumScreen = ({ id }: { id: string }) => {
 
   useEffect(() => {
     getAlbumAndTracks();
-  }, [getAlbumAndTracks]);
+  }, [getAlbumAndTracks, id]);
 
   return { album, tracks, loading };
 };

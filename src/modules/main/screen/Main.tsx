@@ -38,7 +38,6 @@ export default function Main() {
         <HiText style={styles.title_text_xl2} />
       </View>
       <View style={{ gap: 15 }}>
-        {/*<Text style={styles.title_text}>{t("main.artist")}</Text>*/}
         <ArtistCarousel data={dataArtist} />
       </View>
       <View style={{ gap: 15 }}>
