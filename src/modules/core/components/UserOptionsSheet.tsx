@@ -5,7 +5,7 @@
 // React Native
 import { useAuth } from "@/modules/auth/hooks/useAuth";
 import { useRouter } from "expo-router";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, View } from "react-native";
 import { SheetManager } from "react-native-actions-sheet";
 import { DotsIcon } from "./Icons";
 

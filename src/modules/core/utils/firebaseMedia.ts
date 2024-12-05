@@ -9,7 +9,7 @@ import {
 export const uploadMediaToFirebase = async (
   file: any,
   folder: string,
-  name: string,
+  name: string
 ) => {
   try {
     const uri = file.uri;
@@ -53,16 +53,6 @@ export function uriToBlob(uri: string): Promise<Blob> {
     // Send the request. The 'null' argument means that no body content is given for the request
     xhr.send(null);
   });
-}
-
-export async function renameFileFirebase(path, file, folder, name) {
-  const oldRef = ref(storage, path);
-  // Eliminar el archivo antiguo
-  await deleteObject(oldRef);
-
-  const newUrl = await uploadImageToFirebase(file, folder, name);
-
-  return newUrl;
 }
 
 export async function deleteFileFirebase(path) {

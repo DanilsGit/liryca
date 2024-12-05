@@ -23,8 +23,8 @@
   },
   "profile": {
     "followers": "Seguidores",
+    "following": "Siguiendo",
     "likes": "Me gusta",
-    "playlists": "Playlist",
     "top_songs": "Tus más escuchadas",
     "filter_music": "Música",
     "filter_posts": "Publicaciones",

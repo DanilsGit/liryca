@@ -19,16 +19,19 @@ import ArtistCarousel from "@m/main/components/ArtistCarousel";
 import HiText from "@m/main/components/HiText";
 import { ThemeText } from "@/constants/themesTypes";
 import TracksList from "@/modules/main/components/TracksList";
-import { dataArtist, dataPlaylist, dataSongs } from "@/constants/data";
+import { dataArtist, dataSongs } from "@/constants/data";
 import { generateTrackListId } from "@/modules/core/utils/miscellaneous";
 import { useAuth } from "@/modules/auth/hooks/useAuth";
 import { Redirect } from "expo-router";
+import { useMainScreen } from "@/modules/main/hooks/useMainScreen";
 
 export default function Main() {
   const { theme } = useTheme();
   const { t } = useTranslation();
   const styles = createStyles(themesText[theme]);
   const { user } = useAuth();
+  const { albums } = useMainScreen();
+
   if (user?.role === "artist") return <Redirect href="/artistProfile" />;
 
   return (
@@ -38,12 +41,11 @@ export default function Main() {
         <HiText style={styles.title_text_xl2} />
       </View>
       <View style={{ gap: 15 }}>
-        {/*<Text style={styles.title_text}>{t("main.artist")}</Text>*/}
         <ArtistCarousel data={dataArtist} />
       </View>
       <View style={{ gap: 15 }}>
-        <Text style={styles.title_text}>{t("main.playlist")}</Text>
-        <PlaylistCarousel data={dataPlaylist} />
+        <Text style={styles.title_text}>Albumes populares</Text>
+        <PlaylistCarousel data={albums} />
       </View>
       <View style={{ gap: 15 }}>
         <Text style={styles.title_text}>{t("main.top_songs")}</Text>

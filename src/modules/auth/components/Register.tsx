@@ -64,14 +64,14 @@ export default function Register() {
             <TextInput
               style={styles.input}
               placeholder="Contraseña"
-              secureTextEntry
+              secureTextEntry={true}
               value={credentials.password}
               onChangeText={(text) => handleChange("password", text)}
             />
             <TextInput
               style={styles.input}
               placeholder="Confirmar contraseña"
-              secureTextEntry
+              secureTextEntry={true}
               value={credentials.password_confirmation}
               onChangeText={(text) =>
                 handleChange("password_confirmation", text)

@@ -5,7 +5,7 @@ import { loginRequest, registerRequest } from "../api/auth";
 import { UserLogin, UserRegister } from "../types/types";
 
 interface User {
-  id: number;
+  id: string;
   username: string;
   email: string;
   profile_banner: string;

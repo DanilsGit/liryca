@@ -16,12 +16,25 @@ export const colors = {
   error: "#FF4320",
 };
 
+export const genresColors = {
+  one: "#FFA500",
+  two: "#E06FD5",
+  three: "#7744AB",
+  four: "#2f2238",
+  five: "#2C2135",
+  six: "#1C1561",
+  seven: "#c69bd4",
+  eight: "#4D2F55",
+  nine: "#6F8FAC",
+  ten: "#DAC3E9",
+};
+
 export const fontSizes = {
   sm: 10,
   md: 13,
   lg: 15,
   xl: 18,
-  xl2: 25,
+  xl2: 23,
   xl3: 32,
   xl4: 47,
 };

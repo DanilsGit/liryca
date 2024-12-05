@@ -10,8 +10,12 @@ export const useArtistAlbums = () => {
   const { token, version } = user;
 
   const getAlbums = useCallback(async () => {
-    const res = await allAlbumsGetRequest(token);
-    setAlbums(res.data);
+    try {
+      const res = await allAlbumsGetRequest(token);
+      setAlbums(res.data);
+    } catch (error) {
+      console.log(error.response.data);
+    }
   }, [token]);
 
   useEffect(() => {

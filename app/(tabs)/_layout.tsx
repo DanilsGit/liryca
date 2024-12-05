@@ -15,9 +15,9 @@ import { useTheme } from "@/modules/core/hooks/useTheme";
 import { themesTab } from "@/constants/themes";
 import { colors } from "@/constants/tokens";
 import { useAuth } from "@/modules/auth/hooks/useAuth";
-import ScreenLoading from "@/modules/core/components/ScreenLoading";
 import FloatingPlayer from "@/modules/core/components/FloatingPlayer";
 import { useEffect } from "react";
+import { useKeyboard } from "@/modules/auth/hooks/useActiveKeyboard";
 // Hooks
 
 // Definitions
@@ -33,6 +33,7 @@ export default function TabsLayout() {
   const { user } = useAuth();
   const themeTab = themesTab[theme];
   const router = useRouter();
+  const { keyboardVisible } = useKeyboard();
 
   useEffect(() => {
     if (user && user.role === "artist") {
@@ -40,9 +41,7 @@ export default function TabsLayout() {
     }
   }, [user, router]);
 
-  // if (isLoading) return <ScreenLoading />;
   if (!user) return <Redirect href="/(auth)" />;
-  // if (user.role === "artist") return <Redirect href="/artistProfile" />;
 
   return (
     <>
@@ -51,13 +50,14 @@ export default function TabsLayout() {
         screenOptions={{
           headerShown: false,
           tabBarStyle: {
+            display: !keyboardVisible ? "flex" : "none",
             position: "absolute",
             borderTopWidth: 1,
             borderColor: themeTab.top,
             borderTopLeftRadius: 35,
           },
           tabBarActiveTintColor: colors.light_pink,
-          tabBarInactiveTintColor: colors.light_purple, // NOTA: Arreglar esta parte para que cambie según el tema
+          tabBarInactiveTintColor: colors.light_purple,
           tabBarLabel: () => null,
           tabBarBackground: () => (
             <View
@@ -96,8 +96,7 @@ export default function TabsLayout() {
           name="social"
           options={{
             tabBarIcon: ({ color }) => <StarIcon color={color} />,
-            tabBarButton: (props) =>
-              user.role === "user" && <TouchableOpacity {...props} />,
+            tabBarButton: (props) => <TouchableOpacity {...props} />,
           }}
         />
 
@@ -131,9 +130,8 @@ export default function TabsLayout() {
             tabBarButton: () => null,
           }}
         />
-
         <Tabs.Screen
-          name="album"
+          name="myPlaylist"
           options={{
             tabBarButton: () => null,
           }}

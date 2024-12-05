@@ -16,6 +16,9 @@ import { Dimensions, Pressable, StyleSheet, Text, View } from "react-native";
 import MusicArtistPublicProfile from "../components/MusicArtistPublicProfile";
 import PostList from "@/modules/core/components/PostList";
 import { dataPost } from "@/constants/data";
+import FollowButton from "../components/FollowButton";
+import { PublicArtist } from "@/modules/core/lib/types";
+import { useFollow } from "../hooks/useFollow";
 
 // Hooks
 
@@ -25,33 +28,30 @@ import { dataPost } from "@/constants/data";
 
 // Props
 interface Props {
-  artist: {
-    id: string;
-    banner: string;
-    icon: string;
-    to_follow: boolean;
-    followers: string;
-    likes: number;
-    name: string;
-  };
+  artist: PublicArtist;
+  follow: boolean;
+  handleFollow: () => void;
 }
 type filters = "music" | "posts";
 
 // Api
-
-export default function ArtistPublicProfile({ artist }: Props) {
+export default function ArtistPublicProfile({
+  artist,
+  follow,
+  handleFollow,
+}: Props) {
   const { theme } = useTheme();
   const styles = createStyles(themesText[theme]);
   const width = Dimensions.get("window").width;
-  const { t } = useTranslation();
   const [filter, setFilter] = useState<filters>("music");
+  const { t } = useTranslation();
 
   return (
     <View>
       {/* Header */}
       <View style={styles.header}>
         <ImageBackground
-          source={{ uri: artist.banner }}
+          source={{ uri: artist.profile_banner }}
           style={{ width: "100%", height: "100%" }}
         >
           <View
@@ -64,11 +64,14 @@ export default function ArtistPublicProfile({ artist }: Props) {
         </ImageBackground>
 
         <View style={styles.header_title_container}>
-          <Text style={styles.header_title_text}>{artist.name}</Text>
+          <Text style={styles.header_title_text}>{artist.username}</Text>
         </View>
 
         <View style={[styles.header_icon, { left: width / 2 - 66 }]}>
-          <Image source={{ uri: artist.icon }} style={styles.header_icon_img} />
+          <Image
+            source={{ uri: artist.profile_picture }}
+            style={styles.header_icon_img}
+          />
         </View>
 
         {/* Options */}
@@ -79,22 +82,16 @@ export default function ArtistPublicProfile({ artist }: Props) {
 
       {/* Stats and follow */}
       <View style={styles.stats_follow_container}>
-        <View style={styles.stats_follow}>
-          <Text style={styles.stats_follow_text}>
-            {artist.to_follow
-              ? t("artist_public_profile.following")
-              : t("artist_public_profile.follow")}
-          </Text>
-        </View>
+        <FollowButton follow={follow} handleFollow={() => handleFollow()} />
         <View style={styles.stats_followers_conainer}>
-          <Text style={styles.stats_followers_text}>{artist.followers}</Text>
+          <Text style={styles.stats_followers_text}>999</Text>
           <Text style={styles.stats_followers_subtext}>
             {t("artist_public_profile.followers")}
           </Text>
         </View>
         <View style={styles.stats_followers_conainer}>
           <Text style={styles.stats_followers_text}>
-            {formatMillionsToM_HundredsToK(artist.likes)}
+            {formatMillionsToM_HundredsToK(9999)}
           </Text>
           <Text style={styles.stats_followers_subtext}>
             {t("artist_public_profile.likes")}
@@ -127,7 +124,7 @@ export default function ArtistPublicProfile({ artist }: Props) {
       </View>
 
       {/* Music component */}
-      {filter === "music" && <MusicArtistPublicProfile id={artist.id} />}
+      {filter === "music" && <MusicArtistPublicProfile id={artist.user_id} />}
 
       {/* Posts component */}
       {filter === "posts" && <PostList data={dataPost} />}
@@ -170,22 +167,9 @@ const createStyles = (colorText: ThemeText) =>
       alignItems: "center",
       marginTop: 20,
     },
-    stats_follow: {
-      borderWidth: 2,
-      borderColor: colorText.primary,
-      height: 35,
-      justifyContent: "center",
-      paddingHorizontal: 20,
-      borderRadius: 100,
-    },
     stats_followers_conainer: {
       alignItems: "center",
       marginHorizontal: 20,
-    },
-    stats_follow_text: {
-      color: colorText.primary,
-      fontSize: fontSizes.md,
-      fontFamily: "M-PLUS-2-Bold",
     },
     stats_followers_text: {
       color: colorText.primary,

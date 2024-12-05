@@ -58,5 +58,5 @@ export default function TracksList({ id, data }: Props) {
 
 const createStyles = () =>
   StyleSheet.create({
-    songs_container: { paddingHorizontal: 15 },
+    songs_container: { paddingHorizontal: 0 },
   });
