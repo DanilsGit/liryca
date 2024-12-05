@@ -1,6 +1,7 @@
 import { useAuth } from "@/modules/auth/hooks/useAuth";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { allPlaylistGetRequest, playlistPostRequest } from "../api/playlist";
+import { useFocusEffect } from "expo-router";
 
 export const usePlaylistAndAlbums = () => {
   const { user } = useAuth();
@@ -13,20 +14,32 @@ export const usePlaylistAndAlbums = () => {
   const handleCreatePlaylist = async () => {
     try {
       setLoadingCreating(true);
-      await playlistPostRequest(user.token);
-      await getPlaylists();
+      const res = await playlistPostRequest(user.token);
+      const data = res.data.playlist;
+      const playlist = {
+        id: data.id,
+        name: data.name,
+        image: data.image,
+      };
+      setMyPlaylist([playlist, ...myPlaylist]);
       setLoadingCreating(false);
     } catch (error) {
       setLoadingCreating(false);
       console.log(error.response.data);
     }
   };
-  const getPlaylists = useCallback(async () => {
+
+  const getPlaylists = async () => {
     try {
       setLoadingGetPlaylist(true);
       const res = await allPlaylistGetRequest(user.token);
       const playlists = res.data;
-      setMyPlaylist(playlists.playlists.reverse());
+      const myPlaylist = playlists.playlists.map((playlist) => ({
+        id: playlist.id,
+        title: playlist.name,
+        icon: playlist.image,
+      }));
+      setMyPlaylist(myPlaylist.reverse());
       setSharedPlaylist(playlists.shared_playlists);
       setSavedPlaylist(playlists.followed_playlists);
       setLoadingGetPlaylist(false);
@@ -34,11 +47,13 @@ export const usePlaylistAndAlbums = () => {
       setLoadingGetPlaylist(false);
       console.log(error.response.data);
     }
-  }, [user.token]);
+  };
 
-  useEffect(() => {
-    getPlaylists();
-  }, [getPlaylists]);
+  useFocusEffect(
+    useCallback(() => {
+      getPlaylists();
+    }, [])
+  );
 
   return {
     myPlaylist,

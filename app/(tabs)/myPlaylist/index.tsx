@@ -12,6 +12,7 @@ import PlaylistCarousel from "@/modules/core/components/PlaylistCarousel";
 import Screen from "@/modules/core/components/Screen";
 import ScreenLoading from "@/modules/core/components/ScreenLoading";
 import { useTheme } from "@/modules/core/hooks/useTheme";
+import LoadingPlaylist from "@/modules/playlist/components/LoadingPlaylist";
 import { usePlaylistAndAlbums } from "@/modules/playlist/hooks/usePlaylistAndAlbum";
 import { useRouter } from "expo-router";
 import { StyleSheet, Text, View } from "react-native";
@@ -29,7 +30,6 @@ import { StyleSheet, Text, View } from "react-native";
 export default function MyPlaylist() {
   const { theme } = useTheme();
   const styles = createStyles(themesText[theme]);
-  const router = useRouter();
 
   const {
     myPlaylist,
@@ -57,6 +57,7 @@ export default function MyPlaylist() {
         <View style={{ gap: 10 }}>
           <Text style={styles.text_subTitle}>Your creations</Text>
           <View style={{ flexDirection: "row" }}>
+            {loadingCreating && <LoadingPlaylist />}
             <PlaylistCarousel data={myPlaylist} />
           </View>
         </View>

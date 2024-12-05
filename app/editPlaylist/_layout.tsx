@@ -15,7 +15,7 @@ import { Stack } from "expo-router";
 
 // Api
 
-export default function AlbumLayout() {
+export default function EditPlaylistLayout() {
   return (
     <Stack>
       <Stack.Screen name="[id]" options={{ headerShown: false }} />

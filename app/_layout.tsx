@@ -30,12 +30,10 @@ import { useLanguage } from "@/modules/core/hooks/useLanguage";
 // SplashScreen.preventAutoHideAsync();
 
 export default function App() {
-  const { loadAsyncUser, user } = useAuth();
+  const { loadAsyncUser } = useAuth();
   const { loadAsyncTheme } = useTheme();
   const { loadAsyncLanguage } = useLanguage();
   useLogTrackPlayerState();
-
-  console.log("user", user);
 
   const handleTrackPlayerLoaded = useCallback(() => {
     SplashScreen.hideAsync();
@@ -109,7 +107,34 @@ const RootNavigation = () => {
           }}
         />
         <Stack.Screen
+          name="editPlaylist"
+          options={{
+            presentation: "card",
+            gestureEnabled: true,
+            gestureDirection: "vertical",
+            animationDuration: 400,
+          }}
+        />
+        <Stack.Screen
+          name="addToPlaylist"
+          options={{
+            presentation: "card",
+            gestureEnabled: true,
+            gestureDirection: "vertical",
+            animationDuration: 400,
+          }}
+        />
+        <Stack.Screen
           name="album"
+          options={{
+            presentation: "card",
+            gestureEnabled: true,
+            gestureDirection: "vertical",
+            animationDuration: 400,
+          }}
+        />
+        <Stack.Screen
+          name="playlist"
           options={{
             presentation: "card",
             gestureEnabled: true,

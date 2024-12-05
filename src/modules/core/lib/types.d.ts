@@ -1,7 +1,7 @@
 export interface DataPlaylistCarousel {
   id: number;
-  name: string;
-  image: string;
+  title: string;
+  icon: string;
 }
 interface AlbumCreating {
   title: string;

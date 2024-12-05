@@ -18,15 +18,15 @@ import { Image } from "expo-image";
 // Props
 interface Props {
   item: DataPlaylistCarousel;
-  index: number;
+  handlePress: (id: number) => void;
 }
 
-export const PlaylistCover = ({ item, index }: Props) => {
+export const PlaylistCover = ({ item, handlePress }: Props) => {
   return (
-    <Pressable onPress={() => console.log(item.id)}>
+    <Pressable onPress={() => handlePress(item.id)}>
       <View key={item.id} style={styles.container}>
         <Image
-          source={{ uri: item.image }}
+          source={{ uri: item.icon }}
           contentFit="cover"
           style={styles.image}
         />
@@ -34,7 +34,7 @@ export const PlaylistCover = ({ item, index }: Props) => {
           colors={["transparent", "black"]}
           style={styles.gradiente}
         />
-        <Text style={styles.text}>{item.name}</Text>
+        <Text style={styles.text}>{item.title}</Text>
       </View>
     </Pressable>
   );

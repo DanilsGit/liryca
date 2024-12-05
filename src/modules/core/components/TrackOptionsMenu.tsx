@@ -1,5 +1,5 @@
 // Expo
-
+import * as SecureStorage from "expo-secure-store";
 // React
 
 // React Native
@@ -13,6 +13,7 @@ import {
 } from "react-native-popup-menu";
 import { StyleSheet, View, Text } from "react-native";
 import { colors, fontSizes } from "@/constants/tokens";
+import { useRouter } from "expo-router";
 
 // Hooks
 
@@ -28,9 +29,11 @@ interface Props {
 
 export default function TrackOptionsMenu({ track }: Props) {
   const styles = createStyles();
+  const router = useRouter();
 
-  const handleAddTo = () => {
-    console.log("Add to");
+  const handleAddTo = async () => {
+    await SecureStorage.setItemAsync("trackToAdd", JSON.stringify(track));
+    router.push("/addToPlaylist");
   };
 
   return (
@@ -50,7 +53,7 @@ export default function TrackOptionsMenu({ track }: Props) {
           <Text style={styles.text}>Add to</Text>
         </MenuOption>
 
-        <MenuOption onSelect={handleAddTo}>
+        <MenuOption onSelect={() => console.log("xd")}>
           <Text style={styles.text}>Post it</Text>
         </MenuOption>
       </MenuOptions>

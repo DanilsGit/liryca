@@ -15,10 +15,10 @@ import { Stack } from "expo-router";
 
 // Api
 
-export default function AlbumLayout() {
+export default function MyPlaylistLayout() {
   return (
     <Stack>
-      <Stack.Screen name="[id]" options={{ headerShown: false }} />
+      <Stack.Screen name="index" options={{ headerShown: false }} />
     </Stack>
   );
 }

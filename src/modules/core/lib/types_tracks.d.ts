@@ -11,11 +11,22 @@ export interface Post {
   isLiked: boolean;
 }
 
+export interface shared {
+  id: string;
+  username: string;
+  profile_picture: string;
+}
 export interface Playlist {
   id: number;
-  title: string;
+  name: string;
   image: string;
-  tracks: Track[];
+  user_id: string;
+  profile_picture: string;
+  created_at: string;
+  description: string;
+  isActive: boolean;
+  shared_with: shared[];
+  privacy: string;
 }
 
 export interface Artist {
