@@ -19,20 +19,24 @@ import ArtistCarousel from "@m/main/components/ArtistCarousel";
 import HiText from "@m/main/components/HiText";
 import { ThemeText } from "@/constants/themesTypes";
 import TracksList from "@/modules/main/components/TracksList";
-import { dataArtist, dataSongs } from "@/constants/data";
+import { dataSongs } from "@/constants/data";
 import { generateTrackListId } from "@/modules/core/utils/miscellaneous";
 import { useAuth } from "@/modules/auth/hooks/useAuth";
 import { Redirect } from "expo-router";
 import { useMainScreen } from "@/modules/main/hooks/useMainScreen";
+import AlbumCarousel from "@/modules/album/components/AlbumCarousel";
+import ScreenLoading from "@/modules/core/components/ScreenLoading";
 
 export default function Main() {
   const { theme } = useTheme();
   const { t } = useTranslation();
   const styles = createStyles(themesText[theme]);
   const { user } = useAuth();
-  const { albums } = useMainScreen();
+  const { albums, loading, topArtist, followedArtist } = useMainScreen();
 
   if (user?.role === "artist") return <Redirect href="/artistProfile" />;
+
+  if (loading) return <ScreenLoading />;
 
   return (
     <View style={{ gap: 30 }}>
@@ -40,16 +44,27 @@ export default function Main() {
       <View style={{ gap: 10 }}>
         <HiText style={styles.title_text_xl2} />
       </View>
+      {followedArtist.length > 0 && (
+        <View style={{ gap: 15 }}>
+          <Text style={styles.title_text}>Seguidos</Text>
+          <ArtistCarousel data={followedArtist} />
+        </View>
+      )}
       <View style={{ gap: 15 }}>
-        <ArtistCarousel data={dataArtist} />
+        <Text style={styles.title_text}>En tendencia</Text>
+        <ArtistCarousel data={topArtist} />
       </View>
       <View style={{ gap: 15 }}>
         <Text style={styles.title_text}>Albumes populares</Text>
-        <PlaylistCarousel data={albums} />
+        <View style={{ marginHorizontal: 10 }}>
+          <AlbumCarousel data={albums} />
+        </View>
       </View>
       <View style={{ gap: 15 }}>
         <Text style={styles.title_text}>{t("main.top_songs")}</Text>
-        <TracksList id={generateTrackListId("main_list")} data={dataSongs} />
+        <View style={{ marginHorizontal: 5 }}>
+          <TracksList id={generateTrackListId("main_list")} data={dataSongs} />
+        </View>
       </View>
     </View>
   );

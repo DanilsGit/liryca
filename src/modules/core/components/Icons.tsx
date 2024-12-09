@@ -242,6 +242,27 @@ export const RepeatOnceIcon = (props: any) => {
   );
 };
 
+export const MusicIcon = (props: SvgIconProps) => {
+  return (
+    <Svg
+      width={52}
+      height={52}
+      viewBox="0 0 52 52"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <Path
+        d="M19.5 39V10.833l26-4.333v28.167M19.5 39a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0zm26-4.333a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
+        stroke={props.stroke ?? "#000"}
+        strokeWidth={props.strokeWidth ?? 5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  );
+};
+
 export const LirycaIcon = (props: any) => {
   return (
     <Image

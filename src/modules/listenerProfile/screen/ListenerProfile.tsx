@@ -17,10 +17,15 @@ import { ThemeText } from "@/constants/themesTypes";
 import TracksList from "@/modules/main/components/TracksList";
 import { dataSongs } from "@/constants/data";
 import { HeartIcon } from "@/modules/core/components/Icons";
-import { generateTrackListId } from "@/modules/core/utils/miscellaneous";
+import {
+  formatMillionsToM_HundredsToK,
+  generateTrackListId,
+} from "@/modules/core/utils/miscellaneous";
 import HeaderProfiles from "@/modules/core/components/HeaderProfiles";
 import LargeIconButton from "@/modules/core/components/LargeIconButton";
 import { useRouter } from "expo-router";
+import { usePlayback } from "../hooks/usePlayback";
+import { useFollow } from "@/modules/artistPublicProfile/hooks/useFollow";
 
 // Definitions
 
@@ -36,6 +41,8 @@ export default function ListenerProfile() {
   const styles = createStyles(themesText[theme], themesLine[theme]);
   const { t } = useTranslation();
   const router = useRouter();
+  const { playback } = usePlayback();
+  const { follows } = useFollow(user.id);
 
   const handleGoToPlaylists = () => {
     router.navigate("myPlaylist");
@@ -54,18 +61,17 @@ export default function ListenerProfile() {
           <View style={styles.starts_stats}>
             {/* Followers */}
             <View style={styles.stats_number_container}>
-              <Text style={styles.text_xl}>999</Text>
+              <Text style={styles.text_xl}>
+                {formatMillionsToM_HundredsToK(follows.count_followers)}
+              </Text>
               <Text style={styles.text}>{t("profile.followers")}</Text>
             </View>
             {/* Likes */}
             <View style={styles.stats_number_container}>
-              <Text style={styles.text_xl}>999</Text>
+              <Text style={styles.text_xl}>
+                {formatMillionsToM_HundredsToK(follows.count_following)}
+              </Text>
               <Text style={styles.text}>{t("profile.following")}</Text>
-            </View>
-            {/* Playlist */}
-            <View style={styles.stats_number_container}>
-              <Text style={styles.text_xl}>99</Text>
-              <Text style={styles.text}>{t("profile.likes")}</Text>
             </View>
           </View>
         </View>
@@ -100,11 +106,17 @@ export default function ListenerProfile() {
       </View>
 
       {/* Top Songs */}
-      <Text style={styles.text_xl_margin}>{t("profile.top_songs")}</Text>
-      <TracksList
-        id={generateTrackListId("listenerTop_list")}
-        data={dataSongs}
-      />
+      {playback.length > 0 && (
+        <View>
+          <Text style={styles.text_xl_margin}>Tus recientes</Text>
+          <View style={{ marginHorizontal: 20 }}>
+            <TracksList
+              id={generateTrackListId("listenerPlayback_list")}
+              data={playback}
+            />
+          </View>
+        </View>
+      )}
     </View>
   );
 }

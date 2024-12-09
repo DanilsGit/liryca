@@ -1,12 +1,15 @@
 import { useAuth } from "@/modules/auth/hooks/useAuth";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   showPlaylistGetRequest,
   updatePlaylistPutRequest,
 } from "../api/playlist";
 import * as SecureStorage from "expo-secure-store";
 import DocumentPicker from "react-native-document-picker";
-import { uploadMediaToFirebase } from "@/modules/core/utils/firebaseMedia";
+import {
+  deleteFileFirebase,
+  uploadMediaToFirebase,
+} from "@/modules/core/utils/firebaseMedia";
 import { useFocusEffect, useRouter } from "expo-router";
 
 interface PlaylistEdit {
@@ -21,8 +24,16 @@ interface PlaylistEdit {
 export const usePlaylistToEdit = () => {
   const [playlist, setPlaylist] = useState<PlaylistEdit>(null);
   const [loading, setLoading] = useState(true);
+  const [isAI, setIsAI] = useState(false);
+  const [error, setError] = useState("");
   const { user } = useAuth();
   const router = useRouter();
+
+  useEffect(() => {
+    setTimeout(() => {
+      setError("");
+    }, 5000);
+  }, [error]);
 
   const pickPlaylistCover = async () => {
     try {
@@ -31,6 +42,7 @@ export const usePlaylistToEdit = () => {
       });
       const url = file[0].uri;
       setPlaylist({ ...playlist, image: url, file: file[0] });
+      setIsAI(false);
     } catch (err) {
       if (DocumentPicker.isCancel(err)) {
         console.log("Selección cancelada");
@@ -60,20 +72,26 @@ export const usePlaylistToEdit = () => {
 
   const editValue = (key: string, value: string | boolean) => {
     setPlaylist({ ...playlist, [key]: value });
-    console.log(playlist);
   };
 
   const updatePlaylist = async () => {
     setLoading(true);
     try {
       let playlistUrl = playlist.image;
-      if (playlist.file) {
-        playlistUrl = await uploadMediaToFirebase(
-          playlist.file,
-          "playlistCover",
-          playlist.id
-        );
+
+      if (!isAI) {
+        if (playlist.file) {
+          playlistUrl = await uploadMediaToFirebase(
+            playlist.file,
+            "playlistCover",
+            playlist.id,
+          );
+          await deleteFileFirebase(`playlistCover/${playlist.id}_AI.png`);
+        }
       }
+      if (isAI) await deleteFileFirebase(`playlistCover/${playlist.id}.png`);
+
+      // Update playlist
       await updatePlaylistPutRequest(user.token, playlist.id, {
         id: playlist.id,
         name: playlist.name,
@@ -83,9 +101,14 @@ export const usePlaylistToEdit = () => {
       });
       router.back();
     } catch (error) {
-      console.log(error.response.message);
+      console.log(error);
     }
     setLoading(false);
+  };
+
+  const changeImageAI = (url: string) => {
+    setPlaylist({ ...playlist, image: url });
+    setIsAI(true);
   };
 
   useFocusEffect(
@@ -94,5 +117,12 @@ export const usePlaylistToEdit = () => {
     }, [])
   );
 
-  return { playlist, loading, editValue, pickPlaylistCover, updatePlaylist };
+  return {
+    playlist,
+    loading,
+    editValue,
+    pickPlaylistCover,
+    updatePlaylist,
+    changeImageAI,
+  };
 };

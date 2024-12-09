@@ -1,5 +1,5 @@
 // Expo
-
+import * as SecureStorage from "expo-secure-store";
 // React
 
 // React Native
@@ -14,6 +14,11 @@ import { useTranslation } from "react-i18next";
 import { generateTrackListId } from "@/modules/core/utils/miscellaneous";
 import { Album as AlbumType } from "@/modules/core/lib/types";
 import { Track } from "react-native-track-player";
+import { AlbumOptionsAction } from "@/modules/core/components/AlbumOptionsAction";
+import { useAuth } from "@/modules/auth/hooks/useAuth";
+import LargeIconButton from "@/modules/core/components/LargeIconButton";
+import { AddSquareIcon } from "@/modules/core/components/Icons";
+import { useRouter } from "expo-router";
 
 // Hooks
 
@@ -30,11 +35,23 @@ interface Props {
 
 export default function Album({ data, tracks }: Props) {
   const styles = createStyles();
+  const { user } = useAuth();
   const { t } = useTranslation();
+  const router = useRouter();
+
+  const handleAddTracks = async () => {
+    await SecureStorage.setItemAsync(
+      "TracksToAlbum",
+      JSON.stringify(tracks[0].album_id),
+    );
+    router.push(`/tracksToAlbum/${data.id}`);
+  };
 
   return (
     <View style={styles.overlay_container}>
-      <HeaderBackTitleOptions title={data.title} />
+      <HeaderBackTitleOptions title={data.title}>
+        <AlbumOptionsAction owner={data.artist_id} album={data} />
+      </HeaderBackTitleOptions>
 
       <View style={styles.presentation}>
         <View style={styles.presentation_header}>
@@ -62,12 +79,31 @@ export default function Album({ data, tracks }: Props) {
         </View>
       </View>
 
-      <View style={{ paddingTop: 20 }}>
+      <View style={{ paddingTop: 20, gap: 20, minHeight: 400 }}>
         <TrackIndexList
           id={generateTrackListId("publicAlbum_list", data.title)}
           data={tracks}
         />
+        {user.role === "artist" && (
+          <LargeIconButton
+            text="Add Song"
+            icon={<AddSquareIcon width={20} height={20} stroke="#000" />}
+            onPress={() => handleAddTracks()}
+            style={{ width: "95%" }}
+          />
+        )}
       </View>
+
+      {data.description && (
+        <View style={{ padding: 20 }}>
+          <Text style={styles.title_presentation_header}>About</Text>
+          <View style={styles.description}>
+            <Text style={styles.text_presentation_header}>
+              {data.description}
+            </Text>
+          </View>
+        </View>
+      )}
     </View>
   );
 }
@@ -126,5 +162,11 @@ const createStyles = () =>
       flexDirection: "row",
       alignItems: "center",
       gap: 10,
+    },
+    description: {
+      padding: 10,
+      marginTop: 10,
+      backgroundColor: colors.semi_dark_purple,
+      borderRadius: 10,
     },
   });

@@ -5,6 +5,7 @@
 // React Native
 import { colors, fontSizes } from "@/constants/tokens";
 import MovingText from "@/modules/core/components/MovingText";
+import TrackOptionsMenu from "@/modules/core/components/TrackOptionsMenu";
 import PinkDots from "@/modules/main/components/PinkDots";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Track, useActiveTrack } from "react-native-track-player";
@@ -47,13 +48,8 @@ export default function TrackIndexItem({ item, index, onTrackSelect }: Props) {
             />
             <Text style={styles.text}>{item.artist}</Text>
           </View>
-          <Text style={[styles.text, styles.text_index]}>{item.duration}</Text>
-          <Pressable
-            onPress={() => alert("golaa")}
-            style={styles.pressable_dots}
-          >
-            <PinkDots />
-          </Pressable>
+          <Text style={[styles.text, styles.text_index]}>{item.time}</Text>
+          <TrackOptionsMenu track={item} />
         </View>
       )}
     </Pressable>

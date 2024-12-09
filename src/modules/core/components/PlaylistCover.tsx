@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     backgroundColor: "purple",
     alignItems: "center",
     justifyContent: "center",
-    marginHorizontal: 10,
+    marginRight: 20,
     width: 160,
   },
   image: {

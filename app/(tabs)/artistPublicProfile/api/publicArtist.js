@@ -34,7 +34,7 @@ export const publicFollowUserPostRequest = (token, user_id) =>
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    }
+    },
   );
 
 export const publicUnfollowUserDeleteRequest = (token, user_id) =>
@@ -44,9 +44,16 @@ export const publicUnfollowUserDeleteRequest = (token, user_id) =>
     },
   });
 
-// export const publicFollowersFollowing = (token) =>
-//   axios.get(`${API_URL}/api/v1/follow/get_follows`, {
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//     },
-//   });
+export const topTracksArtist = (token, id) =>
+  axios.get(`${API_URL}/api/v1/song/top-by-user/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+export const publicFollowersFollowing = (token, id) =>
+  axios.get(`${API_URL}/api/v1/follow/followsCount/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });

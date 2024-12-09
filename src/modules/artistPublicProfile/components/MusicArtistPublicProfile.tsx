@@ -32,18 +32,25 @@ export default function MusicArtistPublicProfile({ id }: Props) {
   const { theme } = useTheme();
   const styles = createStyles(themesText[theme]);
   const { t } = useTranslation();
-  const { albums, loading } = usePublicAlbums(id);
+  const { albums, topTracks, loading } = usePublicAlbums(id);
 
   if (loading) return <ActivityIndicator size="large" color={colors.purple} />;
 
   return (
     <View style={styles.music_section}>
-      <View style={styles.top_songs_section}>
-        <Text style={styles.top_songs_title}>
-          {t("artist_public_profile.top_songs")}
-        </Text>
-        <TracksList id={generateTrackListId("artist_list")} data={dataSongs} />
-      </View>
+      {topTracks.length > 0 && (
+        <View style={styles.top_songs_section}>
+          <Text style={styles.top_songs_title}>
+            {t("artist_public_profile.top_songs")}
+          </Text>
+          <View style={{ paddingHorizontal: 20 }}>
+            <TracksList
+              id={generateTrackListId("artist_list", id)}
+              data={topTracks}
+            />
+          </View>
+        </View>
+      )}
       <View style={styles.top_songs_section}>
         <Text style={styles.top_songs_title}>
           {t("artist_public_profile.albums")}

@@ -87,6 +87,17 @@ export const sameValueOfKeyInArrayElements = (array: any[], key: string) => {
   return values.every((value) => value === values[0]);
 };
 
+export const sameValueOfKeyInTwoArrays = (
+  array1: any[],
+  array2: any[],
+  key: string,
+) => {
+  if (array1.length === 1) return false;
+  const values1 = array1.map((element) => element[key]);
+  const values2 = array2.map((element) => element[key]);
+  return values1.every((value, index) => value === values2[index]);
+};
+
 export const onlyMinutes = (time: string) => {
   const hour = "00:";
   if (time.substring(0, 3) === hour) {

@@ -134,6 +134,15 @@ const RootNavigation = () => {
           }}
         />
         <Stack.Screen
+          name="tracksToAlbum"
+          options={{
+            presentation: "card",
+            gestureEnabled: true,
+            gestureDirection: "vertical",
+            animationDuration: 400,
+          }}
+        />
+        <Stack.Screen
           name="playlist"
           options={{
             presentation: "card",
@@ -161,7 +170,7 @@ const RootNavigation = () => {
           }}
         />
         <Stack.Screen
-          name="uploadAlbum"
+          name="editUserInfo"
           options={{
             presentation: "card",
             gestureEnabled: true,

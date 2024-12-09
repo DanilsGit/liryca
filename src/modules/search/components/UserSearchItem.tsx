@@ -9,6 +9,8 @@ import { Image } from "expo-image";
 import FollowButton from "@/modules/artistPublicProfile/components/FollowButton";
 import { formatMillionsToM_HundredsToK } from "@/modules/core/utils/miscellaneous";
 import { colors, fontSizes } from "@/constants/tokens";
+import { useAuth } from "@/modules/auth/hooks/useAuth";
+import { useFollow } from "@/modules/artistPublicProfile/hooks/useFollow";
 
 // Hooks
 
@@ -24,7 +26,11 @@ interface Props {
 
 export default function UserSearchItem({ item, onUserSelect }: Props) {
   const width = Dimensions.get("window").width;
+  const { user } = useAuth();
   const styles = createStyles(width);
+
+  const { follow, follows, loadingFollow, handleFollow } = useFollow(item.id);
+
   return (
     <View style={styles.container}>
       <View style={styles.absolute_icon}>
@@ -39,14 +45,25 @@ export default function UserSearchItem({ item, onUserSelect }: Props) {
       </View>
       <View style={{ flex: 1.5 }}>
         <View style={styles.follow_container}>
-          <FollowButton follow={true} handleFollow={() => console.log("xd")} />
+          {item.id !== user.id && (
+            <FollowButton follow={follow} handleFollow={() => handleFollow()} />
+          )}
+          {item.id === user.id && <View style={{ height: 35 }} />}
         </View>
         <View style={{ paddingBottom: 0, paddingHorizontal: 10 }}>
           <Text style={styles.text_title}>{item.name}</Text>
-          <Text style={styles.text}>
-            {item.count_tracks} Canciones -{" "}
-            {formatMillionsToM_HundredsToK(item.followers)} Seguidores
-          </Text>
+          {!loadingFollow && (
+            <View style={{ flexDirection: "row" }}>
+              <Text style={styles.text}>
+                {formatMillionsToM_HundredsToK(follows.count_followers)}{" "}
+                Seguidores -{" "}
+              </Text>
+              <Text style={styles.text}>
+                {formatMillionsToM_HundredsToK(follows.count_following)}{" "}
+                Siguiendo
+              </Text>
+            </View>
+          )}
         </View>
       </View>
     </View>
@@ -89,7 +106,7 @@ const createStyles = (width: number) =>
     },
     follow_container: {
       alignItems: "flex-end",
-      padding: 5,
+      padding: 8,
     },
     text_title: {
       fontSize: fontSizes.xl2,

@@ -11,7 +11,7 @@ import { FlatList, FlatListProps, StyleSheet, Text, View } from "react-native";
 
 // Components
 import TrackSongItem from "./TrackSongItem";
-import TrackPlayer, { Track } from "react-native-track-player";
+import { Track } from "react-native-track-player";
 import { useQueue } from "@/modules/core/hooks/useQueue";
 import { useRef } from "react";
 import { handleTrackQueue } from "@/modules/core/constants/handles";
@@ -48,7 +48,7 @@ export default function TracksList({ id, data }: Props) {
         renderItem={({ item }) => (
           <TrackSongItem item={item} onTrackSelect={handleTrackSelect} />
         )}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(_, index) => index.toString()}
         scrollEnabled={false}
         ListEmptyComponent={<Text>No songs</Text>}
       />

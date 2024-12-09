@@ -6,7 +6,7 @@ export interface DataPlaylistCarousel {
 interface AlbumCreating {
   title: string;
   showDatePicker: boolean;
-  relase_date: Date;
+  release_date: Date;
   description: string;
   icon: string;
   file: any;
@@ -26,7 +26,7 @@ export interface PublicArtist {
 export interface Album {
   id: number;
   title: string;
-  artist_id: number;
+  artist_id: string;
   artist_name?: string;
   release_date: string;
   description: string;

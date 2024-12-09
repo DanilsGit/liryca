@@ -31,7 +31,7 @@ export default function ArtistProfile() {
   const { theme } = useTheme();
   const styles = createStyles(themesText[theme]);
   const router = useRouter();
-  const { albums } = useArtistAlbums();
+  const { albums, handleAddAlbum } = useArtistAlbums();
 
   return (
     <View style={{ flex: 1 }}>
@@ -39,7 +39,7 @@ export default function ArtistProfile() {
       <View style={{ gap: 20, paddingHorizontal: 20 }}>
         <Text style={styles.text_name}>{user.username}</Text>
         <LargeIconButton
-          onPress={() => router.navigate("/uploadAlbum")}
+          onPress={() => handleAddAlbum()}
           icon={<AddSquareIcon width={20} height={20} stroke="#000" />}
           text={t("profile_Artist.upload_Album")}
         />

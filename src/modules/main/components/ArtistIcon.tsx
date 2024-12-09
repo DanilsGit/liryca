@@ -28,7 +28,7 @@ export const ArtistIcon = ({ item, index, handlePress }: Props) => {
   const styles = createStyles(width);
 
   return (
-    <Pressable onPress={() => handlePress(item.id)}>
+    <Pressable onPress={() => handlePress(item.user_id)}>
       <LinearGradient
         key={item.id}
         style={styles.container}

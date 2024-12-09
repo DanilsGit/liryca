@@ -18,7 +18,6 @@ import PostList from "@/modules/core/components/PostList";
 import { dataPost } from "@/constants/data";
 import FollowButton from "../components/FollowButton";
 import { PublicArtist } from "@/modules/core/lib/types";
-import { useFollow } from "../hooks/useFollow";
 
 // Hooks
 
@@ -30,6 +29,7 @@ import { useFollow } from "../hooks/useFollow";
 interface Props {
   artist: PublicArtist;
   follow: boolean;
+  follows: { count_followers: number; count_following: number };
   handleFollow: () => void;
 }
 type filters = "music" | "posts";
@@ -38,6 +38,7 @@ type filters = "music" | "posts";
 export default function ArtistPublicProfile({
   artist,
   follow,
+  follows,
   handleFollow,
 }: Props) {
   const { theme } = useTheme();
@@ -84,18 +85,18 @@ export default function ArtistPublicProfile({
       <View style={styles.stats_follow_container}>
         <FollowButton follow={follow} handleFollow={() => handleFollow()} />
         <View style={styles.stats_followers_conainer}>
-          <Text style={styles.stats_followers_text}>999</Text>
+          <Text style={styles.stats_followers_text}>
+            {formatMillionsToM_HundredsToK(follows.count_following)}
+          </Text>
           <Text style={styles.stats_followers_subtext}>
             {t("artist_public_profile.followers")}
           </Text>
         </View>
         <View style={styles.stats_followers_conainer}>
           <Text style={styles.stats_followers_text}>
-            {formatMillionsToM_HundredsToK(9999)}
+            {formatMillionsToM_HundredsToK(follows.count_followers)}
           </Text>
-          <Text style={styles.stats_followers_subtext}>
-            {t("artist_public_profile.likes")}
-          </Text>
+          <Text style={styles.stats_followers_subtext}>Seguidores</Text>
         </View>
       </View>
 

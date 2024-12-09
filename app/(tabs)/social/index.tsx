@@ -1,7 +1,7 @@
 // Expo
 
-import { ScrollView, Text, View } from "react-native";
 import Screen from "@m/core/components/Screen";
+import Social from "@/modules/social/screen/Social";
 
 // React
 
@@ -20,9 +20,7 @@ import Screen from "@m/core/components/Screen";
 export default function SocialScreen() {
   return (
     <Screen>
-      <View>
-        <Text>Social</Text>
-      </View>
+      <Social />
     </Screen>
   );
 }

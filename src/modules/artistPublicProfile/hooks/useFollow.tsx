@@ -1,5 +1,6 @@
 import { useAuth } from "@/modules/auth/hooks/useAuth";
 import {
+  publicFollowersFollowing,
   publicFollowUserGetRequest,
   publicFollowUserPostRequest,
   publicUnfollowUserDeleteRequest,
@@ -9,7 +10,10 @@ import { useCallback, useEffect, useState } from "react";
 export const useFollow = (user_id: string) => {
   const [follow, setFollow] = useState<boolean>(false);
   const [loadingFollow, setLoadingFollow] = useState<boolean>(false);
-  const [follows, setFollows] = useState(null);
+  const [follows, setFollows] = useState({
+    count_followers: 0,
+    count_following: 0,
+  });
   const { user } = useAuth();
 
   const getFollow = useCallback(async () => {
@@ -20,7 +24,9 @@ export const useFollow = (user_id: string) => {
       const data = res.data;
       setFollow(data.follow);
 
-      // TODO follow and followers
+      const res_follow = await publicFollowersFollowing(user.token, user_id);
+      const data_follow = res_follow.data;
+      setFollows(data_follow);
     } catch (error) {
       console.log(error.response.data);
     }
@@ -31,8 +37,11 @@ export const useFollow = (user_id: string) => {
     if (follow) {
       try {
         setFollow(false);
-        const res = await publicUnfollowUserDeleteRequest(user.token, user_id);
-        console.log(res.data);
+        await publicUnfollowUserDeleteRequest(user.token, user_id);
+        setFollows({
+          ...follows,
+          count_followers: follows.count_followers - 1,
+        });
       } catch (error) {
         console.log(error.response.data);
         setFollow(true);
@@ -41,8 +50,11 @@ export const useFollow = (user_id: string) => {
     if (!follow) {
       try {
         setFollow(true);
-        const res = await publicFollowUserPostRequest(user.token, user_id);
-        console.log(res.data);
+        await publicFollowUserPostRequest(user.token, user_id);
+        setFollows({
+          ...follows,
+          count_followers: follows.count_followers + 1,
+        });
       } catch (error) {
         console.log(error.response.data);
         setFollow(false);
@@ -54,5 +66,5 @@ export const useFollow = (user_id: string) => {
     getFollow();
   }, [getFollow]);
 
-  return { follow, loadingFollow, handleFollow };
+  return { follow, loadingFollow, handleFollow, follows };
 };

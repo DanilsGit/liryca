@@ -9,7 +9,7 @@ import { fontSizes } from "@/constants/tokens";
 import { useAuth } from "@/modules/auth/hooks/useAuth";
 import { useTheme } from "@/modules/core/hooks/useTheme";
 import { Image } from "expo-image";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 // Hooks
 
@@ -18,10 +18,12 @@ import { StyleSheet, Text, View } from "react-native";
 // Components
 
 // Props
-
+interface Props {
+  children: React.ReactNode;
+}
 // Api
 
-export default function HeaderImageTitle() {
+export default function HeaderImageTitle({ children }: Props) {
   const { user } = useAuth();
   const { theme } = useTheme();
   const styles = createStyles(themesText[theme]);
@@ -33,9 +35,7 @@ export default function HeaderImageTitle() {
           style={styles.header_icon_img}
         />
       </View>
-      <View style={{ height: "100%" }}>
-        <Text style={styles.title}>Descubre algo nuevo</Text>
-      </View>
+      <View style={{ height: "100%" }}>{children}</View>
     </View>
   );
 }

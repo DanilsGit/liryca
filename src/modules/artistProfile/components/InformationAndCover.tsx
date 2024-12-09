@@ -5,10 +5,12 @@
 // React Native
 import { themesText } from "@/constants/themes";
 import { ThemeText } from "@/constants/themesTypes";
-import { fontSizes } from "@/constants/tokens";
+import { colors, fontSizes } from "@/constants/tokens";
+import AIImageGenerate from "@/modules/core/components/AIImageGenerate";
 import DatePicker from "@/modules/core/components/DatePicker";
 import { useTheme } from "@/modules/core/hooks/useTheme";
 import { AlbumCreating } from "@/modules/core/lib/types";
+import { useGenerateImageAI } from "@/modules/playlist/hooks/useGenerateImageAI";
 import { Image } from "expo-image";
 import { useTranslation } from "react-i18next";
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
@@ -16,15 +18,20 @@ import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 // Hooks
 
 // Definitions
-
+interface AlbumEditing extends AlbumCreating {
+  id: string;
+  showDatePicker: boolean;
+  release_date: Date;
+}
 // Components
 
 // Props
 interface Props {
-  album: AlbumCreating;
+  album: AlbumEditing;
   updateAlbum: (key: string, value: string | boolean) => void;
   pickAlbumCover: () => void;
   handleDatePicker: (_, selectedDate) => void;
+  changeImageAI: (image: any) => void;
 }
 // Api
 
@@ -33,10 +40,18 @@ export default function InformationAndCover({
   updateAlbum,
   pickAlbumCover,
   handleDatePicker,
+  changeImageAI,
 }: Props) {
   const { theme } = useTheme();
   const styles = createStyles(themesText[theme]);
   const { t } = useTranslation();
+
+  const { generateImageAI, loadingAI, prompt, setPrompt, error } =
+    useGenerateImageAI({
+      changeImageAI,
+    });
+
+  if (!album) return null;
 
   return (
     <View style={{ gap: 20 }}>
@@ -65,6 +80,14 @@ export default function InformationAndCover({
           </View>
         </Pressable>
       </View>
+      {error && <Text style={styles.error_text}>{error}</Text>}
+
+      <AIImageGenerate
+        generateImageAI={() => generateImageAI("albumCover", album.id)}
+        loadingAI={loadingAI}
+        prompt={prompt}
+        setPrompt={setPrompt}
+      />
 
       <View>
         <Text style={styles.text_title}>
@@ -90,9 +113,9 @@ export default function InformationAndCover({
           handlePress={() => {
             updateAlbum("showDatePicker", true);
           }}
-          text={album.relase_date.toLocaleDateString()}
+          text={album.release_date.toLocaleDateString()}
           showPicker={album.showDatePicker}
-          pickerValue={album.relase_date}
+          pickerValue={album.release_date}
           handleDateChange={(_, select) => {
             handleDatePicker(_, select);
           }}
@@ -135,5 +158,10 @@ const createStyles = (colorText: ThemeText) =>
       marginVertical: 5,
       padding: 10,
       fontFamily: "M-PLUS-2-Regular",
+    },
+    error_text: {
+      fontSize: fontSizes.md,
+      color: colors.error,
+      fontFamily: "M-PLUS-2-Bold",
     },
   });

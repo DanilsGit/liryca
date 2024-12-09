@@ -99,33 +99,6 @@ export const dataArtist = [
   },
 ];
 
-export interface userSearch {
-  id: number;
-  banner: string;
-  icon: string;
-  name: string;
-  count_tracks: number;
-  followers: number;
-}
-export const dataArtistSearch: userSearch[] = [
-  {
-    id: 1,
-    banner: "https://i.scdn.co/image/ab67616d0000b273b6d4566db0d12894a1a3b7a2",
-    icon: "https://i.scdn.co/image/ab67616d0000b273b6d4566db0d12894a1a3b7a2",
-    name: "Muse",
-    count_tracks: 100,
-    followers: 100,
-  },
-  {
-    id: 2,
-    banner: "https://i.scdn.co/image/ab67616d0000b273b6d4566db0d12894a1a3b7a2",
-    icon: "https://i.scdn.co/image/ab67616d0000b273b6d4566db0d12894a1a3b7a2",
-    name: "Muse",
-    count_tracks: 100,
-    followers: 1000,
-  },
-];
-
 export const dataAlbums: Album[] = [
   {
     id: 1,

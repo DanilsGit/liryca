@@ -15,7 +15,7 @@ import Screen from "@/modules/core/components/Screen";
 import ScreenLoading from "@/modules/core/components/ScreenLoading";
 import { Image } from "expo-image";
 import { ThemeText } from "@/constants/themesTypes";
-import { fontSizes } from "@/constants/tokens";
+import { colors, fontSizes } from "@/constants/tokens";
 import { useTheme } from "@/modules/core/hooks/useTheme";
 import { themesText } from "@/constants/themes";
 import { TextInput } from "react-native-gesture-handler";
@@ -23,6 +23,8 @@ import { usePlaylistToEdit } from "@/modules/playlist/hooks/usePlaylistToEdit";
 import LargeIconButton from "@/modules/core/components/LargeIconButton";
 import { UploadIcon } from "@/modules/core/components/Icons";
 import { CheckBox } from "react-native-elements";
+import AIImageGenerate from "@/modules/core/components/AIImageGenerate";
+import { useGenerateImageAI } from "@/modules/playlist/hooks/useGenerateImageAI";
 
 // Props
 
@@ -30,9 +32,20 @@ import { CheckBox } from "react-native-elements";
 
 export default function EditPlaylistScreen() {
   SheetManager.hide("playlist-options-sheet");
-  const { playlist, loading, editValue, pickPlaylistCover, updatePlaylist } =
-    usePlaylistToEdit();
+  const {
+    playlist,
+    loading,
+    editValue,
+    pickPlaylistCover,
+    updatePlaylist,
+    changeImageAI,
+  } = usePlaylistToEdit();
+
+  const { generateImageAI, loadingAI, prompt, setPrompt, error } =
+    useGenerateImageAI({ changeImageAI });
+
   const { theme } = useTheme();
+
   const styles = createStyles(themesText[theme]);
 
   if (loading) return <ScreenLoading />;
@@ -63,6 +76,17 @@ export default function EditPlaylistScreen() {
               )}
             </View>
           </Pressable>
+
+          {error && <Text style={styles.error_text}>{error}</Text>}
+
+          <AIImageGenerate
+            generateImageAI={() =>
+              generateImageAI(playlist.id, "playlistCover")
+            }
+            loadingAI={loadingAI}
+            prompt={prompt}
+            setPrompt={setPrompt}
+          />
         </View>
 
         <View style={{ gap: 20 }}>
@@ -118,9 +142,10 @@ const createStyles = (colorText: ThemeText) =>
       fontFamily: "M-PLUS-2-Bold",
     },
     album_icon: {
-      width: 200,
-      height: 200,
+      width: 220,
+      height: 220,
       borderWidth: 1,
+      borderRadius: 10,
       backgroundColor: colorText.secondary,
     },
     input_textArea: {
@@ -141,5 +166,10 @@ const createStyles = (colorText: ThemeText) =>
       marginVertical: 5,
       padding: 10,
       fontFamily: "M-PLUS-2-Regular",
+    },
+    error_text: {
+      fontSize: fontSizes.md,
+      color: colors.error,
+      fontFamily: "M-PLUS-2-Bold",
     },
   });

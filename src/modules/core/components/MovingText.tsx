@@ -31,6 +31,7 @@ interface Props {
 
 export default function MovingText({ text, animationThreshold, style }: Props) {
   const translateX = useSharedValue(0);
+
   const shouldAnimate = text.length > animationThreshold;
 
   const textWidth = text.length * 2.5;
@@ -46,8 +47,8 @@ export default function MovingText({ text, animationThreshold, style }: Props) {
           easing: Easing.linear,
         }),
         -1,
-        true,
-      ),
+        true
+      )
     );
 
     return () => {

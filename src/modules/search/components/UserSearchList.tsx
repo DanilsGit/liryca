@@ -4,7 +4,7 @@
 
 // React Native
 import NoListYet from "@/modules/core/components/NoListYet";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { FlatList } from "react-native-actions-sheet";
 import UserSearchItem from "./UserSearchItem";
 
@@ -16,12 +16,14 @@ import UserSearchItem from "./UserSearchItem";
 
 // Props
 export interface userSearch {
-  id: number;
+  id: string;
   banner: string;
   icon: string;
   name: string;
   count_tracks: number;
   followers: number;
+  is_following: boolean;
+  role?: string;
 }
 interface Props {
   data: userSearch[];

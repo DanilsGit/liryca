@@ -4,7 +4,7 @@ import { getListOfErrors } from "@/modules/core/utils/miscellaneous";
 import { loginRequest, registerRequest } from "../api/auth";
 import { UserLogin, UserRegister } from "../types/types";
 
-interface User {
+export interface User {
   id: string;
   username: string;
   email: string;
@@ -21,7 +21,7 @@ type Store = {
   login: (user: UserLogin) => Promise<string>;
   logout: () => void;
   register: (user: any) => Promise<string>;
-  updateV: (v: number) => void;
+  updateUser: (user: User) => void;
 };
 
 export const useAuth = create<Store>()((set) => ({
@@ -90,7 +90,8 @@ export const useAuth = create<Store>()((set) => ({
       return errorList;
     }
   },
-  updateV: (v: number) => {
-    set((state) => ({ user: { ...state.user, version: v } }));
+  updateUser: async (user: User) => {
+    set({ user });
+    await SecureStorage.setItemAsync("user", JSON.stringify(user));
   },
 }));

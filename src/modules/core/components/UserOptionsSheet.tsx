@@ -26,6 +26,7 @@ export const UserOptionsSheet = () => {
   const showListenerOptions = () => {
     SheetManager.show("listener-options-sheet", {
       payload: {
+        goToEditProfile: () => router.navigate("/editUserInfo"),
         goToLanguageScreen: () => router.navigate("/languageScreen"),
         goToThemeScreen: () => router.navigate("/themeScreen"),
         logout,

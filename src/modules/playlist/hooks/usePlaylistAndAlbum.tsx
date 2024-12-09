@@ -18,7 +18,7 @@ export const usePlaylistAndAlbums = () => {
       const data = res.data.playlist;
       const playlist = {
         id: data.id,
-        name: data.name,
+        title: data.name,
         image: data.image,
       };
       setMyPlaylist([playlist, ...myPlaylist]);

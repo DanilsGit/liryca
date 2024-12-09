@@ -35,3 +35,10 @@ export const allAlbumsGetRequest = (token) =>
       Authorization: `Bearer ${token}`,
     },
   });
+
+export const albumPutRequest = (token, id, data) =>
+  axios.put(`${API_URL}/api/v1/album/${id}`, data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });

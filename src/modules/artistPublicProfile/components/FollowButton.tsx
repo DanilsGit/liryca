@@ -56,7 +56,7 @@ const createStyles = (colorText: ThemeText) =>
     stats_follow: {
       borderWidth: 2,
       borderColor: colorText.primary,
-      height: 35,
+      height: 30,
       width: 110,
       alignItems: "center",
       justifyContent: "center",

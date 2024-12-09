@@ -26,6 +26,7 @@ interface Props {
 export default function HeaderBackTitleOptions({ title, children }: Props) {
   const styles = createStyles();
   const router = useRouter();
+
   return (
     <View style={styles.header_container}>
       <DownArrowButton action={() => router.back()} />

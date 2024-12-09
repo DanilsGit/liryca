@@ -28,6 +28,25 @@ export const uploadMediaToFirebase = async (
   }
 };
 
+export const uploadBinaryToFirebase = async (
+  binary: any,
+  folder: string,
+  name: string
+) => {
+  try {
+    // Crea una referencia al archivo en Firebase
+    const storageRef = ref(storage, `${folder}/${name}`);
+    // Sube el archivo a Firebase
+    await uploadBytes(storageRef, binary, { contentType: "image/png" });
+
+    const url = await getDownloadURL(storageRef);
+    return url;
+  } catch (error) {
+    console.error("Error al subir el archivo:", error);
+    throw error;
+  }
+};
+
 export function uriToBlob(uri: string): Promise<Blob> {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
@@ -56,7 +75,14 @@ export function uriToBlob(uri: string): Promise<Blob> {
 }
 
 export async function deleteFileFirebase(path) {
-  const oldRef = ref(storage, path);
-  // Eliminar el archivo antiguo
-  await deleteObject(oldRef);
+  try {
+    const oldRef = ref(storage, path);
+    // Eliminar el archivo antiguo
+    await deleteObject(oldRef);
+  } catch (error) {
+    console.log(
+      "Error al eliminar el archivo, tal vez archivo inexistente:",
+      error,
+    );
+  }
 }

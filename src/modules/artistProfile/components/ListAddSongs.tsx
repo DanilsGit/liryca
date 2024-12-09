@@ -41,7 +41,7 @@ export default function ListAddSongs({
   return (
     <View style={{ gap: 30 }}>
       {songs.map((song) => (
-        <View key={song?.id} style={styles.song_item}>
+        <View key={song.id} style={styles.song_item}>
           <TextInput
             placeholder="Title"
             style={styles.input_text}

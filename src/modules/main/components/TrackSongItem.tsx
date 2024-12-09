@@ -39,11 +39,7 @@ export default function TrackSongItem({ item, onTrackSelect }: Props) {
 
   return (
     <View style={{ flexDirection: "row" }}>
-      <Pressable
-        key={item.id}
-        onPress={() => onTrackSelect(item)}
-        style={{ flex: 1 }}
-      >
+      <Pressable onPress={() => onTrackSelect(item)} style={{ flex: 1 }}>
         {({ pressed }) => (
           <View style={[styles.button_content, { opacity: pressed ? 0.6 : 1 }]}>
             <View style={styles.image_container}>
