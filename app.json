@@ -16,21 +16,32 @@
       "supportsTablet": true,
       "userInterfaceStyle": "automatic",
       "infoPlist": {
-        "UIBackgroundModes": ["audio"]
+        "UIBackgroundModes": [
+          "audio"
+        ]
+      },
+      "bundleIdentifier": "com.danilsexpo.liryca",
+      "runtimeVersion": {
+        "policy": "appVersion"
       }
     },
     "android": {
+      "usesCleartextTraffic": true,
       "userInterfaceStyle": "automatic",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.danilsexpo.liryca"
+      "package": "com.danilsexpo.liryca",
+      "runtimeVersion": "1.0.0"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": ["expo-router", "expo-secure-store"],
+    "plugins": [
+      "expo-router",
+      "expo-secure-store"
+    ],
     "extra": {
       "router": {
         "origin": false
@@ -38,6 +49,9 @@
       "eas": {
         "projectId": "03815a17-8946-46c3-94b4-c750d322efeb"
       }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/03815a17-8946-46c3-94b4-c750d322efeb"
     }
   }
 }

@@ -40,7 +40,6 @@ export default function TabsLayout() {
       router.push("artistProfile");
     }
   }, [user, router]);
-
   if (!user) return <Redirect href="/(auth)" />;
 
   return (

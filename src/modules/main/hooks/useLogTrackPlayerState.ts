@@ -22,7 +22,6 @@ export const useLogTrackPlayerState = () => {
 
     if (event.type === Event.PlaybackState) {
       if (event.state === "ready") {
-        console.log("Track is ready to play", activeTrack.id);
         try {
           await addTrackToPlaybackRequest(user.token, {
             song_id: activeTrack.id,

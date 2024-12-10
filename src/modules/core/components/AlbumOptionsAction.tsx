@@ -30,11 +30,26 @@ export const AlbumOptionsAction = ({ owner, album }: Props) => {
     router.navigate("/editAlbum");
   };
 
+  const handlePostAlbum = async () => {
+    await SecureStorage.setItemAsync(
+      "post_attachment",
+      JSON.stringify({
+        id: album.id,
+        name: album.title,
+        image: album.icon,
+        owner: "Album",
+        type: "album",
+      })
+    );
+    router.navigate("/writeAPost");
+  };
+
   const showAlbumOptions = () => {
     SheetManager.show("album-options-sheet", {
       payload: {
         editAlbum: () => goToEditAlbum(),
         inviteAlbum: () => console.log("invite"),
+        postAlbum: () => handlePostAlbum(),
         shareAlbum: () => console.log("share"),
         likeAlbum: () => console.log(owner, album.id),
         owner: owner,

@@ -7,6 +7,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { useTheme } from "../hooks/useTheme";
 import { themesText } from "@/constants/themes";
 import { ThemeText } from "@/constants/themesTypes";
+import { fontSizes } from "@/constants/tokens";
 
 // Hooks
 
@@ -41,7 +42,8 @@ const createStyles = (colorText: ThemeText) =>
       borderBottomColor: colorText.secondary,
     },
     empty_text: {
-      fontSize: 16,
+      fontSize: fontSizes.lg,
       color: colorText.primary,
+      fontFamily: "M-PLUS-2-Regular",
     },
   });

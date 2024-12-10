@@ -98,6 +98,33 @@ const RootNavigation = () => {
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="(auth)" />
         <Stack.Screen
+          name="writeAPost"
+          options={{
+            presentation: "card",
+            gestureEnabled: true,
+            gestureDirection: "vertical",
+            animationDuration: 400,
+          }}
+        />
+        <Stack.Screen
+          name="commentsInPost"
+          options={{
+            presentation: "card",
+            gestureEnabled: true,
+            gestureDirection: "vertical",
+            animationDuration: 400,
+          }}
+        />
+        <Stack.Screen
+          name="writeACommentInPost"
+          options={{
+            presentation: "card",
+            gestureEnabled: true,
+            gestureDirection: "vertical",
+            animationDuration: 400,
+          }}
+        />
+        <Stack.Screen
           name="editAlbum"
           options={{
             presentation: "card",

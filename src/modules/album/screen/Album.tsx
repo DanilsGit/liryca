@@ -40,10 +40,7 @@ export default function Album({ data, tracks }: Props) {
   const router = useRouter();
 
   const handleAddTracks = async () => {
-    await SecureStorage.setItemAsync(
-      "TracksToAlbum",
-      JSON.stringify(tracks[0].album_id),
-    );
+    await SecureStorage.setItemAsync("TracksToAlbum", JSON.stringify(data.id));
     router.push(`/tracksToAlbum/${data.id}`);
   };
 

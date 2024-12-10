@@ -81,7 +81,7 @@ export default function EditPlaylistScreen() {
 
           <AIImageGenerate
             generateImageAI={() =>
-              generateImageAI(playlist.id, "playlistCover")
+              generateImageAI("playlistCover", playlist.id)
             }
             loadingAI={loadingAI}
             prompt={prompt}

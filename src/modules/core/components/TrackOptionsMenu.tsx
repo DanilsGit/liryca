@@ -36,6 +36,20 @@ export default function TrackOptionsMenu({ track }: Props) {
     router.push("/addToPlaylist");
   };
 
+  const handlePostIt = async () => {
+    await SecureStorage.setItemAsync(
+      "post_attachment",
+      JSON.stringify({
+        id: track.id,
+        type: "song",
+        name: track.title,
+        image: track.image,
+        owner: track.artist,
+      }),
+    );
+    router.navigate("/writeAPost");
+  };
+
   return (
     <Menu>
       <MenuTrigger>
@@ -53,7 +67,7 @@ export default function TrackOptionsMenu({ track }: Props) {
           <Text style={styles.text}>Add to</Text>
         </MenuOption>
 
-        <MenuOption onSelect={() => console.log("xd")}>
+        <MenuOption onSelect={handlePostIt}>
           <Text style={styles.text}>Post it</Text>
         </MenuOption>
       </MenuOptions>

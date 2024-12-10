@@ -110,6 +110,26 @@ export const DownArrowIcon = (props: SvgIconProps) => {
   );
 };
 
+export const ArrowLeftIcon = (props: SvgIconProps) => {
+  return (
+    <Svg
+      width={75}
+      height={75}
+      viewBox="0 0 75 75"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <Path
+        d="M24.453 40.625l17.5 17.5L37.5 62.5l-25-25 25-25 4.453 4.375-17.5 17.5H62.5v6.25H24.453z"
+        fill="#DAC3E9"
+        stroke={props.stroke ?? "#fff"}
+        strokeWidth={props.strokeWidth ?? 5}
+      />
+    </Svg>
+  );
+};
+
 export const AddSquareIcon = (props: SvgIconProps) => {
   return (
     <Svg

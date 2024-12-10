@@ -12,7 +12,10 @@ import { useMyArtist } from "@/modules/main/hooks/useTopArtist";
 import HeaderImageTitle from "@/modules/search/components/HeaderImageTitle";
 import ButtonToPost from "@/modules/search/screen/ButtonToPost";
 import { StyleSheet, Text, View } from "react-native";
-import OpcPost from "../components/OpcPost";
+import OpcPostList from "../components/OpcPostList";
+import { usePost } from "../hooks/usePost";
+import ScreenLoading from "@/modules/core/components/ScreenLoading";
+import { useRouter } from "expo-router";
 
 // Hooks
 
@@ -21,25 +24,21 @@ import OpcPost from "../components/OpcPost";
 // Components
 
 // Props
-const data = {
-  post_id: "1",
-  user_name: "user_name",
-  action: "Ha recomendado",
-  content: "content",
-  image: "https://picsum.photos/200/300",
-  artist_name: "artist_name",
-  name_media: "name_media",
-};
+
 // Api
 
 export default function Social() {
   const { theme } = useTheme();
   const styles = createStyles(themesText[theme]);
   const { followedArtist } = useMyArtist();
+  const { posts, loading, handleLikePost } = usePost();
+  const router = useRouter();
 
   const handlePress = () => {
-    console.log("handlePress");
+    router.navigate("/writeAPost");
   };
+
+  if (loading) return <ScreenLoading />;
 
   return (
     <View>
@@ -53,8 +52,8 @@ export default function Social() {
         <ArtistCarousel data={followedArtist} />
 
         <View style={{ gap: 15 }}>
-          <Text style={styles.title_p}>Más relevantes</Text>
-          <OpcPost data={data} />
+          <Text style={styles.title_p}>Más recientes</Text>
+          <OpcPostList data={posts} handleLike={handleLikePost} />
         </View>
       </View>
     </View>

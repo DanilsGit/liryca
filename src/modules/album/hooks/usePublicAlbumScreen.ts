@@ -31,7 +31,6 @@ export const usePublicAlbumScreen = ({ id }: { id: string }) => {
         track.artist = track.artist_name;
         track.duration = onlyMinutes(track.time);
       });
-
       setTracks(tracks);
     } catch (error) {
       console.log(error);
@@ -42,7 +41,7 @@ export const usePublicAlbumScreen = ({ id }: { id: string }) => {
   useFocusEffect(
     useCallback(() => {
       getAlbumAndTracks();
-    }, [getAlbumAndTracks]),
+    }, [getAlbumAndTracks])
   );
 
   return { album, tracks, loading };

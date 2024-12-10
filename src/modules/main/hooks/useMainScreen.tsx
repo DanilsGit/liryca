@@ -13,6 +13,7 @@ export const useMainScreen = () => {
   const { followedArtist } = useMyArtist();
 
   const getAlbums = useCallback(async () => {
+    if (!user.token) return;
     setLoading(true);
     try {
       const res = await recentlyAlbumGetRequest(user.token);
@@ -22,22 +23,25 @@ export const useMainScreen = () => {
       console.log(error.response.message);
     }
     setLoading(false);
-  }, [user.token]);
+  }, [user?.token]);
 
   const getArtists = useCallback(async () => {
+    if (!user.token) return;
+    setLoading(true);
     try {
       const resTop = await topArtistGetRequest(user.token);
       setTopArtist(resTop.data.data);
     } catch (error) {
       console.log(error.response.message);
     }
-  }, [user.token]);
+    setLoading(false);
+  }, [user?.token]);
 
   useFocusEffect(
     useCallback(() => {
       getAlbums();
       getArtists();
-    }, [getAlbums, getArtists]),
+    }, [getAlbums, getArtists])
   );
 
   return { albums, topArtist, loading, followedArtist };

@@ -83,6 +83,8 @@ export const useAuth = create<Store>()((set) => ({
       };
       await SecureStorage.setItemAsync("user", JSON.stringify(registered));
       set({ user: registered });
+      console.log(registered);
+
       return "success";
     } catch (error) {
       const errorList = getListOfErrors(error.response.data);

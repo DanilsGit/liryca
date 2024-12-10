@@ -37,7 +37,7 @@ export default function Playlist({ data, tracks }: Props) {
   return (
     <View style={styles.overlay_container}>
       <HeaderBackTitleOptions title={data.name}>
-        <PlaylistOptiosAction owner={data.user_id} id_playlist={data.id} />
+        <PlaylistOptiosAction owner={data.user_id} playlist={data} />
       </HeaderBackTitleOptions>
 
       <View style={styles.presentation}>

@@ -18,6 +18,7 @@ import PostList from "@/modules/core/components/PostList";
 import { dataPost } from "@/constants/data";
 import FollowButton from "../components/FollowButton";
 import { PublicArtist } from "@/modules/core/lib/types";
+import PublicArtistOptiosAction from "../components/PublicArtistOptionsAction";
 
 // Hooks
 
@@ -77,7 +78,7 @@ export default function ArtistPublicProfile({
 
         {/* Options */}
         <View style={{ position: "absolute", bottom: 10, right: 10 }}>
-          <DotsButton action={() => {}} />
+          <PublicArtistOptiosAction artist={artist} />
         </View>
       </View>
 

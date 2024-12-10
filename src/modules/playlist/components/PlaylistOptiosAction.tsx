@@ -7,6 +7,7 @@ import { DotsIcon } from "@/modules/core/components/Icons";
 import { Pressable, View } from "react-native";
 import { SheetManager } from "react-native-actions-sheet";
 import { useRouter } from "expo-router";
+import { Playlist } from "@/modules/core/lib/types_tracks";
 
 // Hooks
 
@@ -17,19 +18,33 @@ import { useRouter } from "expo-router";
 // Props
 interface Props {
   owner: string;
-  id_playlist: number;
+  playlist: Playlist;
 }
 // Api
 
-export default function PlaylistOptiosAction({ owner, id_playlist }: Props) {
+export default function PlaylistOptiosAction({ owner, playlist }: Props) {
   const router = useRouter();
 
   const handleEditPlaylist = async () => {
     await SecureStorage.setItemAsync(
       "PlaylistToEdit",
-      JSON.stringify(id_playlist),
+      JSON.stringify(playlist.id)
     );
     router.navigate("/editPlaylist");
+  };
+
+  const handlePostPlaylist = async () => {
+    await SecureStorage.setItemAsync(
+      "post_attachment",
+      JSON.stringify({
+        id: playlist.id,
+        name: playlist.name,
+        image: playlist.image,
+        owner: "Playlist",
+        type: "playlist",
+      }),
+    );
+    router.navigate("/writeAPost");
   };
 
   const showPlaylistOptions = () => {
@@ -37,6 +52,7 @@ export default function PlaylistOptiosAction({ owner, id_playlist }: Props) {
       payload: {
         editPlaylist: () => handleEditPlaylist(),
         sharePlaylist: () => console.log("Compartir playlist"),
+        postPlaylist: () => handlePostPlaylist(),
         invitePlaylist: () => console.log("Invitar a la playlist"),
         likePlaylist: () => console.log("Dar like"),
         owner: owner,

@@ -27,7 +27,7 @@ export const useArtistAlbums = () => {
         title: `Album ${albums.length + 1}`,
         description: "Example description",
         release_date: "2024-12-01",
-        icon: "https://picsum.photos/200/300",
+        icon: "https://firebasestorage.googleapis.com/v0/b/liryca-c9f2e.appspot.com/o/playlistCover%2FdefaultCover.jpg?alt=media&token=c199cc9f-afca-460b-8b70-3d45eaf39e80",
       });
       const data_album = res.data.data;
       const newAlbum = {

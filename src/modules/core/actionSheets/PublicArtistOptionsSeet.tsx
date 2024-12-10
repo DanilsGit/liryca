@@ -4,8 +4,6 @@
 
 // React Native
 import { colors, fontSizes } from "@/constants/tokens";
-import { useAuth } from "@/modules/auth/hooks/useAuth";
-import { useTranslation } from "react-i18next";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import ActionSheet, { SheetProps } from "react-native-actions-sheet";
 
@@ -19,12 +17,10 @@ import ActionSheet, { SheetProps } from "react-native-actions-sheet";
 
 // Api
 
-export default function AlbumOptionsSheet(
-  props: SheetProps<"album-options-sheet">
+export default function PublicArtistOptionsSheet(
+  props: SheetProps<"publicArtist-options-sheet">,
 ) {
   const styles = createStyles();
-  const { t } = useTranslation();
-  const { user } = useAuth();
   return (
     <ActionSheet
       gestureEnabled
@@ -32,24 +28,14 @@ export default function AlbumOptionsSheet(
       containerStyle={styles.sheet}
     >
       <View style={styles.container}>
-        {props.payload?.owner === user?.id && (
-          <>
-            <Pressable onPress={props.payload?.editAlbum}>
-              <Text style={styles.text}>Editar Album</Text>
-            </Pressable>
-            <Pressable onPress={props.payload?.inviteAlbum}>
-              <Text style={styles.text}>Invitar al Album</Text>
-            </Pressable>
-          </>
-        )}
-        <Pressable onPress={props.payload?.postAlbum}>
+        <Pressable onPress={props.payload?.postPublicArtist}>
           <Text style={styles.text}>Postear</Text>
         </Pressable>
-        <Pressable onPress={props.payload?.shareAlbum}>
+        <Pressable onPress={props.payload?.sharePublicArtist}>
           <Text style={styles.text}>Compartir</Text>
         </Pressable>
-        <Pressable onPress={props.payload?.likeAlbum}>
-          <Text style={styles.text}>Dar like</Text>
+        <Pressable onPress={props.payload?.followPublicArtist}>
+          <Text style={styles.text}>Seguir</Text>
         </Pressable>
       </View>
     </ActionSheet>

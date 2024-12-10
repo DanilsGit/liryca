@@ -1,15 +1,4 @@
 import { Track } from "react-native-track-player";
-import { Album } from "./types";
-
-export interface Post {
-  id: number;
-  from: string;
-  message: string;
-  created_time: string;
-  album_attachment?: Album;
-  song_attachment?: Track;
-  isLiked: boolean;
-}
 
 export interface shared {
   id: string;

@@ -55,16 +55,6 @@ export interface PlayableSong {
   type: string;
 }
 
-export interface Post {
-  isLiked: boolean;
-  id: number;
-  from: string;
-  message: string;
-  created_time: string;
-  album_attachment?: Album;
-  song_attachment?: Track;
-}
-
 export interface SvgIconProps {
   width: number;
   height: number;

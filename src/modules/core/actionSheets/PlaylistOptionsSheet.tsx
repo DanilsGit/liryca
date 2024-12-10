@@ -42,6 +42,9 @@ export default function PlaylistOptionsSheet(
             </Pressable>
           </>
         )}
+        <Pressable onPress={props.payload?.postPlaylist}>
+          <Text style={styles.text}>Postear</Text>
+        </Pressable>
         <Pressable onPress={props.payload?.sharePlaylist}>
           <Text style={styles.text}>Compartir</Text>
         </Pressable>
