@@ -6,6 +6,7 @@
 import { colors, fontSizes } from "@/constants/tokens";
 import { DownArrowIcon } from "@/modules/core/components/Icons";
 import { StyleSheet, Text } from "react-native";
+import { useTranslation } from "react-i18next";
 import {
   Menu,
   MenuOption,
@@ -29,6 +30,7 @@ interface Props {
 
 export default function TypeActionSelect({ action, changeAction }: Props) {
   const styles = createStyles();
+  const { t } = useTranslation();
   return (
     <Menu>
       <MenuTrigger style={styles.action_container}>
@@ -48,15 +50,15 @@ export default function TypeActionSelect({ action, changeAction }: Props) {
         }}
       >
         <MenuOption onSelect={() => changeAction("recommended")}>
-          <Text style={styles.text}>Recomendar</Text>
+          <Text style={styles.text}>{t("post.post_recomment")}</Text>
         </MenuOption>
 
         <MenuOption onSelect={() => changeAction("shared")}>
-          <Text style={styles.text}>Compartir</Text>
+          <Text style={styles.text}>{t("post.post_share")}</Text>
         </MenuOption>
 
         <MenuOption onSelect={() => changeAction("not_recommended")}>
-          <Text style={styles.text}>No recomendar</Text>
+          <Text style={styles.text}>{t("post.post_not_recomment")}</Text>
         </MenuOption>
       </MenuOptions>
     </Menu>

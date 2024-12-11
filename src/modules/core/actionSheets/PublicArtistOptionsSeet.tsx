@@ -6,6 +6,8 @@
 import { colors, fontSizes } from "@/constants/tokens";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import ActionSheet, { SheetProps } from "react-native-actions-sheet";
+import { useTranslation } from "react-i18next";
+
 
 // Hooks
 
@@ -21,6 +23,7 @@ export default function PublicArtistOptionsSheet(
   props: SheetProps<"publicArtist-options-sheet">,
 ) {
   const styles = createStyles();
+  const { t } = useTranslation();
   return (
     <ActionSheet
       gestureEnabled
@@ -29,13 +32,13 @@ export default function PublicArtistOptionsSheet(
     >
       <View style={styles.container}>
         <Pressable onPress={props.payload?.postPublicArtist}>
-          <Text style={styles.text}>Postear</Text>
+          <Text style={styles.text}>{t("optionsArtist.post")}</Text>
         </Pressable>
         <Pressable onPress={props.payload?.sharePublicArtist}>
-          <Text style={styles.text}>Compartir</Text>
+          <Text style={styles.text}>{t("optionsArtist.share")}</Text>
         </Pressable>
         <Pressable onPress={props.payload?.followPublicArtist}>
-          <Text style={styles.text}>Seguir</Text>
+          <Text style={styles.text}>{t("optionsArtist.follow")}</Text>
         </Pressable>
       </View>
     </ActionSheet>

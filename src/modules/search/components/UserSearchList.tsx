@@ -7,6 +7,8 @@ import NoListYet from "@/modules/core/components/NoListYet";
 import { StyleSheet, View } from "react-native";
 import { FlatList } from "react-native-actions-sheet";
 import UserSearchItem from "./UserSearchItem";
+import { useTranslation } from "react-i18next";
+
 
 // Hooks
 
@@ -32,7 +34,7 @@ interface Props {
 
 export default function UserSearchList({ data }: Props) {
   const styles = createStyles();
-
+  const { t } = useTranslation();
   const handleUserSelect = (user: userSearch) => {
     console.log(user);
   };
@@ -46,7 +48,7 @@ export default function UserSearchList({ data }: Props) {
         )}
         keyExtractor={(item) => item.id.toString()}
         horizontal
-        ListEmptyComponent={<NoListYet>No users have found</NoListYet>}
+        ListEmptyComponent={<NoListYet>{t("search.no_results")}</NoListYet>}
       />
     </View>
   );

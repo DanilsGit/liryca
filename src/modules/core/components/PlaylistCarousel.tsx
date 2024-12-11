@@ -7,6 +7,7 @@ import { FlatList } from "react-native";
 import { DataPlaylistCarousel } from "../lib/types";
 import { PlaylistCover } from "./PlaylistCover";
 import NoListYet from "./NoListYet";
+import { useTranslation } from "react-i18next";
 import { useRouter } from "expo-router";
 
 // Hooks
@@ -25,6 +26,7 @@ interface Props {
 
 export default function PlaylistCarousel({ data }: Props) {
   const router = useRouter();
+  const { t } = useTranslation();
   const handlePress = (id: number) => {
     router.push(`/playlist/${id}`);
   };
@@ -38,7 +40,7 @@ export default function PlaylistCarousel({ data }: Props) {
       )}
       horizontal
       showsHorizontalScrollIndicator={false}
-      ListEmptyComponent={<NoListYet>Aún no tienes nada por aquí</NoListYet>}
+      ListEmptyComponent={<NoListYet>{t("search.no_results")}</NoListYet>}
     />
   );
 }

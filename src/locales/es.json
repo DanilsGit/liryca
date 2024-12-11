@@ -15,6 +15,11 @@
     "playlist": "Tus playlist",
     "artist": "Artistas destacados",
     "top_songs": "Más escuchados hoy",
+    "follow_artist": "Artistas que sigues",
+    "trend": "En tendencia",
+    "popular_albums": "Albúmes Populares",
+    "country_albums": "Álbumes de tu país",
+    "trend_zone": "Tendencias en tu zona",
     "filter": {
       "all": "Todas",
       "songs": "Canciones",
@@ -30,7 +35,8 @@
     "filter_posts": "Publicaciones",
     "liked_songs": "Canciones que te gustan",
     "liked_playlists": "Playlist que te gustan",
-    "saved_albums": "Álbumes guardados"
+    "saved_albums": "Álbumes guardados",
+    "recently_played": "Recientemente escuchadas"
   },
   "profile_Artist": {
     "upload_Album": "Crear un nuevo éxito",
@@ -77,11 +83,45 @@
     "share": "Compartir"
   },
   "post": {
-    "recommended": "ha recomendado"
+    "title": "Comparte tus gustos",
+    "post": "¡Hazte escuchar!",
+    "recent": "Más recientes",
+    "share": "Compartir",
+    "recommended": "ha recomendado",
+    "new_post": "Nueva publicación",
+    "post_text": "Escribe algo",
+    "post_button": "Publicar",
+    "post_recomment": "Recomendar",
+    "post_not_recomment": "No recomendar",
+    "post_share": "Compartir",
+    "post_title": "Publicación",
+    "post_comment": "Comentarios"
+
   },
   "optionsSheet": {
     "language": "Cambiar idioma",
     "theme": "Cambiar tema",
-    "logout": "Cerrar sesión"
-  }
-}
+    "logout": "Cerrar sesión",
+    "profile": "Editar perfil"
+  },
+  "optionsArtist":{
+    "post":"Postear",
+    "share": "Compartir",
+    "follow": "Seguir",
+    "like": "Me gusta",
+    "edit": "Editar",
+    "invite": "Invitar"
+  },
+  "search":{
+    "title": "Descubre algo nuevo",
+    "search": "Búsca tus artistas favoritos",
+    "gender": "Explora nuevos géneros",
+    "results": {
+      "songs": "Canciones",
+      "albums": "Álbumes",
+      "artist": "Artistas",
+      "playlist": "Playlist",
+      "profiles": "Perfiles"
+    },
+      "no_results": "No se encontraron resultados"
+}}

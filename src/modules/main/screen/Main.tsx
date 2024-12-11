@@ -53,22 +53,22 @@ export default function Main() {
       </View>
       {followedArtist.length > 0 && (
         <View style={{ gap: 15 }}>
-          <Text style={styles.title_text}>Seguidos</Text>
+          <Text style={styles.title_text}>{t("main.follow_artist")}</Text>
           <ArtistCarousel data={followedArtist} />
         </View>
       )}
       <View style={{ gap: 15 }}>
-        <Text style={styles.title_text}>En tendencia</Text>
+        <Text style={styles.title_text}>{t("main.trend")}</Text>
         <ArtistCarousel data={topArtist} />
       </View>
       <View style={{ gap: 15 }}>
-        <Text style={styles.title_text}>Albumes populares</Text>
+        <Text style={styles.title_text}>{t("main.popular_albums")}</Text>
         <View style={{ marginHorizontal: 10 }}>
           <AlbumCarousel data={albumsTrending} />
         </View>
       </View>
       <View style={{ gap: 15 }}>
-        <Text style={styles.title_text}>Albumes de tu pais</Text>
+        <Text style={styles.title_text}>{t("main.country_albums")}</Text>
         <View style={{ marginHorizontal: 10 }}>
           <AlbumCarousel data={albumCountry} />
         </View>
@@ -87,7 +87,7 @@ export default function Main() {
       </View>
 
       <View style={{ gap: 15 }}>
-        <Text style={styles.title_text}>En tendencia en tu zona</Text>
+        <Text style={styles.title_text}>{t("main.trend_zone")}</Text>
         <View style={{ marginHorizontal: 5 }}>
           <TracksList
             id={generateTrackListId(

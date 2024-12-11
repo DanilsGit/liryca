@@ -16,6 +16,7 @@ import { useWriteAPost } from "@/modules/social/hooks/useWriteAPost";
 import { Image } from "expo-image";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import { SheetManager } from "react-native-actions-sheet";
+import { useTranslation } from "react-i18next";
 
 // Hooks
 
@@ -30,6 +31,8 @@ import { SheetManager } from "react-native-actions-sheet";
 export default function WriteAPost() {
   const { theme } = useTheme();
   const styles = createStyles(themesText[theme]);
+  const { t } = useTranslation();
+
   const {
     postContent,
     handleWritePost,
@@ -50,7 +53,7 @@ export default function WriteAPost() {
       <View style={styles.container}>
         <View style={styles.header}>
           <HeaderImageTitle>
-            <Text style={styles.title}>Nuevo post</Text>
+            <Text style={styles.title}>{t("post.new_post")}</Text>
           </HeaderImageTitle>
           <PostItButton onPress={handleSubmitPost} />
         </View>
@@ -61,7 +64,7 @@ export default function WriteAPost() {
               changeAction={handleActionChange}
             />
             <TextInput
-              placeholder="Escribe tu post"
+              placeholder={t("post.post_text")}
               style={styles.input}
               multiline
               value={postContent}

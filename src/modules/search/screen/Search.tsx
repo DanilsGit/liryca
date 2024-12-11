@@ -17,6 +17,7 @@ import UserSearchList from "../components/UserSearchList";
 import { useSearch } from "../hooks/useSearch";
 import PlaylistCarousel from "@/modules/core/components/PlaylistCarousel";
 import AlbumCarousel from "@/modules/album/components/AlbumCarousel";
+import { useTranslation } from "react-i18next";
 
 // Hooks
 
@@ -31,18 +32,20 @@ export default function Search() {
   const { theme } = useTheme();
   const styles = createStyles(themesText[theme]);
   const { search, handleSearch, loading, results } = useSearch();
+  const { t } = useTranslation();
+
 
   return (
     <View style={styles.container}>
       <HeaderImageTitle>
-        <Text style={styles.title}>Descubre algo nuevo</Text>
+        <Text style={styles.title}>{t("search.title")}</Text>
       </HeaderImageTitle>
       <View style={{ paddingHorizontal: 10 }}>
         <SearchBar search={search} handleSearch={handleSearch} />
       </View>
       {search === "" && (
         <View style={{ paddingHorizontal: 10, gap: 20 }}>
-          <Text style={styles.text_title}>Explora nuevos géneros</Text>
+          <Text style={styles.text_title}>{t("search.gender")}</Text>
           <GenresList />
         </View>
       )}
@@ -52,26 +55,26 @@ export default function Search() {
       {results && (
         <View style={{ paddingHorizontal: 10, gap: 20 }}>
           <View style={{ gap: 10 }}>
-            <Text style={styles.text_title}>Canciones</Text>
+            <Text style={styles.text_title}>{t("search.results.songs")}</Text>
             <TracksList
               data={results.songs}
               id={generateTrackListId("search", search)}
             />
           </View>
           <View style={{ gap: 10 }}>
-            <Text style={styles.text_title}>Albumes</Text>
+            <Text style={styles.text_title}>{t("search.results.albums")}</Text>
             <AlbumCarousel data={results.albums} />
           </View>
           <View style={{ gap: 10 }}>
-            <Text style={styles.text_title}>Playlists</Text>
+            <Text style={styles.text_title}>{t("search.results.playlist")}</Text>
             <PlaylistCarousel data={results.playlists} />
           </View>
           <View style={{ gap: 10 }}>
-            <Text style={styles.text_title}>Artistas</Text>
+            <Text style={styles.text_title}>{t("search.results.artist")}</Text>
             <UserSearchList data={results.artists} />
           </View>
           <View style={{ gap: 10 }}>
-            <Text style={styles.text_title}>Perfiles</Text>
+            <Text style={styles.text_title}>{t("search.results.profile")}</Text>
             <UserSearchList data={results.users} />
           </View>
         </View>
@@ -93,6 +96,6 @@ const createStyles = (colorText: ThemeText) =>
     title: {
       fontSize: fontSizes.xl2,
       color: colorText.secondary,
-      fontFamily: "M-PLUS-2-ExtraBold",
+      fontFamily: "M-PLUS-2-ExtraBold"
     },
   });

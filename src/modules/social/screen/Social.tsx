@@ -16,6 +16,7 @@ import OpcPostList from "../components/OpcPostList";
 import { usePost } from "../hooks/usePost";
 import ScreenLoading from "@/modules/core/components/ScreenLoading";
 import { useRouter } from "expo-router";
+import { useTranslation } from "react-i18next";
 
 // Hooks
 
@@ -38,12 +39,14 @@ export default function Social() {
     router.navigate("/writeAPost");
   };
 
+  const { t } = useTranslation();
+
   if (loading) return <ScreenLoading />;
 
   return (
     <View>
       <HeaderImageTitle>
-        <Text style={styles.title}>Conversa y exprésate</Text>
+        <Text style={styles.title}>{t("post.title")}</Text>
       </HeaderImageTitle>
       <View style={styles.social_content}>
         <View style={{ paddingHorizontal: 15 }}>
@@ -52,7 +55,7 @@ export default function Social() {
         <ArtistCarousel data={followedArtist} />
 
         <View style={{ gap: 15 }}>
-          <Text style={styles.title_p}>Más recientes</Text>
+          <Text style={styles.title_p}>{t("post.recent")}</Text>
           <OpcPostList data={posts} handleLike={handleLikePost} />
         </View>
       </View>
@@ -64,13 +67,13 @@ const createStyles = (colorText: ThemeText) =>
   StyleSheet.create({
     container: {},
     title: {
-      fontSize: fontSizes.xl2,
+      fontSize: fontSizes.xl,
       color: colorText.secondary,
-      fontFamily: "M-PLUS-2-ExtraBold",
+      fontFamily: "M-PLUS-2-Bold",
     },
     social_content: { paddingVertical: 20, gap: 30 },
     title_p: {
-      fontSize: fontSizes.xl2,
+      fontSize: fontSizes.xl,
       color: colorText.secondary,
       fontFamily: "M-PLUS-2-ExtraBold",
       paddingHorizontal: 15,

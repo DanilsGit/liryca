@@ -1,59 +1,66 @@
 {
   "theme": {
-    "title": "Choisis un thème",
+    "title": "Choisissez votre thème",
     "light": "Clair",
     "dark": "Sombre",
-    "quiet": "Calme"
+    "quiet": "Silencieux"
   },
   "main": {
     "title_morning": "Bonjour * . +",
     "title_afternoon": "Bon après-midi * . +",
     "title_evening": "Bonsoir * . +",
-    "playlist": "Tes playlists",
-    "artist": "Artistes à la une",
-    "top_songs": "Les plus écoutées aujourd'hui",
+    "playlist": "Vos playlists",
+    "artist": "Artistes en vedette",
+    "top_songs": "Chansons du jour",
+    "follow_artist": "Artistes que vous suivez",
+    "trend": "Tendances",
+    "popular_albums": "Albums populaires",
+    "country_albums": "Albums de votre pays",
+    "trend_zone": "Tendances dans votre région",
     "filter": {
-      "all": "Toutes",
+      "all": "Tous",
       "songs": "Chansons",
       "playlist": "Playlists"
     }
   },
   "profile": {
     "followers": "Abonnés",
+    "following": "Abonnements",
     "likes": "J'aime",
     "playlists": "Playlists",
-    "top_songs": "Tes plus écoutées",
+    "top_songs": "Vos titres les plus écoutés",
     "filter_music": "Musique",
     "filter_posts": "Publications",
-    "liked_songs": "Chansons que tu aimes",
-    "liked_playlists": "Playlists que tu aimes",
-    "saved_albums": "Albums enregistrés"
+    "liked_songs": "Chansons aimées",
+    "liked_playlists": "Playlists aimées",
+    "saved_albums": "Albums enregistrés",
+    "recently_played": "Récemment joués"
   },
   "auth": {
     "welcome": "Bienvenue",
     "artist": "Artiste",
-    "user": "Petit Étoile",
-    "login": "Se connecter",
-    "signup": "Rejoins-nous",
-    "text_option": "Veux-tu écouter de la musique?",
-    "email": "Saisis ton email",
-    "password": "Saisis ton mot de passe",
-    "forgot_password": "Mot de passe oublié?",
-    "new_user": "Nouveau ici? Rejoins-nous!",
-    "have_account": "Tu as déjà un compte? Connecte-toi!",
+    "user": "Petite étoile",
+    "login": "Connexion",
+    "signup": "Rejoignez-nous",
+    "text_option": "Vous voulez écouter de la musique ?",
+    "email": "Entrez votre email",
+    "password": "Entrez votre mot de passe",
+    "forgot_password": "Mot de passe oublié ?",
+    "new_user": "Nouveau ici ? Rejoignez-nous !",
+    "have_account": "Vous avez déjà un compte ? Connectez-vous !",
     "next": "Suivant",
     "register_title": "Inscription",
-    "register_password": "Définis ton mot de passe",
-    "register_password_add": "Définis un mot de passe sûr pour protéger ton compte.",
+    "register_password": "Définissez votre mot de passe",
+    "register_password_add": "Définissez un mot de passe fort pour protéger votre compte.",
     "back_register": "Retour",
     "end_register": "Terminer"
   },
   "artist_public_profile": {
-    "following": "Suivis",
+    "following": "Abonnements",
     "follow": "Suivre",
     "followers": "Abonnés",
     "likes": "J'aime",
-    "top_songs": "Grands Succès",
+    "top_songs": "Grands succès",
     "albums": "Albums"
   },
   "playlist": {
@@ -61,10 +68,45 @@
     "share": "Partager"
   },
   "post": {
-    "recommended": "a recommandé"
+    "title": "Faites-vous entendre !",
+    "post": "Publiez quelque chose",
+    "recent": "Le plus récent",
+    "share": "Partager",
+    "recommended": "a recommandé",
+    "new_post": "Nouvelle publication",
+    "post_text": "Que voulez-vous partager ?",
+    "post_button": "Publier",
+    "post_recomment": "Recommander",
+    "post_not_recomment": "Ne pas recommander",
+    "post_share": "Partager",
+    "post_title": "Publication",
+    "post_comment": "Commentaires"
   },
   "optionsSheet": {
-    "language": "Changer la langue",
-    "theme": "Changer de thème"
+    "language": "Changer de langue",
+    "theme": "Changer de thème",
+    "logout": "Déconnexion",
+    "profile": "Modifier le profil"
+  },
+  "optionsArtist":{
+    "post":"Publication",
+    "share": "Partager",
+    "follow": "Suivre",
+    "like": "J'aime",
+    "edit": "Modifier",
+    "invite": "Inviter"
+  },
+  "search":{
+    "title": "Découvrez de nouvelles musiques",
+    "search": "Recherchez votre musique préférée",
+    "gender": "Explorez de nouveaux genres",
+    "results": {
+      "songs": "Chansons",
+      "albums": "Albums",
+      "artist": "Artistes",
+      "playlist": "Playlists",
+      "profile": "Profils"
+    },
+    "no_results": "Aucun résultat trouvé"
   }
 }

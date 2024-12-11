@@ -16,6 +16,7 @@ import { useQueue } from "@/modules/core/hooks/useQueue";
 import { useRef } from "react";
 import { handleTrackQueue } from "@/modules/core/constants/handles";
 import NoListYet from "@/modules/core/components/NoListYet";
+import { useTranslation } from "react-i18next";
 
 // Props
 
@@ -30,6 +31,7 @@ export default function TracksList({ id, data }: Props) {
   const styles = createStyles();
   const queueOffset = useRef(0);
   const { activeQueueId, setActiveQueueId } = useQueue();
+  const { t } = useTranslation();
 
   const handleTrackSelect = async (selectedTrack: Track) => {
     handleTrackQueue(
@@ -53,7 +55,7 @@ export default function TracksList({ id, data }: Props) {
         scrollEnabled={false}
         ListEmptyComponent={
           <NoListYet>
-            <Text>No hay canciones</Text>
+            <Text>{t("search.no_results")}</Text>
           </NoListYet>
         }
       />

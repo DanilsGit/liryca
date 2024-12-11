@@ -108,7 +108,7 @@ export default function ListenerProfile() {
       {/* Top Songs */}
       {playback.length > 0 && (
         <View>
-          <Text style={styles.text_xl_margin}>Tus recientes</Text>
+          <Text style={styles.text_xl_margin}>{t("profile.recently_played")}</Text>
           <View style={{ marginHorizontal: 20 }}>
             <TracksList
               id={generateTrackListId(

@@ -12,6 +12,11 @@
     "playlist": "Your playlists",
     "artist": "Featured artists",
     "top_songs": "Top songs today",
+    "follow_artist": "Artists you follow",
+    "trend": "Trending",
+    "popular_albums": "Popular albums",
+    "country_albums": "Albums from your country",
+    "trend_zone": "Trending in your zone",
     "filter": {
       "all": "All",
       "songs": "Songs",
@@ -20,6 +25,7 @@
   },
   "profile": {
     "followers": "Followers",
+    "following": "Following",
     "likes": "Likes",
     "playlists": "Playlists",
     "top_songs": "Your most listened",
@@ -27,7 +33,8 @@
     "filter_posts": "Posts",
     "liked_songs": "Liked songs",
     "liked_playlists": "Liked playlists",
-    "saved_albums": "Saved albums"
+    "saved_albums": "Saved albums",
+    "recently_played": "Recently played"
   },
   "auth": {
     "welcome": "Welcome",
@@ -61,10 +68,45 @@
     "share": "Share"
   },
   "post": {
-    "recommended": "has recommended"
+    "title": "Make yourself heard!",
+    "post": "Post something",
+    "recent": "Most recent",
+    "share": "Share",
+    "recommended": "has recommended",
+    "new_post": "New post",
+    "post_text": "What do you want to share?",
+    "post_button": "Post",
+    "post_recomment": "Recommend",
+    "post_not_recomment": "Not recommend",
+    "post_share": "Share",
+    "post_title": "Post",
+    "post_comment": "Comments"
   },
   "optionsSheet": {
     "language": "Change language",
-    "theme": "Change theme"
+    "theme": "Change theme",
+    "logout": "Logout",
+    "profile": "Edit profile"
+  },
+  "optionsArtist":{
+    "post":"Post",
+    "share": "Share",
+    "follow": "Follow",
+    "like": "Like",
+    "edit": "Edit",
+    "invite": "Invite"
+  },
+  "search":{
+    "title": "Discover new music",
+    "search": "Search your favorite music",
+    "gender": "Explore new genres",
+    "results": {
+      "songs": "Songs",
+      "albums": "Albums",
+      "artist": "Artists",
+      "playlist": "Playlists",
+      "profile": "Profiles"
+    },
+      "no_results": "No results found"
   }
 }

@@ -5,6 +5,7 @@
 // React Native
 import { colors, fontSizes } from "@/constants/tokens";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import { useTranslation } from "react-i18next";
 
 // Hooks
 
@@ -20,10 +21,12 @@ interface Props {
 
 export default function PostItButton({ onPress }: Props) {
   const styles = createStyles();
+  const { t } = useTranslation();
+
   return (
     <Pressable onPress={onPress}>
       <View style={styles.container}>
-        <Text style={styles.text}>Publicar</Text>
+        <Text style={styles.text}>{t("post.post_button")}</Text>
       </View>
     </Pressable>
   );

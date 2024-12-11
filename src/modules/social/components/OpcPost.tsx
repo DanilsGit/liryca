@@ -20,6 +20,7 @@ import {
   handleGoToComment,
   handleGoToPlaylist,
 } from "../constants/handlers";
+import { useTranslation } from "react-i18next";
 
 // Hooks
 
@@ -42,6 +43,8 @@ export default function OpcPost({ data, handleLike }: Props) {
     await SecureStorage.setItemAsync("commentsInPost", JSON.stringify(data));
     router.navigate("/commentsInPost");
   };
+
+  const { t } = useTranslation();
 
   return (
     <Pressable style={{ marginBottom: 15 }} onPress={handleExpand}>
@@ -109,7 +112,7 @@ export default function OpcPost({ data, handleLike }: Props) {
           }
         />
         <IconTextButton
-          text="Compartir"
+          text={t("post.share")}
           textStyles={styles.header_text_1}
           onPress={() => console.log("Compartir")}
           icon={

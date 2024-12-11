@@ -31,7 +31,7 @@ export default function ListenerOptionsSheet(
     >
       <View style={styles.container}>
         <Pressable onPress={props.payload?.goToEditProfile}>
-          <Text style={styles.text}>Editar perfil</Text>
+          <Text style={styles.text}>{t("optionsSheet.profile")}</Text>
         </Pressable>
         <Pressable onPress={props.payload?.goToLanguageScreen}>
           <Text style={styles.text}>{t("optionsSheet.language")}</Text>
