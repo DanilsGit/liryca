@@ -8,9 +8,10 @@ export const useMyArtist = () => {
   const [followedArtist, setFollowedArtist] = useState([]);
 
   const getArtist = useCallback(async () => {
+    if (!user?.token) return;
     const res = await followedArtistGetRequest(user.token);
     setFollowedArtist(res.data.data);
-  }, [user.token]);
+  }, [user?.token]);
 
   useFocusEffect(
     useCallback(() => {

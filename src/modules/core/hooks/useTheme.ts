@@ -16,6 +16,6 @@ export const useTheme = create<Store>()((set) => ({
   },
   loadAsyncTheme: async () => {
     const theme = await SecureStorage.getItemAsync("theme");
-    set({ theme: theme ? JSON.parse(theme) : "light" });
+    set({ theme: theme ? JSON.parse(theme) : "dark" });
   },
 }));

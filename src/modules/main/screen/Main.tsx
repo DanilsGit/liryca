@@ -40,6 +40,7 @@ export default function Main() {
     tracksTrending,
   } = useMainScreen();
 
+  if (!user) return <Redirect href="(auth)" />;
   if (user?.role === "artist") return <Redirect href="/artistProfile" />;
 
   if (loading) return <ScreenLoading />;

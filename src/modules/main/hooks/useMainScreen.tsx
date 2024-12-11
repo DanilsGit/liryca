@@ -42,7 +42,7 @@ export const useMainScreen = () => {
       console.log(error.response.message);
     }
     setLoading(false);
-  }, [user.token]);
+  }, [user?.token]);
 
   const getTracksCountry = useCallback(async () => {
     if (!user.token) return;
@@ -65,7 +65,7 @@ export const useMainScreen = () => {
       console.log(error.response.message);
     }
     setLoading(false);
-  }, [user.token]);
+  }, [user?.token]);
 
   const getAlbumsTrending = useCallback(async () => {
     if (!user.token) return;
@@ -90,7 +90,7 @@ export const useMainScreen = () => {
       console.log(error.response.message);
     }
     setLoading(false);
-  }, [user.token]);
+  }, [user?.token]);
 
   const getArtists = useCallback(async () => {
     if (!user.token) return;

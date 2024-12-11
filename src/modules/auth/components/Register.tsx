@@ -138,11 +138,11 @@ export default function Register() {
                   }
                 >
                   <Picker.Item label="País" value="" />
-                  {countries.map((country) => (
+                  {countries.map((country, index) => (
                     <Picker.Item
-                      key={country.code}
-                      label={country.name}
-                      value={country.name}
+                      key={index}
+                      label={country}
+                      value={country}
                     />
                   ))}
                 </Picker>
