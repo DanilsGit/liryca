@@ -14,9 +14,9 @@ export const useTrackLike = () => {
 
   const handleLike = async () => {
     try {
+      await postLikeTrackRequest(user.token, activeTrack.id);
       setLike(!like);
       activeTrack.isLiked = !like;
-      await postLikeTrackRequest(user.token, activeTrack.id);
     } catch (error) {
       console.log(error.response.data);
       setLike(like);

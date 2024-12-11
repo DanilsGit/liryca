@@ -73,7 +73,11 @@ export default function CommentsInPost() {
                       ? () => handleGoToArtist(post.artist_id)
                       : post.type === "album"
                         ? () => handleGoToAlbum(post.attachment_id)
-                        : () => handleGoToPlaylist(post.attachment_id)
+                        : post.type === "song"
+                          ? () => handleGoToAlbum(post.attachment_id)
+                          : post.type === "playlist"
+                            ? () => handleGoToPlaylist(post.attachment_id)
+                            : () => {}
                   }
                 >
                   <View style={styles.image_container}>

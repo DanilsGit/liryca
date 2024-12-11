@@ -5,14 +5,7 @@
 // React Native
 import { colors, fontSizes } from "@/constants/tokens";
 import { useTranslation } from "react-i18next";
-import {
-  Dimensions,
-  Pressable,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { Dimensions, StyleSheet, Text, TextInput, View } from "react-native";
 import ButtonRounded from "./ButtonRounded";
 
 import { useState } from "react";
@@ -139,11 +132,7 @@ export default function Register() {
                 >
                   <Picker.Item label="País" value="" />
                   {countries.map((country, index) => (
-                    <Picker.Item
-                      key={index}
-                      label={country}
-                      value={country}
-                    />
+                    <Picker.Item key={index} label={country} value={country} />
                   ))}
                 </Picker>
               </View>

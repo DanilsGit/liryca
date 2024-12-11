@@ -81,7 +81,7 @@ export default function Album({ data, tracks }: Props) {
           id={generateTrackListId("publicAlbum_list", data.title)}
           data={tracks}
         />
-        {user.role === "artist" && (
+        {user.role === "artist" && user.id === data.artist_id && (
           <LargeIconButton
             text="Add Song"
             icon={<AddSquareIcon width={20} height={20} stroke="#000" />}

@@ -77,7 +77,10 @@ export default function Main() {
         <Text style={styles.title_text}>{t("main.top_songs")}</Text>
         <View style={{ marginHorizontal: 5 }}>
           <TracksList
-            id={generateTrackListId("main_trending")}
+            id={generateTrackListId(
+              "main_trending",
+              tracksTrending.length.toString(),
+            )}
             data={tracksTrending}
           />
         </View>
@@ -87,7 +90,10 @@ export default function Main() {
         <Text style={styles.title_text}>En tendencia en tu zona</Text>
         <View style={{ marginHorizontal: 5 }}>
           <TracksList
-            id={generateTrackListId("main_country")}
+            id={generateTrackListId(
+              "main_country",
+              tracksCountry.length.toString(),
+            )}
             data={tracksCountry}
           />
         </View>

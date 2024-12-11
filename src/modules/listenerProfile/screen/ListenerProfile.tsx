@@ -111,7 +111,10 @@ export default function ListenerProfile() {
           <Text style={styles.text_xl_margin}>Tus recientes</Text>
           <View style={{ marginHorizontal: 20 }}>
             <TracksList
-              id={generateTrackListId("listenerPlayback_list")}
+              id={generateTrackListId(
+                "listenerPlayback_list",
+                playback.length.toString(),
+              )}
               data={playback}
             />
           </View>

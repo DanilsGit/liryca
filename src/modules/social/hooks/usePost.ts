@@ -95,6 +95,7 @@ export const usePost = (behavior: behavior, id?) => {
           artist_id: postR.artist_id,
         };
       });
+
       setPosts(post);
       setLoading(false);
     } catch (error) {
@@ -139,7 +140,7 @@ export const usePost = (behavior: behavior, id?) => {
   useFocusEffect(
     useCallback(() => {
       getPost();
-    }, [getPost]),
+    }, [getPost])
   );
 
   return { posts, loading, handleLikePost };

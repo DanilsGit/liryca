@@ -58,7 +58,11 @@ export default function OpcPost({ data, handleLike }: Props) {
                   ? () => handleGoToArtist(data.artist_id)
                   : data.type === "album"
                     ? () => handleGoToAlbum(data.attachment_id)
-                    : () => handleGoToPlaylist(data.attachment_id)
+                    : data.type === "song"
+                      ? () => handleGoToAlbum(data.attachment_id)
+                      : data.type === "playlist"
+                        ? () => handleGoToPlaylist(data.attachment_id)
+                        : () => {}
               }
             >
               <View style={styles.image_container}>
