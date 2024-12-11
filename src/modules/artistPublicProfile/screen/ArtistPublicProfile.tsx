@@ -95,14 +95,14 @@ export default function ArtistPublicProfile({
             {formatMillionsToM_HundredsToK(follows.count_following)}
           </Text>
           <Text style={styles.stats_followers_subtext}>
-            {t("artist_public_profile.followers")}
+            {t("artist_public_profile.following")}
           </Text>
         </View>
         <View style={styles.stats_followers_conainer}>
           <Text style={styles.stats_followers_text}>
             {formatMillionsToM_HundredsToK(follows.count_followers)}
           </Text>
-          <Text style={styles.stats_followers_subtext}>Seguidores</Text>
+          <Text style={styles.stats_followers_subtext}>{t("artist_public_profile.followers")}</Text>
         </View>
       </View>
 

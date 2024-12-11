@@ -14,6 +14,8 @@ import Screen from "@/modules/core/components/Screen";
 import ScreenLoading from "@/modules/core/components/ScreenLoading";
 import CommentList from "@/modules/social/components/CommentList";
 import IconTextButton from "@/modules/social/components/IconTextButton";
+import { useTranslation } from "react-i18next";
+
 import {
   handleGoToAlbum,
   handleGoToArtist,
@@ -36,6 +38,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 // Api
 
 export default function CommentsInPost() {
+  const { t } = useTranslation();
   const styles = createStyles();
   const router = useRouter();
   const { post, comments, loading, handleLikeComment, handleLikePost } =
@@ -50,7 +53,7 @@ export default function CommentsInPost() {
           icon={
             <ArrowLeftIcon width={20} height={20} fill={colors.light_purple} />
           }
-          text="Publicación"
+          text={t("post.post_title")}
           textStyles={styles.main_header_text}
           onPress={() => router.back()}
         />
@@ -120,7 +123,7 @@ export default function CommentsInPost() {
               }
             />
             <IconTextButton
-              text="Compartir"
+              text={t("post.share")}
               textStyles={styles.header_text_1}
               onPress={() => console.log("Compartir")}
               icon={
@@ -137,7 +140,7 @@ export default function CommentsInPost() {
         </View>
       </View>
       <View style={styles.comment_section}>
-        <Text style={styles.main_header_text}>Comentarios</Text>
+        <Text style={styles.main_header_text}>{t("post.post_comment")}</Text>
         <CommentList
           comments={comments}
           handleLikeComment={handleLikeComment}

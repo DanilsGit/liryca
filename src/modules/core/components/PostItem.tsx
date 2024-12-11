@@ -9,6 +9,8 @@ import { themesBackgroundPost, themesText } from "@/constants/themes";
 import { ThemeText } from "@/constants/themesTypes";
 import { colors, fontSizes } from "@/constants/tokens";
 import { Image } from "expo-image";
+import { useTranslation } from "react-i18next";
+
 
 import IconTextButton from "@/modules/social/components/IconTextButton";
 import { CommentIcon, HeartIcon, ShareIcon } from "./Icons";
@@ -34,6 +36,7 @@ export default function PostItem({ data, handleLike }: Props) {
   const { theme } = useTheme();
   const styles = createStyles(themesText[theme], themesBackgroundPost[theme]);
   const router = useRouter();
+  const { t } = useTranslation();
 
   const handleExpand = async () => {
     await SecureStorage.setItemAsync("commentsInPost", JSON.stringify(data));
@@ -102,7 +105,7 @@ export default function PostItem({ data, handleLike }: Props) {
               }
             />
             <IconTextButton
-              text="Compartir"
+              text={t("post.share")}
               textStyles={styles.btn_text}
               onPress={() => console.log("Compartir")}
               icon={

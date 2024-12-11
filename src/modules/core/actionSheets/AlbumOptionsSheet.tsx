@@ -35,21 +35,21 @@ export default function AlbumOptionsSheet(
         {props.payload?.owner === user?.id && (
           <>
             <Pressable onPress={props.payload?.editAlbum}>
-              <Text style={styles.text}>Editar Album</Text>
+              <Text style={styles.text}>{t("optionsArtist.edit")}</Text>
             </Pressable>
             <Pressable onPress={props.payload?.inviteAlbum}>
-              <Text style={styles.text}>Invitar al Album</Text>
+              <Text style={styles.text}>{t("optionsArtist.invite")}</Text>
             </Pressable>
           </>
         )}
         <Pressable onPress={props.payload?.postAlbum}>
-          <Text style={styles.text}>Postear</Text>
+          <Text style={styles.text}>{t("optionsArtist.post")}</Text>
         </Pressable>
         <Pressable onPress={props.payload?.shareAlbum}>
-          <Text style={styles.text}>Compartir</Text>
+          <Text style={styles.text}>{t("optionsArtist.share")}</Text>
         </Pressable>
         <Pressable onPress={props.payload?.likeAlbum}>
-          <Text style={styles.text}>Dar like</Text>
+          <Text style={styles.text}>{t("optionsArtist.like")}</Text>
         </Pressable>
       </View>
     </ActionSheet>

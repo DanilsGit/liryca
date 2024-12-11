@@ -7,6 +7,8 @@ import { FlatList } from "react-native";
 import { useRouter } from "expo-router";
 import NoListYet from "@/modules/core/components/NoListYet";
 import { AlbumCarouselItem } from "./AlbumCarouselItem";
+import { useTranslation } from "react-i18next";
+
 
 // Hooks
 
@@ -30,6 +32,7 @@ interface Props {
 
 export default function AlbumCarousel({ data }: Props) {
   const router = useRouter();
+  const { t } = useTranslation();
   const handlePress = (id: number) => {
     router.push(`/album/${id}`);
   };
@@ -44,7 +47,7 @@ export default function AlbumCarousel({ data }: Props) {
       horizontal
       showsHorizontalScrollIndicator={false}
       ListEmptyComponent={
-        <NoListYet>No se ha encontrado nada por aquí</NoListYet>
+        <NoListYet>{t("search.no_results")}</NoListYet>
       }
     />
   );

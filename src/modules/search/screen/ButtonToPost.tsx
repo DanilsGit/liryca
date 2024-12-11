@@ -5,6 +5,7 @@
 // React Native
 import { colors, fontSizes } from "@/constants/tokens";
 import { MusicIcon } from "@/modules/core/components/Icons";
+import { t } from "i18next";
 import { Pressable, StyleSheet, View, Text } from "react-native";
 
 // Hooks
@@ -28,7 +29,7 @@ export default function ButtonToPost({ onPress }: Props) {
           <MusicIcon width={20} height={20} strokeWidth={4} />
         </View>
         <View style={styles.text_container}>
-          <Text style={styles.text_btn}>¡Hazte escuchar!</Text>
+          <Text style={styles.text_btn}>{t("post.post")}</Text>
         </View>
       </View>
     </Pressable>

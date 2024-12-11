@@ -35,21 +35,21 @@ export default function PlaylistOptionsSheet(
         {props.payload?.owner === user?.id && (
           <>
             <Pressable onPress={props.payload?.editPlaylist}>
-              <Text style={styles.text}>Editar playlist</Text>
+              <Text style={styles.text}>{t("optionsArtist.edit")}</Text>
             </Pressable>
             <Pressable onPress={props.payload?.invitePlaylist}>
-              <Text style={styles.text}>Invitar a la playlist</Text>
+              <Text style={styles.text}>{t("optionsArtist.invite")}</Text>
             </Pressable>
           </>
         )}
         <Pressable onPress={props.payload?.postPlaylist}>
-          <Text style={styles.text}>Postear</Text>
+          <Text style={styles.text}>{t("optionsArtist.post")}</Text>
         </Pressable>
         <Pressable onPress={props.payload?.sharePlaylist}>
-          <Text style={styles.text}>Compartir</Text>
+          <Text style={styles.text}>{t("optionsArtist.share")}</Text>
         </Pressable>
         <Pressable onPress={props.payload?.likePlaylist}>
-          <Text style={styles.text}>Dar like</Text>
+          <Text style={styles.text}>{t("optionsArtist.like")}</Text>
         </Pressable>
       </View>
     </ActionSheet>
