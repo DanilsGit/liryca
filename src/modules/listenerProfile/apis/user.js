@@ -15,3 +15,10 @@ export const playbackGetRequest = async (token) =>
       Authorization: `Bearer ${token}`,
     },
   });
+
+export const getLikedTracks = async (token) =>
+  axios.get(`${API_URL}/api/v1/playlistsong/playlist/like`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });

@@ -1,20 +1,20 @@
 // Expo
-
+import * as SecureStorage from "expo-secure-store";
 // React
 
 // React Native
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { Post } from "../lib/types_tracks";
 import { useTheme } from "../hooks/useTheme";
 import { themesBackgroundPost, themesText } from "@/constants/themes";
 import { ThemeText } from "@/constants/themesTypes";
 import { colors, fontSizes } from "@/constants/tokens";
-import { useTranslation } from "react-i18next";
 import { Image } from "expo-image";
 
-import LikeButton from "@/modules/core/components/LikeButton";
-import ShareButton from "@/modules/core/components/ShareButton";
-import CommentButton from "@/modules/core/components/CommentButton";
+import IconTextButton from "@/modules/social/components/IconTextButton";
+import { CommentIcon, HeartIcon, ShareIcon } from "./Icons";
+import { handleGoToComment } from "@/modules/social/constants/handlers";
+import { useRouter } from "expo-router";
+import { Post } from "@/modules/social/hooks/usePost";
 
 // Hooks
 
@@ -24,62 +24,97 @@ import CommentButton from "@/modules/core/components/CommentButton";
 
 // Props
 interface Props {
-  item: Post;
-  onPostSelect: (album: Post) => void;
+  data: Post;
+  handleLike: (id: number) => void;
 }
 
 // Api
 
-export default function PostItem({ item, onPostSelect }: Props) {
+export default function PostItem({ data, handleLike }: Props) {
   const { theme } = useTheme();
-  const { t } = useTranslation();
   const styles = createStyles(themesText[theme], themesBackgroundPost[theme]);
+  const router = useRouter();
+
+  const handleExpand = async () => {
+    await SecureStorage.setItemAsync("commentsInPost", JSON.stringify(data));
+    router.navigate("/commentsInPost");
+  };
+
   return (
     <Pressable
-      onPress={() => onPostSelect(item)}
+      onPress={() => handleExpand()}
       style={styles.pressable_container}
     >
       {({ pressed }) => (
         <View style={[styles.post_container, { opacity: pressed ? 0.8 : 1 }]}>
           <View>
             <Text style={styles.from_text}>
-              {item.from} {t("post.recommended")}
+              {data.username} {" " + data.action_type}
             </Text>
           </View>
           <View style={styles.post_main_content}>
-            {item.album_attachment && (
+            {data.image && (
               <View style={styles.attachment_img_container}>
                 <Image
                   style={styles.attachment_img}
-                  source={{ uri: item.album_attachment.icon }}
+                  source={{ uri: data.image }}
                 />
               </View>
             )}
             <View style={{ flex: 1 }}>
-              <Text style={styles.main_content_text}>{item.message}</Text>
+              <Text style={styles.main_content_text}>{data.content}</Text>
             </View>
           </View>
-          {item.album_attachment && (
+          {data.name_attachment && (
             <View style={styles.attachment}>
               <Text style={styles.attachment_text}>
-                {item.album_attachment.title} -{" "}
-                {item.album_attachment.artist_name}
+                {data.name_attachment} - {data.owner_name}
               </Text>
             </View>
           )}
           <View style={styles.actions_container}>
-            <View style={styles.buttons_container}>
-              <LikeButton isLiked={item.isLiked} />
-              <Text style={styles.buttons_text}>{t("Like")}</Text>
-            </View>
-            <View style={styles.buttons_container}>
-              <CommentButton />
-              <Text style={styles.buttons_text}>Comentar</Text>
-            </View>
-            <View style={styles.buttons_container}>
-              <ShareButton />
-              <Text style={styles.buttons_text}>Compartir</Text>
-            </View>
+            <IconTextButton
+              text={data.like_count.toString()}
+              textStyles={styles.btn_text}
+              onPress={() => handleLike(data.id)}
+              icon={
+                <HeartIcon
+                  width={20}
+                  height={20}
+                  fill={data.is_liked ? colors.purple : "transparent"}
+                  strokeWidth={5}
+                  stroke={colors.light_purple}
+                />
+              }
+            />
+            <IconTextButton
+              text={data.comment_count.toString()}
+              textStyles={styles.btn_text}
+              onPress={() => handleGoToComment(data)}
+              icon={
+                <CommentIcon
+                  width={20}
+                  height={20}
+                  fill="transparent"
+                  strokeWidth={1}
+                  stroke={colors.light_purple}
+                />
+              }
+            />
+            <IconTextButton
+              text="Compartir"
+              textStyles={styles.btn_text}
+              onPress={() => console.log("Compartir")}
+              icon={
+                <ShareIcon
+                  width={20}
+                  height={20}
+                  fill="transparent"
+                  strokeWidth={5}
+                  stroke={colors.light_purple}
+                />
+              }
+            />
           </View>
         </View>
       )}
@@ -151,8 +186,10 @@ const createStyles = (colorText: ThemeText, bgPost: string) =>
       alignItems: "center",
       gap: 8,
     },
-    buttons_text: {
-      color: colors.light_pink,
-      fontSize: fontSizes.sm,
+    btn_text: {
+      color: colors.light_purple,
+      fontSize: fontSizes.md,
+      fontFamily: "M-PLUS-2-Bold",
+      opacity: 0.5,
     },
   });

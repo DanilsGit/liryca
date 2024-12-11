@@ -83,7 +83,6 @@ const RootNavigation = () => {
   const themeStatusBar = themesStatusBar[theme];
 
   // Sólo en producción
-  const isProduction = process.env.NODE_ENV === "production";
 
   return (
     <View
@@ -92,8 +91,6 @@ const RootNavigation = () => {
         backgroundColor: themeStatusBar,
       }}
     >
-      {!isProduction && <ThemeToggle />}
-
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="(auth)" />
@@ -171,6 +168,15 @@ const RootNavigation = () => {
         />
         <Stack.Screen
           name="playlist"
+          options={{
+            presentation: "card",
+            gestureEnabled: true,
+            gestureDirection: "vertical",
+            animationDuration: 400,
+          }}
+        />
+        <Stack.Screen
+          name="myLikedTracks"
           options={{
             presentation: "card",
             gestureEnabled: true,

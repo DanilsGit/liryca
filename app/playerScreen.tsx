@@ -7,7 +7,6 @@ import { colors, fontSizes } from "@/constants/tokens";
 import HeaderBackTitleOptions from "@/modules/core/components/HeaderBackTitleOptions";
 import PlayerControls from "@/modules/core/components/PlayerControls";
 import PlayerProgressBar from "@/modules/core/components/PlayerProgressBar";
-import { HandleShowListenerOptions } from "@/modules/core/constants/handles";
 import { Image, ImageBackground } from "expo-image";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -54,10 +53,7 @@ export default function PlayerScreen() {
         }}
       />
       <View style={styles.overlay_container}>
-        <HeaderBackTitleOptions
-          dotsAction={HandleShowListenerOptions}
-          title={activeTrack.title}
-        />
+        <HeaderBackTitleOptions title={activeTrack.title} />
 
         <View style={styles.content}>
           <View style={styles.image_container}>

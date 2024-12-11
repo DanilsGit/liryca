@@ -80,7 +80,7 @@ export default function ListenerProfile() {
       {/* Buttons */}
       <View style={{ margin: 20, gap: 10 }}>
         <LargeIconButton
-          onPress={() => console.log("xd")}
+          onPress={() => router.navigate("/myLikedTracks")}
           icon={
             <HeartIcon
               width={20}

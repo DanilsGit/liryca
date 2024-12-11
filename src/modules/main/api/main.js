@@ -28,3 +28,24 @@ export const addTrackToPlaybackRequest = (token, data) =>
       Authorization: `Bearer ${token}`,
     },
   });
+
+export const getAlbumInMyCountryRequest = (token) =>
+  axios.get(`${API_URL}/api/v1/album/albums/by-my-country`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+export const getTopTracksTodayRequest = (token) =>
+  axios.get(`${API_URL}/api/v1/song/songs/top-today`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+export const getTopTracksTodayInMyCountryRequest = (token) =>
+  axios.get(`${API_URL}/api/v1/song/songs/top-today-by-my-country`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });

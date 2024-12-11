@@ -40,6 +40,7 @@ export const useSearch = () => {
       url: song.url_song,
       time: song.duration,
       artist_id: song.artist_id,
+      isLiked: song.is_liked,
     }));
     const albums = res.data.albums;
     const playlists = res.data.playlists.map((playlist) => ({

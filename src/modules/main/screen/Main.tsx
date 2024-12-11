@@ -14,12 +14,10 @@ import { colors, fontSizes } from "@/constants/tokens";
 
 // Components
 import Header from "@m/main/components/Header";
-import PlaylistCarousel from "@m/core/components/PlaylistCarousel";
 import ArtistCarousel from "@m/main/components/ArtistCarousel";
 import HiText from "@m/main/components/HiText";
 import { ThemeText } from "@/constants/themesTypes";
 import TracksList from "@/modules/main/components/TracksList";
-import { dataSongs } from "@/constants/data";
 import { generateTrackListId } from "@/modules/core/utils/miscellaneous";
 import { useAuth } from "@/modules/auth/hooks/useAuth";
 import { Redirect } from "expo-router";
@@ -32,7 +30,15 @@ export default function Main() {
   const { t } = useTranslation();
   const styles = createStyles(themesText[theme]);
   const { user } = useAuth();
-  const { albums, loading, topArtist, followedArtist } = useMainScreen();
+  const {
+    albumsTrending,
+    loading,
+    topArtist,
+    followedArtist,
+    albumCountry,
+    tracksCountry,
+    tracksTrending,
+  } = useMainScreen();
 
   if (user?.role === "artist") return <Redirect href="/artistProfile" />;
 
@@ -57,13 +63,32 @@ export default function Main() {
       <View style={{ gap: 15 }}>
         <Text style={styles.title_text}>Albumes populares</Text>
         <View style={{ marginHorizontal: 10 }}>
-          <AlbumCarousel data={albums} />
+          <AlbumCarousel data={albumsTrending} />
+        </View>
+      </View>
+      <View style={{ gap: 15 }}>
+        <Text style={styles.title_text}>Albumes de tu pais</Text>
+        <View style={{ marginHorizontal: 10 }}>
+          <AlbumCarousel data={albumCountry} />
         </View>
       </View>
       <View style={{ gap: 15 }}>
         <Text style={styles.title_text}>{t("main.top_songs")}</Text>
         <View style={{ marginHorizontal: 5 }}>
-          <TracksList id={generateTrackListId("main_list")} data={dataSongs} />
+          <TracksList
+            id={generateTrackListId("main_trending")}
+            data={tracksTrending}
+          />
+        </View>
+      </View>
+
+      <View style={{ gap: 15 }}>
+        <Text style={styles.title_text}>En tendencia en tu zona</Text>
+        <View style={{ marginHorizontal: 5 }}>
+          <TracksList
+            id={generateTrackListId("main_country")}
+            data={tracksCountry}
+          />
         </View>
       </View>
     </View>

@@ -15,6 +15,7 @@ import { Track } from "react-native-track-player";
 import { useQueue } from "@/modules/core/hooks/useQueue";
 import { useRef } from "react";
 import { handleTrackQueue } from "@/modules/core/constants/handles";
+import NoListYet from "@/modules/core/components/NoListYet";
 
 // Props
 
@@ -50,7 +51,11 @@ export default function TracksList({ id, data }: Props) {
         )}
         keyExtractor={(_, index) => index.toString()}
         scrollEnabled={false}
-        ListEmptyComponent={<Text>No songs</Text>}
+        ListEmptyComponent={
+          <NoListYet>
+            <Text>No hay canciones</Text>
+          </NoListYet>
+        }
       />
     </View>
   );

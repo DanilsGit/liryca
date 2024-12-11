@@ -4,9 +4,9 @@
 
 // React Native
 import { FlatListProps, StyleSheet, Text, View } from "react-native";
-import { Post } from "../lib/types_tracks";
 import { FlatList } from "react-native-actions-sheet";
 import PostItem from "./PostItem";
+import { Post } from "@/modules/social/hooks/usePost";
 
 // Hooks
 
@@ -17,23 +17,20 @@ import PostItem from "./PostItem";
 // Props
 type Props = Partial<FlatListProps<Post>> & {
   data: Post[];
+  handleLike: (id: number) => void;
 };
 
 // Api
 
-export default function PostList({ data }: Props) {
+export default function PostList({ data, handleLike }: Props) {
   const styles = createStyles();
-
-  const handlePostSelect = async (album: Post) => {
-    console.log(album);
-  };
 
   return (
     <View style={styles.post_container}>
       <FlatList
         data={data}
         renderItem={({ item }) => (
-          <PostItem item={item} onPostSelect={handlePostSelect} />
+          <PostItem data={item} handleLike={handleLike} />
         )}
         keyExtractor={(item) => item.id.toString()}
         scrollEnabled={false}

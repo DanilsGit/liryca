@@ -30,6 +30,7 @@ export const usePublicAlbumScreen = ({ id }: { id: string }) => {
         track.image = track.album_image;
         track.artist = track.artist_name;
         track.duration = onlyMinutes(track.time);
+        track.isLiked = track.is_liked;
       });
       setTracks(tracks);
     } catch (error) {

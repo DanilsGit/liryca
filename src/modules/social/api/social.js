@@ -42,3 +42,10 @@ export const postCommentPostRequest = (token, data) =>
       Authorization: `Bearer ${token}`,
     },
   });
+
+export const getPostByUserIdRequest = (token, userId) =>
+  axios.get(`${API_URL}/api/v1/post/${userId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });

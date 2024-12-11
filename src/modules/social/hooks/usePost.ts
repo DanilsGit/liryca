@@ -1,93 +1,13 @@
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
-import { getPostRequest, postLikeRequest } from "../api/social";
+import {
+  getPostByUserIdRequest,
+  getPostRequest,
+  postLikeRequest,
+} from "../api/social";
 import { useAuth } from "@/modules/auth/hooks/useAuth";
 
 export type PostType = "playlist" | "text" | "album" | "artist" | "song";
-
-export interface Post_Playlist {
-  id: number;
-  user_id: string;
-  profile_picture: string;
-  username: string;
-  action_type: string;
-  content: string;
-  type: PostType;
-  playlist_id: number;
-  name: string;
-  owner_id: string;
-  owner_name: string;
-  description: string;
-  image: string;
-  released_at: string;
-}
-
-export interface Post_Song {
-  id: number;
-  user_id: string;
-  profile_picture: string;
-  username: string;
-  action_type: string;
-  content: string;
-  type: PostType;
-  title: string;
-  duration: string;
-  genre: string;
-  url_song: string;
-  album_id: number;
-  album_title: string;
-  icon: string;
-  artist_id: string;
-  artist_name: string;
-  released_at: string;
-}
-
-export interface Post_Album {
-  id: number;
-  user_id: string;
-  profile_picture: string;
-  username: string;
-  action_type: string;
-  content: string;
-  type: PostType;
-  album_id: number;
-  title: string;
-  description: string;
-  icon: string;
-  artist_id: string;
-  artist_name: string;
-  released_at: string;
-}
-
-export interface Post_Artist {
-  id: number;
-  user_id: string;
-  profile_picture: string;
-  username: string;
-  action_type: string;
-  content: string;
-  type: PostType;
-  artist_id: number;
-  name: string;
-  about: string;
-  artist_profile_picture: string;
-  artist_profile_banner: string;
-  released_at: string;
-}
-
-export interface Post_Text {
-  id: number;
-  user_id: string;
-  profile_picture: string;
-  username: string;
-  action_type: string;
-  content: string;
-  type: PostType;
-  released_at: string;
-  is_liked: boolean;
-  like_count: number;
-  comment_count: number;
-}
 
 export interface Post {
   id: number;
@@ -108,7 +28,9 @@ export interface Post {
   comment_count: number;
 }
 
-export const usePost = () => {
+type behavior = "all" | "user";
+
+export const usePost = (behavior: behavior, id?) => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const { user } = useAuth();
@@ -116,7 +38,12 @@ export const usePost = () => {
   const getPost = useCallback(async () => {
     try {
       setLoading(true);
-      const res = await getPostRequest(user.token);
+      let res;
+      res =
+        behavior === "all"
+          ? await getPostRequest(user.token)
+          : await getPostByUserIdRequest(user.token, id);
+
       const post = res.data.data.map((postR: any) => {
         const type: PostType = postR.type;
         return {
@@ -173,7 +100,7 @@ export const usePost = () => {
     } catch (error) {
       console.log(error.response.data);
     }
-  }, [user.token]);
+  }, [behavior, id, user.token]);
 
   const handleLikePost = async (postId: number) => {
     try {

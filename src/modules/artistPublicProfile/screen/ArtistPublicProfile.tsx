@@ -19,6 +19,8 @@ import { dataPost } from "@/constants/data";
 import FollowButton from "../components/FollowButton";
 import { PublicArtist } from "@/modules/core/lib/types";
 import PublicArtistOptiosAction from "../components/PublicArtistOptionsAction";
+import { usePost } from "@/modules/social/hooks/usePost";
+import ScreenLoading from "@/modules/core/components/ScreenLoading";
 
 // Hooks
 
@@ -47,6 +49,9 @@ export default function ArtistPublicProfile({
   const width = Dimensions.get("window").width;
   const [filter, setFilter] = useState<filters>("music");
   const { t } = useTranslation();
+  const { posts, loading, handleLikePost } = usePost("user", artist.user_id);
+
+  if (loading) return <ScreenLoading />;
 
   return (
     <View>
@@ -129,7 +134,9 @@ export default function ArtistPublicProfile({
       {filter === "music" && <MusicArtistPublicProfile id={artist.user_id} />}
 
       {/* Posts component */}
-      {filter === "posts" && <PostList data={dataPost} />}
+      {filter === "posts" && (
+        <PostList data={posts} handleLike={handleLikePost} />
+      )}
     </View>
   );
 }

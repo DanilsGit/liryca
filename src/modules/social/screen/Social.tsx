@@ -31,7 +31,7 @@ export default function Social() {
   const { theme } = useTheme();
   const styles = createStyles(themesText[theme]);
   const { followedArtist } = useMyArtist();
-  const { posts, loading, handleLikePost } = usePost();
+  const { posts, loading, handleLikePost } = usePost("all");
   const router = useRouter();
 
   const handlePress = () => {

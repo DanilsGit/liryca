@@ -38,6 +38,7 @@ export const usePublicAlbums = (id: string) => {
           artist: item.artist_name,
           url: item.song_url,
           artist_id: item.artist_id,
+          isLiked: item.is_liked,
         };
       });
       setTopTracks(data);

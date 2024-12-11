@@ -18,6 +18,7 @@ interface TrackPlaylistRequest {
     time: string;
     url_song: string;
     album_id: number;
+    is_liked: boolean;
   };
   album: {
     title: string;
@@ -38,6 +39,7 @@ interface TrackPlaylist {
   image: string;
   addBy: string;
   artist: string;
+  isLiked: boolean;
 }
 
 export const usePlaylistScreen = (id: string) => {
@@ -46,13 +48,7 @@ export const usePlaylistScreen = (id: string) => {
   const [tracks, setTracks] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useFocusEffect(
-    useCallback(() => {
-      getPlaylistAndTracks();
-    }, [])
-  );
-
-  const getPlaylistAndTracks = async () => {
+  const getPlaylistAndTracks = useCallback(async () => {
     setLoading(true);
     try {
       const tracksInPlaylist: TrackPlaylist[] = [];
@@ -74,6 +70,7 @@ export const usePlaylistScreen = (id: string) => {
           image: track.album.icon,
           addBy: track.add_by,
           artist: track.artist.username,
+          isLiked: track.song.is_liked,
         });
       });
       setTracks(tracksInPlaylist);
@@ -82,7 +79,13 @@ export const usePlaylistScreen = (id: string) => {
       router.back();
     }
     setLoading(false);
-  };
+  }, [id, user.token]);
+
+  useFocusEffect(
+    useCallback(() => {
+      getPlaylistAndTracks();
+    }, [getPlaylistAndTracks]),
+  );
 
   return { playlist, tracks, loading };
 };

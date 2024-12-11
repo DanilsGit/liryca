@@ -18,36 +18,26 @@ interface Props {
   isLiked: boolean;
   width?: number;
   height?: number;
+  handlePress: () => void;
 }
 // Api
 
-export default function LikeButton({ isLiked, width, height }: Props) {
-  const handlePress = () => {
-    console.log("Like button pressed", isLiked);
-  };
-
+export default function LikeButton({
+  isLiked,
+  width,
+  height,
+  handlePress,
+}: Props) {
   return (
     <Pressable onPress={handlePress}>
-      {isLiked ? (
-        <View>
-          <HeartIcon
-            width={width ?? 25}
-            height={height ?? 25}
-            fill={colors.light_purple}
-            strokeWidth={0}
-          />
-        </View>
-      ) : (
-        <View>
-          <HeartIcon
-            width={width ?? 22}
-            height={height ?? 22}
-            fill={colors.light_pink}
-            stroke={colors.light_pink}
-            strokeWidth={2}
-          />
-        </View>
-      )}
+      <View>
+        <HeartIcon
+          width={width ?? 25}
+          height={height ?? 25}
+          fill={isLiked ? colors.light_purple : "transparent"}
+          strokeWidth={2}
+        />
+      </View>
     </Pressable>
   );
 }
